@@ -116,7 +116,7 @@ export default function Projects() {
                                     <Link
                                         href={project.liveLink}
                                         target="_blank"
-                                        className="bg-gradient-to-l from-purple-500 to-cyan-400 text-white px-3 py-3 md:px-3 rounded-full font-semibold text-sm transition-all ease-in duration-100 dark:hover:shadow-[0px_4px_15px_rgba(255,255,255,0.4)] text-center w-full min-[370px]:w-auto"
+                                        className="bg-gradient-to-l from-purple-500 to-cyan-400 text-white px-3 py-3 md:px-3 rounded-full font-semibold text-sm transition-all ease-in duration-100 hover:shadow-[0_6px_20px_rgba(139,92,246,0.4),_0_3px_10px_rgba(34,211,238,0.3)] dark:hover:shadow-[0px_4px_15px_rgba(255,255,255,0.4)] text-center w-full min-[370px]:w-auto"
                                     >
                                         {t('deploy')}
                                     </Link>

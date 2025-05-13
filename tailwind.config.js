@@ -24,6 +24,9 @@ module.exports = {
         sans: 'var(--font-sans)',
         mono: 'var(--font-mono)',
       },
+      boxShadow: {
+        'gradient-glow': '0 10px 25px rgba(139, 92, 246, 0.4), 0 5px 15px rgba(34, 211, 238, 0.3)',
+      },
     },
   },
   plugins: [
