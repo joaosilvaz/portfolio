@@ -1,4 +1,4 @@
-import Image from 'next/image'; 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import TiltCard from '@/components/TiltCard';
 import { useTranslations } from 'next-intl';
@@ -125,7 +125,7 @@ export default function Technologies() {
                 {visibleTechnologies.map((tech, index) => (
                     <TiltCard
                         key={index}
-                        className="relative rounded-xl p-6 dark:bg-zinc-800/18 bg-gray-50 border border-gray-100 dark:border-zinc-900 cursor-pointer transition shadow-lg"
+                        className="relative rounded-xl p-6 bg-white dark:bg-zinc-800/40 border border-gray-100 dark:border-zinc-900 cursor-pointer transition shadow-lg"
                     >
                         <a href={tech.link} target="_blank" rel="noopener noreferrer">
                             <div className="flex items-center gap-5 mb-4">
@@ -145,7 +145,7 @@ export default function Technologies() {
                     >
                         {showAll ? (
                             <>
-                               {t('seeLess')}<ChevronUp className="inline-block ml-2" size={16} />
+                                {t('seeLess')}<ChevronUp className="inline-block ml-2" size={16} />
                             </>
                         ) : (
                             <>
