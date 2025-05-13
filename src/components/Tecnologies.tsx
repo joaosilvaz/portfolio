@@ -99,8 +99,8 @@ export default function Technologies() {
         isMobile && !showAll ? technologies.slice(0, 5) : technologies;
 
     return (
-        <section id="tecnologias" className="bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white pt-50 pb-20 px-0 max-w-7xl mx-auto">
-            <div className="md:text-left text-center mb-12">
+        <section id="tecnologias" className="bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white pt-50 pb-20 px-0">
+            <div className="md:text-left text-center mb-12 max-w-7xl mx-auto">
                 <motion.h2
                     className="text-4xl font-bold"
                     initial={{ opacity: 0, y: 50 }}
@@ -120,7 +120,7 @@ export default function Technologies() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 1 }}
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto"
+                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto max-w-7xl"
             >
                 {visibleTechnologies.map((tech, index) => (
                     <TiltCard
