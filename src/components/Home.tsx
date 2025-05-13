@@ -66,7 +66,7 @@ export default function Home() {
               className="flex flex-col items-center relative"
             >
               <Image
-                src='images/logoCurriculo.svg'
+                src='/logoCurriculo.svg'
                 alt={t('downloadCV')}
                 width={40}
                 height={40}

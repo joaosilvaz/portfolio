@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💻 Portfólio - João Vitor
 
-## Getting Started
+Este é o meu portfólio como desenvolvedor de software, onde apresento minha trajetória, habilidades técnicas, projetos desenvolvidos e experiências profissionais. O objetivo é centralizar minhas informações profissionais de forma clara, moderna e acessível.
 
-First, run the development server:
+## 🚀 O que você encontra no portfólio
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Sobre mim**: Um resumo da minha história como desenvolvedor, meus objetivos e motivações na área de tecnologia.
+- **Projetos**: Lista de projetos com descrições, tecnologias utilizadas e links para visualização ou repositórios.
+- **Tecnologias que utilizo**: Stack atual com as principais tecnologias que domino no desenvolvimento web.
+- **Experiência profissional**: Detalhes sobre minhas experiências, cargos e responsabilidades nas empresas pelas quais passei.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tecnologias utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O portfólio foi desenvolvido com foco em performance, responsividade e animações suaves, utilizando as seguintes ferramentas:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **[React](https://reactjs.org/)** – Biblioteca JavaScript para construção de interfaces de usuário.
+- **[Next.js](https://nextjs.org/)** – Framework React para renderização híbrida (SSR/SSG) e rotas otimizadas.
+- **[Tailwind CSS](https://tailwindcss.com/)** – Framework utilitário para estilização moderna e responsiva.
+- **[Framer Motion](https://www.framer.com/motion/)** – Biblioteca de animações para React com transições suaves.
+- **[AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)** – Biblioteca para animações ao rolar a página.
+- **[i18next](https://www.i18next.com/)** – Biblioteca para internacionalização (i18n), permitindo múltiplos idiomas.
 
-## Learn More
+## 🌍 Deploy
 
-To learn more about Next.js, take a look at the following resources:
+Você pode acessar o portfólio online em: (https://joaosilvadev.vercel.app/pt)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Sinta-se à vontade para explorar, me conhecer melhor e entrar em contato caso queira colaborar em algum projeto ou oportunidade.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 📫 Contato
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Email:** joaovitoraz31@gmail.com  
+- **LinkedIn:** (https://www.linkedin.com/in/jo%C3%A3o-vitor-da-silva-5677202b1/)
+- **GitHub:** (https://github.com/joaosilvaz)
+
