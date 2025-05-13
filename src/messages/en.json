@@ -1,0 +1,87 @@
+{
+    "header": {
+      "home": "Home",
+      "about": "About me",
+      "tech": "Technologies",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "home": {
+      "welcome": "Welcome",
+      "iAm": "I am",
+      "texts": [
+        "Full Stack Developer",
+        "Passionate about technology"
+      ],
+      "downloadCV": "Download CV",
+      "portfolio": "Check out my portfolio →"
+    },
+    "about": {
+      "title": "About me",
+      "description": "I’m a software developer in training, 18 years old, currently studying Systems Analysis and Development at FIAP. Since june/2024, I’ve been working at MRM McCann Worldgroup, contributing to agile teams on digital innovation projects.\n\nWhile my current focus is more on front-end development using technologies like React and Next.js, I also have full stack experience gained through academic and personal projects, particularly in back-end development with Node.js, Java, Python and Strapi.",
+      "seeTechnologies": "See my technologies:",
+      "experienceTitle": "Professional Experience",
+      "experienceRole": "Full Stack Developer - MRM McCann WorldGroup",
+      "experienceClient": "Clients: GM - Mastercard - Leroy Merlin - Diageo",
+      "experienceDate": "June 2024 - Present",
+      "academicTitle": "Education Background",
+      "academicCourse": "Student of Systems Analysis and Development - FIAP",
+      "academicInstitution": "Full Stack Development - Agile Methodologies",
+      "academicDate": "February 2024 - Dezember 2025"
+    },
+    "technologies": {
+      "title": "Technologies",
+      "description": "Check out my stack of skills and experience in technology:",
+      "typescript": "JavaScript with static typing, used for safer large-scale projects.",
+      "javascript": "Core web language, used in both front-end and back-end.",
+      "react": "Library for building modern and reusable user interfaces.",
+      "next": "React framework with SSR, focused on performance and SEO.",
+      "tailwind": "Utility-first CSS framework for fast and responsive styling.",
+      "node": "JavaScript on the backend for APIs, automation, and servers.",
+      "java": "OOP language used in robust systems and Android development.",
+      "python": "Versatile, great for automation, back-end, and data science.",
+      "sql": "Query language for relational databases.",
+      "aws": "Amazon cloud services for APIs, storage, and scalability.",
+      "azure": "Microsoft's cloud platform, well-integrated for enterprise apps.",
+      "strapi": "Headless CMS used to build and manage APIs efficiently.",
+      "seeLess": "See less",
+      "seeMore": "See more"
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "Here you can find some of the most relevant projects I’ve developed throughout my journey as a developer.",
+      "titleProject1": "Renewable Energy Savings Platform",
+      "titleProject2": "LP Development – God of War Ragnarok",
+      "titleProject3": "Intelligent Monitoring of Aquatic Environments",
+      "titleProject4": "E-commerce",
+      "titleProject5": "Banking System",
+      "descriptionProject1": "The application allows users to enter their average electricity consumption and location to receive a personalized estimate of savings with solar energy.",
+      "descriptionProject2": "Themed landing page inspired by the universe of God of War: Ragnarok, focused on impactful visuals and performance.",
+      "descriptionProject3": "I developed a project that involved creating an intelligent device for real-time monitoring of three essential parameters: Temperature, Water pH, and Water Level.",
+      "descriptionProject4": "E-commerce simulator with a responsive layout where users can view products, add them to the cart, and simulate a purchase.",
+      "descriptionProject5": "The system allows account creation, balance inquiry, deposits, withdrawals, and PIX transfers. I used enums for account types (CHECKING, SAVINGS, SALARY) and account status (ACTIVE, INACTIVE).",
+      "deploy": "Acess deploy",
+      "github": "Check on Github",
+      "seeLess": "See less",
+      "seeMore": "See more"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Let’s talk! I’m open to partnerships and new projects.",
+      "placeholderTitle": "Title",
+      "placeholderName": "Your name",
+      "placeholderEmail": "Your email",
+      "placeholderMessage": "Message",
+      "button": "Send message",
+      "success": "Message sent successfully!",
+      "error": "Error sending message. Try again."
+    },
+    "footer": {
+      "home": "Home",
+      "about": "About me",
+      "techs": "Technologies",
+      "projects": "Projects",
+      "contact": "Contact",
+      "textFooter": "2025 João Vitor da Silva. All rights reserved."
+    }
+  }
