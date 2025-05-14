@@ -29,9 +29,9 @@ export default function Header() {
                 {[
                     { label: t('home'), href: '#home' },
                     { label: t('about'), href: '#about' },
-                    { label: t('tech'), href: '#tecnologias' },
-                    { label: t('projects'), href: '#projetos' },
-                    { label: t('contact'), href: '#contato' },
+                    { label: t('tech'), href: '#technologies' },
+                    { label: t('projects'), href: '#projects' },
+                    { label: t('contact'), href: '#contact' },
                 ].map(({ label, href }) => (
                     <Link key={href} href={href} className="relative group">
                         <span>{label}</span>
@@ -48,9 +48,9 @@ export default function Header() {
                     {[
                         { label: t('home'), href: '#home' },
                         { label: t('about'), href: '#about' },
-                        { label: t('tech'), href: '#tecnologias' },
-                        { label: t('projects'), href: '#projetos' },
-                        { label: t('contact'), href: '#contato' },
+                        { label: t('tech'), href: '#technologies' },
+                        { label: t('projects'), href: '#projects' },
+                        { label: t('contact'), href: '#contact' },
                     ].map(({ label, href }) => (
                         <Link key={href} href={href} onClick={() => setIsMenuOpen(false)}>
                             {label}
