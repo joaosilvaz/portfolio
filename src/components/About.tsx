@@ -49,7 +49,7 @@ export default function About() {
                                         <br /><br />
                                     </span>
                                 ))}
-                                <Link href="#tecnologias" className="text-[rgb(99,94,255)] hover:opacity-90 transition-all font-bold duration-200">
+                                <Link href="#technologies" className="text-[rgb(99,94,255)] hover:opacity-90 transition-all font-bold duration-200">
                                     {t("seeTechnologies")}
                                 </Link>
                             </p>

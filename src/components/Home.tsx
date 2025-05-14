@@ -81,7 +81,7 @@ export default function Home() {
 
           <div className="mt-10">
             <Link
-              href="#projetos"
+              href="#projects"
               style={{
                 borderWidth: '2px',
                 borderStyle: 'solid',
