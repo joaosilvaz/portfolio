@@ -51,10 +51,11 @@ export default function Projects() {
             githubLink: "https://github.com/joaosilvaz/bank-project",
         },
     ];
+    
     const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
     return (
-        <section id="projetos" className="bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white pt-50 pb-20 px-6 md:px-16">
+        <section id="projects" className="bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white pt-50 pb-20 px-6 md:px-16">
             <div className="max-w-7xl mx-auto md:text-left text-center">
                 <motion.h2
                     className="text-4xl font-bold mb-4"

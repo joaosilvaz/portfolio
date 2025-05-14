@@ -99,7 +99,7 @@ export default function Technologies() {
         isMobile && !showAll ? technologies.slice(0, 5) : technologies;
 
     return (
-        <section id="tecnologias" className="bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white pt-50 pb-20 px-0">
+        <section id="technologies" className="bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white pt-50 pb-20 px-0">
             <div className="md:text-left text-center mb-12 max-w-7xl mx-auto">
                 <motion.h2
                     className="text-4xl font-bold"
@@ -125,7 +125,7 @@ export default function Technologies() {
                 {visibleTechnologies.map((tech, index) => (
                     <TiltCard
                         key={index}
-                        className="relative rounded-xl p-6 bg-white dark:bg-zinc-800/40 border border-gray-100 dark:border-zinc-900 cursor-pointer transition shadow-lg"
+                        className="relative rounded-xl p-6 bg-white dark:bg-zinc-800/40 border border-gray-100 dark:border-zinc-900 cursor-pointer transition shadow-md hover:shadow-xl"
                     >
                         <a href={tech.link} target="_blank" rel="noopener noreferrer">
                             <div className="flex items-center gap-5 mb-4">

@@ -17,9 +17,8 @@ export const ThemeToggle = () => {
   }
 
   const isDark = theme === 'dark';
-  const buttonClass = `fixed bottom-5 right-6 z-50 p-3 rounded-full shadow transition-colors cursor-pointer ${
-    isDark ? 'bg-white text-black' : 'bg-black text-white'
-  }`;
+  const buttonClass = `fixed bottom-5 right-6 z-50 p-3 rounded-full shadow transition-colors cursor-pointer ${isDark ? 'bg-white text-black' : 'bg-black text-white'
+    }`;
 
   return (
     <button onClick={() => setTheme(isDark ? 'light' : 'dark')} className={buttonClass}>
