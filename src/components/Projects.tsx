@@ -2,7 +2,7 @@ import { Airplay } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from "next/link";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import Image from "next/image";
 import { useTheme } from 'next-themes';
@@ -11,6 +11,12 @@ export default function Projects() {
     const t = useTranslations('projects');
     const [showAll, setShowAll] = useState(false);
     const { theme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const projects = [
         {
             title: t('titleProject1'),
@@ -102,7 +108,7 @@ export default function Projects() {
                             <p className="text-[rgb(146,158,176)] mb-6 md:text-sm text-sm">{project.description}</p>
 
                             <div className="flex flex-wrap gap-4 mb-4 md:justify-start justify-center">
-                                {project.techs.map((tech, idx) => {
+                                {mounted && project.techs.map((tech, idx) => {
                                     const isNextJs = tech.includes('nextjs');
                                     return (
                                         <Image
