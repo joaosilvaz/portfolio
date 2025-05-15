@@ -17,9 +17,9 @@ export default function Footer() {
                     <ul className="flex flex-wrap justify-center md:gap-10 gap-6 text-sm text-black dark:text-slate-300 mt-2 md:mt-0">
                         <li><Link href="#home" className="hover:text-blue-300 transition-all">{t('home')}</Link></li>
                         <li><Link href="#about" className="hover:text-blue-300 transition-all">{t('about')}</Link></li>
-                        <li><Link href="#tecnologias" className="hover:text-blue-300 transition-all">{t('techs')}</Link></li>
-                        <li><Link href="#projetos" className="hover:text-blue-300 transition-all">{t('projects')}</Link></li>
-                        <li><Link href="#contato" className="hover:text-blue-300 transition-all">{t('contact')}</Link></li>
+                        <li><Link href="#technologies" className="hover:text-blue-300 transition-all">{t('techs')}</Link></li>
+                        <li><Link href="#projects" className="hover:text-blue-300 transition-all">{t('projects')}</Link></li>
+                        <li><Link href="#contact" className="hover:text-blue-300 transition-all">{t('contact')}</Link></li>
                     </ul>
                 </div>
 

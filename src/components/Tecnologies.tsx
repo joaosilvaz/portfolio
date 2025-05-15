@@ -40,8 +40,25 @@ export default function Technologies() {
             link: 'https://reactjs.org',
         },
         {
-            icon: <Image src="/nextjs.svg" alt="Nextjs icon" width={60} height={60} />,
-            title: 'Next',
+            icon: (
+                <>
+                    <Image
+                        src="/nextjs-dark.svg"
+                        alt="Next.js Light Icon"
+                        width={60}
+                        height={60}
+                        className="block dark:hidden"
+                    />
+                    <Image
+                        src="/nextjs-light.svg"
+                        alt="Next.js Dark Icon"
+                        width={60}
+                        height={60}
+                        className="hidden dark:block"
+                    />
+                </>
+            ),
+            title: 'Next.js',
             description: t('next'),
             link: 'https://nextjs.org',
         },
@@ -53,7 +70,7 @@ export default function Technologies() {
         },
         {
             icon: <Image src="/nodejs.svg" alt="Nodejs icon" width={60} height={60} />,
-            title: 'NodeJS',
+            title: 'Node.js',
             description: t('node'),
             link: 'https://nodejs.org/en',
         },

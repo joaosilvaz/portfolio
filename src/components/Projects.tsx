@@ -5,16 +5,18 @@ import Link from "next/link";
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import Image from "next/image";
+import { useTheme } from 'next-themes';
 
 export default function Projects() {
     const t = useTranslations('projects');
     const [showAll, setShowAll] = useState(false);
+    const { theme } = useTheme();
     const projects = [
         {
             title: t('titleProject1'),
             description: t('descriptionProject1'),
             image: "/images/ecosmart.png",
-            techs: ["/nextjs.svg", "/typescript.svg", "/tailwind.svg", "/react.svg"],
+            techs: ["/nextjs-dark.svg", "/typescript.svg", "/tailwind.svg", "/react.svg"],
             liveLink: "https://global-solution-s2.vercel.app/",
             githubLink: "https://github.com/joaosilvaz/Global-Solution-S2",
         },
@@ -51,7 +53,7 @@ export default function Projects() {
             githubLink: "https://github.com/joaosilvaz/bank-project",
         },
     ];
-    
+
     const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
     return (
@@ -100,18 +102,24 @@ export default function Projects() {
                             <p className="text-[rgb(146,158,176)] mb-6 md:text-sm text-sm">{project.description}</p>
 
                             <div className="flex flex-wrap gap-4 mb-4 md:justify-start justify-center">
-                                {project.techs.map((tech, idx) => (
-                                    <Image
-                                        key={idx}
-                                        src={tech}
-                                        alt={`Tecnologia ${idx}`}
-                                        className="w-7 h-7 cursor-pointer hover:scale-115 transition-all duration-300"
-                                        width={28}
-                                        height={28}
-                                    />
-                                ))}
+                                {project.techs.map((tech, idx) => {
+                                    const isNextJs = tech.includes('nextjs');
+                                    return (
+                                        <Image
+                                            key={idx}
+                                            src={
+                                                isNextJs
+                                                    ? (theme === 'dark' ? '/nextjs-light.svg' : '/nextjs-dark.svg')
+                                                    : tech
+                                            }
+                                            alt={`Tecnologia ${idx}`}
+                                            className="w-7 h-7 cursor-pointer hover:scale-115 transition-all duration-300"
+                                            width={28}
+                                            height={28}
+                                        />
+                                    );
+                                })}
                             </div>
-
                             <div className="flex flex-col min-[370px]:flex-row justify-between gap-3 mt-auto pt-3">
                                 {project.liveLink && (
                                     <Link
