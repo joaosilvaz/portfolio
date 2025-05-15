@@ -22,7 +22,7 @@ O portfólio foi desenvolvido com foco em performance, responsividade e animaç�
 
 ## 🌍 Deploy
 
-Você pode acessar o portfólio online em: (https://joaosilvadev.vercel.app/pt)
+Você pode acessar o portfólio online em: (https://joaovitor.tech/pt)
 
 ---
 
