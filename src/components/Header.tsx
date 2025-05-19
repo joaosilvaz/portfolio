@@ -27,7 +27,6 @@ export default function Header() {
             </div>
             <nav className="hidden lg:flex gap-14 text-base font-medium">
                 {[
-                    { label: t('home'), href: '#home' },
                     { label: t('about'), href: '#about' },
                     { label: t('tech'), href: '#technologies' },
                     { label: t('projects'), href: '#projects' },
