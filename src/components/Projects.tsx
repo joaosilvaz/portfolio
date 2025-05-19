@@ -105,7 +105,7 @@ export default function Projects() {
                                 </a>
                             </div>
                             <h3 className="md:text-2xl text-xl font-bold mb-4 mt-4">{project.title}</h3>
-                            <p className="text-[rgb(146,158,176)] mb-6 md:text-sm text-sm">{project.description}</p>
+                            <p className="text-[rgb(95,95,95)] dark:text-[rgb(146,158,176)] mb-6 md:text-sm text-sm">{project.description}</p>
 
                             <div className="flex flex-wrap gap-4 mb-4 md:justify-start justify-center">
                                 {mounted && project.techs.map((tech, idx) => {
