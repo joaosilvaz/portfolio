@@ -69,7 +69,7 @@ export default function About() {
                                 {t("experienceTitle")}:
                             </h2>
                             <ul>
-                                <li className="flex border-b-2 border-b-gray-800 pt-3 pb-3 items-center gap-4">
+                                <li className="flex border-b-2 border-b-slate-300 pt-3 pb-3 items-center gap-4">
                                     <div>
                                         <Link href="https://www.mrmbrasil.com.br/" target="blank">
                                             <Image
@@ -100,7 +100,7 @@ export default function About() {
                                 {t("academicTitle")}:
                             </h2>
                             <ul>
-                                <li className="flex border-b-2 border-b-gray-800 pt-3 pb-3 items-center gap-4">
+                                <li className="flex border-b-2 border-b-slate-300 pt-3 pb-3 items-center gap-4">
                                     <div>
                                         <Link href="https://www.fiap.com.br/" target="blank">
                                             <Image
