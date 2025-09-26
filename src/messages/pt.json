@@ -1,87 +1,88 @@
 {
-    "header": {
-      "home": "Home",
-      "about": "Sobre mim",
-      "tech": "Tecnologias",
-      "projects": "Projetos",
-      "contact": "Contato"
-    },
-    "home": {
-      "welcome": "Bem-vindo",
-      "iAm": "eu sou",
-      "texts": [
-        "Desenvolvedor Full Stack",
-        "Apaixonado por tecnologia"
-      ],
-      "downloadCV": "Baixar CV",
-      "portfolio": "Conheça meu portfólio →"
-    },
-    "about": {
-      "title": "Sobre mim",
-      "description": "Sou um desenvolvedor em formação, tenho 18 anos e curso Análise e Desenvolvimento de Sistemas na FIAP. Desde junho/2024, atuo na MRM McCann Worldgroup, contribuindo com equipes ágeis em projetos de inovação digital.\n\n Embora hoje meu foco esteja mais voltado ao front-end, com tecnologias como React e Next.js, também possuo experiência full stack adquirida em projetos acadêmicos e pessoais, especialmente com desenvolvimento back-end utilizando Node.js, Java, Python e Strapi.",
-      "seeTechnologies": "Veja minhas tecnologias:",
-      "experienceTitle": "Experiência Profissional",
-      "experienceRole": "Desenvolvedor Full Stack - MRM McCann WorldGroup",
-      "experienceClient": "Clientes: GM - Mastercard - Leroy Merlin - Diageo",
-      "experienceDate": "Junho 2024 - Atual",
-      "academicTitle": "Formação Acadêmica",
-      "academicCourse": "Estudante de Análise e Desenvolvimento de Sistemas - FIAP",
-      "academicInstitution": "Desenvolvimento Full Stack - Metodologias Ágeis",
-      "academicDate": "Fevereiro 2024 - Dezembro 2025"
-    },
-    "technologies": {
-      "title": "Tecnologias",
-      "description": "Veja minha stack de habilidades e experiências em tecnologia:",
-      "typescript": "JavaScript com tipagem estática, usado para maior segurança em projetos grandes.",
-      "javascript": "Linguagem base da web, utilizada no front e back-end.",
-      "react": "Biblioteca para criar interfaces modernas e reutilizáveis.",
-      "next": "Framework React com SSR e foco em performance e SEO.",
-      "tailwind": "Framework de classes utilitárias para estilização rápida e responsiva.",
-      "node": "JavaScript no back-end para APIs, automações e servidores.",
-      "java": "Linguagem orientada a objetos usada em sistemas robustos e Android.",
-      "python": "Versátil, ideal para automações, back-end e ciência de dados.",
-      "sql": "Linguagem de consulta de dados para bancos relacionais.",
-      "aws": "Serviços em nuvem da Amazon para APIs, armazenamento e escalabilidade.",
-      "azure": "Cloud da Microsoft com integração para apps corporativos.",
-      "strapi": "CMS headless usado para criar e gerenciar APIs com agilidade.",
-      "seeLess": "Ver menos",
-      "seeMore": "Ver mais"
-    },
-    "projects": {
-      "title": "Projetos",
-      "description": "Aqui você encontra alguns dos projetos mais relevantes que desenvolvi ao longo da minha jornada como desenvolvedor.",
-      "titleProject1": "Plataforma de Economia com Energias Renováveis",
-      "titleProject2": "Desenvolvimento LP - God of War Ragnarok",
-      "titleProject3": "Monitoramento Inteligente de Ambientes Aquáticos",
-      "titleProject4": "E-commerce",
-      "titleProject5": "Sistema Bancário",
-      "descriptionProject1": "A aplicação permite que usuários insiram seu consumo médio de energia elétrica e localização para receber uma estimativa personalizada de economia com energia solar.",
-      "descriptionProject2": "Landing page temática inspirada no universo de God of War: Ragnarok, com foco em visual impactante e performance.",
-      "descriptionProject3": "Desenvolvi um projeto que consistia na criação de um dispositivo inteligente para o monitoramento em tempo real de três parâmetros essenciais: Temperatura, pH da Água e Nível de Água.",
-      "descriptionProject4": "Simulador de e-commerce com layout responsivo, onde o usuário pode visualizar produtos, adicionar ao carrinho e simular uma compra. ",
-      "descriptionProject5": "O sistema permite criar contas, consultar saldo, realizar depósitos, saques e transferências via PIX. Utilizei enums para tipos de conta (CORRENTE, POUPANÇA, SALÁRIO) e status da conta (ATIVA, INATIVA).",
-      "deploy": "Acessar deploy",
-      "github": "Ver no Github",
-      "seeLess": "Ver menos",
-      "seeMore": "Ver mais"
-    },
-    "contact": {
-      "title": "Contato",
-      "description": "Vamos conversar! Estou aberto a parcerias e novos projetos.",
-      "placeholderTitle": "Título",
-      "placeholderName": "Seu nome",
-      "placeholderEmail": "Seu email",
-      "placeholderMessage": "Messagem",
-      "button": "Enviar mensagem",
-      "success": "Mensagem enviada com sucesso!",
-      "error": "Erro ao enviar. Tente novamente."
-    },
-    "footer": {
-      "home": "Home",
-      "about": "Sobre mim",
-      "techs": "Tecnologias",
-      "projects": "Projetos",
-      "contact": "Contato",
-      "textFooter": "2025 João Vitor da Silva. Todos os direitos reservados."
-    }
+  "header": {
+    "home": "Home",
+    "about": "Sobre mim",
+    "tech": "Tecnologias",
+    "projects": "Projetos",
+    "contact": "Contato"
+  },
+  "home": {
+    "welcome": "Bem-vindo",
+    "iAm": "eu sou",
+    "texts": [
+      "Desenvolvedor Full Stack",
+      "Apaixonado por tecnologia"
+    ],
+    "downloadCV": "Baixar CV",
+    "portfolio": "Conheça meu portfólio →"
+  },
+  "about": {
+    "title": "Sobre mim",
+    "description": "Sou um desenvolvedor em formação, tenho 19 anos e curso Análise e Desenvolvimento de Sistemas na FIAP. Desde junho/2024, atuo na MRM McCann Worldgroup, contribuindo com equipes ágeis em projetos de inovação digital.\n\n Embora hoje meu foco esteja mais voltado ao front-end, com tecnologias como React e Next.js, também possuo experiência full stack adquirida em projetos acadêmicos e pessoais, especialmente com desenvolvimento back-end utilizando Node.js, Java, Python e Strapi.",
+    "seeTechnologies": "Veja minhas tecnologias:",
+    "experienceTitle": "Experiência Profissional",
+    "experienceRole": "Desenvolvedor Full Stack - MRM McCann WorldGroup",
+    "experienceClient": "Clientes: GM - Mastercard - Leroy Merlin - Diageo",
+    "experienceDate": "Junho 2024 - Atual",
+    "academicTitle": "Formação Acadêmica",
+    "academicCourse": "Estudante de Análise e Desenvolvimento de Sistemas - FIAP",
+    "academicInstitution": "Desenvolvimento Full Stack - Metodologias Ágeis",
+    "academicDate": "Fevereiro 2024 - Dezembro 2025"
+  },
+  "technologies": {
+    "title": "Tecnologias",
+    "description": "Veja minha stack de habilidades e experiências em tecnologia:",
+    "typescript": "Superset do JavaScript com tipagem estática para maior segurança e escalabilidade.",
+    "javascript": "Linguagem base da web, usada no front-end e back-end.",
+    "react": "Biblioteca para criar interfaces modernas, reativas e reutilizáveis.",
+    "next": "Framework do React com SSR/SSG/ISR, foco em performance e SEO.",
+    "tailwind": "Classes utilitárias para estilização rápida, consistente e responsiva.",
+    "node": "JavaScript no back-end para APIs, automações e serviços.",
+    "java": "Linguagem orientada a objetos para sistemas robustos e Android.",
+    "python": "Versátil para automações, back-end e ciência de dados.",
+    "sql": "Consulta e manipulação de dados em bancos relacionais.",
+    "aws": "Nuvem da Amazon para APIs, storage e escalabilidade.",
+    "azure": "Nuvem da Microsoft com forte integração corporativa.",
+    "c#": "Linguagem da plataforma .NET para APIs, desktop, cloud e jogos (Unity).",
+    "strapi": "CMS headless em Node.js para criar e gerenciar APIs com agilidade.",
+    "seeLess": "Ver menos",
+    "seeMore": "Ver mais"
+  },
+  "projects": {
+    "title": "Projetos",
+    "description": "Aqui você encontra alguns dos projetos mais relevantes que desenvolvi ao longo da minha jornada como desenvolvedor.",
+    "titleProject1": "Plataforma de Economia com Energias Renováveis",
+    "titleProject2": "Desenvolvimento LP - God of War Ragnarok",
+    "titleProject3": "Monitoramento Inteligente de Ambientes Aquáticos",
+    "titleProject4": "E-commerce",
+    "titleProject5": "Sistema Bancário",
+    "descriptionProject1": "A aplicação permite que usuários insiram seu consumo médio de energia elétrica e localização para receber uma estimativa personalizada de economia com energia solar.",
+    "descriptionProject2": "Landing page temática inspirada no universo de God of War: Ragnarok, com foco em visual impactante e performance.",
+    "descriptionProject3": "Desenvolvi um projeto que consistia na criação de um dispositivo inteligente para o monitoramento em tempo real de três parâmetros essenciais: Temperatura, pH da Água e Nível de Água.",
+    "descriptionProject4": "Simulador de e-commerce com layout responsivo, onde o usuário pode visualizar produtos, adicionar ao carrinho e simular uma compra.",
+    "descriptionProject5": "O sistema permite criar contas, consultar saldo, realizar depósitos, saques e transferências via PIX. Utilizei enums para tipos de conta (CORRENTE, POUPANÇA, SALÁRIO) e status da conta (ATIVA, INATIVA).",
+    "deploy": "Acessar deploy",
+    "github": "Ver no Github",
+    "seeLess": "Ver menos",
+    "seeMore": "Ver mais"
+  },
+  "contact": {
+    "title": "Contato",
+    "description": "Vamos conversar! Estou aberto a parcerias e novos projetos.",
+    "placeholderTitle": "Título",
+    "placeholderName": "Seu nome",
+    "placeholderEmail": "Seu email",
+    "placeholderMessage": "Messagem",
+    "button": "Enviar mensagem",
+    "success": "Mensagem enviada com sucesso!",
+    "error": "Erro ao enviar. Tente novamente."
+  },
+  "footer": {
+    "home": "Home",
+    "about": "Sobre mim",
+    "techs": "Tecnologias",
+    "projects": "Projetos",
+    "contact": "Contato",
+    "textFooter": "2025 João Vitor da Silva. Todos os direitos reservados."
   }
+}

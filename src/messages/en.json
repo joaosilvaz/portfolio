@@ -18,7 +18,7 @@
     },
     "about": {
       "title": "About me",
-      "description": "I’m a software developer in training, 18 years old, currently studying Systems Analysis and Development at FIAP. Since june/2024, I’ve been working at MRM McCann Worldgroup, contributing to agile teams on digital innovation projects.\n\nWhile my current focus is more on front-end development using technologies like React and Next.js, I also have full stack experience gained through academic and personal projects, particularly in back-end development with Node.js, Java, Python and Strapi.",
+      "description": "I’m a software developer in training, 19 years old, currently studying Systems Analysis and Development at FIAP. Since june/2024, I’ve been working at MRM McCann Worldgroup, contributing to agile teams on digital innovation projects.\n\nWhile my current focus is more on front-end development using technologies like React and Next.js, I also have full stack experience gained through academic and personal projects, particularly in back-end development with Node.js, Java, Python and Strapi.",
       "seeTechnologies": "See my technologies:",
       "experienceTitle": "Professional Experience",
       "experienceRole": "Full Stack Developer - MRM McCann WorldGroup",
@@ -43,6 +43,7 @@
       "sql": "Query language for relational databases.",
       "aws": "Amazon cloud services for APIs, storage, and scalability.",
       "azure": "Microsoft's cloud platform, well-integrated for enterprise apps.",
+      "c#": "Microsoft's cloud platform, well-integrated for enterprise apps.",
       "strapi": "Headless CMS used to build and manage APIs efficiently.",
       "seeLess": "See less",
       "seeMore": "See more"

@@ -110,6 +110,12 @@ export default function Technologies() {
             description: t('strapi'),
             link: 'https://docs.strapi.io/',
         },
+        {
+            icon: <Image src="/csharp.svg" alt="Csharp icon" width={60} height={60} />,
+            title: 'C#',
+            description: t('c#'),
+            link: 'https://dotnet.microsoft.com/pt-br/languages/csharp',
+        },
     ];
 
     const visibleTechnologies =
