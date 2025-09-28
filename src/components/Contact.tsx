@@ -14,10 +14,10 @@ export default function ContactForm() {
 
     emailjs
       .sendForm(
-        "service_b8ki7z8",           // ID do serviço
-        "template_z4i5biq",          // ID do template
-        form.current,                // formulário
-        "37BPOmmry-S_0f_GY"     // substitua pela sua chave pública do EmailJS
+        "service_b8ki7z8",         
+        "template_z4i5biq",         
+        form.current,               
+        "37BPOmmry-S_0f_GY"   
       )
       .then(() => {
         setStatus(t('success'));
