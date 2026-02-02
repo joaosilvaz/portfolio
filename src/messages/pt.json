@@ -44,6 +44,7 @@
     "aws": "Nuvem da Amazon para APIs, storage e escalabilidade.",
     "azure": "Nuvem da Microsoft com forte integração corporativa.",
     "c#": "Linguagem da plataforma .NET para APIs, desktop, cloud e jogos (Unity).",
+    "aem": "Adobe Experience Manager para gerenciar conteúdo e experiências digitais.",
     "strapi": "CMS headless em Node.js para criar e gerenciar APIs com agilidade.",
     "seeLess": "Ver menos",
     "seeMore": "Ver mais"

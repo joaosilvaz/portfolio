@@ -44,6 +44,7 @@
       "aws": "Amazon cloud services for APIs, storage, and scalability.",
       "azure": "Microsoft's cloud platform, well-integrated for enterprise apps.",
       "c#": "Microsoft's cloud platform, well-integrated for enterprise apps.",
+      "aem": "Adobe Experience Manager for managing digital content and experiences.",
       "strapi": "Headless CMS used to build and manage APIs efficiently.",
       "seeLess": "See less",
       "seeMore": "See more"

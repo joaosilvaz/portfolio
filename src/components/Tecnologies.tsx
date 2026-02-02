@@ -116,6 +116,12 @@ export default function Technologies() {
             description: t('c#'),
             link: 'https://dotnet.microsoft.com/pt-br/languages/csharp',
         },
+        {
+            icon: <Image src="/aem.svg" alt="Adobe EM icon" width={60} height={60} />,
+            title: 'Adobe EM',
+            description: t('aem'),
+            link: 'https://business.adobe.com/pt/products/experience-manager/adobe-experience-manager.html',
+        },
     ];
 
     const visibleTechnologies =

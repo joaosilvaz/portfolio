@@ -18,7 +18,7 @@ export default function Header() {
     }
 
     return (
-        <header className="fixed bg-back-dark !bg-opacity-80 backdrop-blur-sm transition z-10 shadow-[0px_3px_15px_0px] dark:shadow-[#151725] shadow-[#e0e0e0] w-full px-4 md:px-8 xl:px-28 py-10 flex items-center justify-between text-black dark:text-white">
+        <header className="fixed bg-back-dark !bg-opacity-80 backdrop-blur-sm transition z-10 shadow-[0px_3px_15px_0px] dark:shadow-[#151725] shadow-[#e0e0e0] w-full px-4 md:px-8 xl:px-28 py-10 flex items-center justify-around text-black dark:text-white">
             <div className="text-2xl font-bold flex items-center gap-2 z-20">
                 <span className="text-purple-500">&lt;/&gt;</span>
                 <Link href="#home">
