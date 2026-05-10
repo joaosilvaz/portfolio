@@ -16,6 +16,12 @@
     "downloadCV": "Baixar CV",
     "portfolio": "Conheça meu portfólio →"
   },
+  "stats": {
+    "projects": "Projetos concluídos",
+    "technologies": "Tecnologias dominadas",
+    "commits": "Commits no GitHub",
+    "experience": "Anos de experiência"
+  },
   "about": {
     "title": "Sobre mim",
     "description": "Sou um desenvolvedor em formação, tenho 19 anos e curso Análise e Desenvolvimento de Sistemas na FIAP. Desde junho/2024, atuo na MRM McCann Worldgroup, contribuindo com equipes ágeis em projetos de inovação digital.\n\n Embora hoje meu foco esteja mais voltado ao front-end, com tecnologias como React e Next.js, também possuo experiência full stack adquirida em projetos acadêmicos e pessoais, especialmente com desenvolvimento back-end utilizando Node.js, Java, Python e Strapi.",
@@ -66,6 +72,20 @@
     "github": "Ver no Github",
     "seeLess": "Ver menos",
     "seeMore": "Ver mais"
+  },
+  "chatbot": {
+    "badge": "Powered by Claude AI",
+    "sectionTitle": "Converse com meu assistente",
+    "sectionDescription": "Tem dúvidas sobre minha experiência, projetos ou tecnologias? Meu assistente com IA responde na hora!",
+    "sectionButton": "Iniciar conversa",
+    "welcomeTitle": "Assistente do João",
+    "welcomeSubtitle": "Pergunte qualquer coisa sobre experiência, projetos ou tecnologias",
+    "placeholder": "Digite sua pergunta...",
+    "error": "Ocorreu um erro. Tente novamente.",
+    "lang": "pt",
+    "previewMessage1": "Olá! Sou o assistente do João. Como posso te ajudar?",
+    "previewMessage2": "Quais tecnologias você domina?",
+    "previewMessage3": "João trabalha com React, Next.js, TypeScript, Node.js e muito mais!"
   },
   "contact": {
     "title": "Contato",

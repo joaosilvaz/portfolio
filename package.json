@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.95.1",
     "@emailjs/browser": "^4.4.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
+    "@vercel/analytics": "^2.0.1",
     "aos": "^2.3.4",
     "framer-motion": "^12.11.0",
     "i18next": "^25.1.2",

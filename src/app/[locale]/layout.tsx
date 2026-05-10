@@ -8,6 +8,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { ThemeProvider } from 'next-themes';
+import { Analytics } from "@vercel/analytics/react";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -57,6 +58,7 @@ const Layout: React.FC<LayoutProps> = async ({ children, params }) => {
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>
+        <Analytics /> 
       </body>
     </html>
   );
