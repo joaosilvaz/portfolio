@@ -1,21 +1,31 @@
-import { useState } from 'react';
+'use client'
+import { useEffect, useState } from 'react';
 import { FaLinkedinIn, FaGithub, FaBars, FaTimes, FaLinkedin } from 'react-icons/fa';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
+import { useTheme } from 'next-themes';
+import { MoonIcon, SunIcon } from 'lucide-react';
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [mounted, setMounted] = useState(false)
     const t = useTranslations('header')
-
     const router = useRouter()
     const pathname = usePathname()
+    const { theme, setTheme } = useTheme()
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     function toggleLanguage() {
         const newLocale = pathname.startsWith('/pt') ? 'en' : 'pt'
         router.push(`/${newLocale}${pathname.replace(/^\/(pt|en)/, '')}`)
     }
+
+    const isDark = theme === 'dark'
 
     return (
         <header className="fixed bg-back-dark !bg-opacity-80 backdrop-blur-sm transition z-10 shadow-[0px_3px_15px_0px] dark:shadow-[#151725] shadow-[#e0e0e0] w-full px-4 md:px-8 xl:px-28 py-10 flex items-center justify-between text-black dark:text-white">
@@ -25,12 +35,13 @@ export default function Header() {
                     <span className="bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent">João Vitor</span>
                 </Link>
             </div>
+
             <nav className="hidden lg:flex gap-14 text-base font-medium">
                 {[
                     { label: t('about'), href: '#about' },
                     { label: t('tech'), href: '#technologies' },
                     { label: t('projects'), href: '#projects' },
-                    { label: t('contact'), href: '#contact' },
+                    { label: t('chat'), href: '#chat' },
                 ].map(({ label, href }) => (
                     <Link key={href} href={href} className="relative group">
                         <span>{label}</span>
@@ -38,6 +49,7 @@ export default function Header() {
                     </Link>
                 ))}
             </nav>
+
             <button className="lg:hidden z-20" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
@@ -72,6 +84,15 @@ export default function Header() {
                                 className="h-8 w-8"
                             />
                         </div>
+                        {/* theme toggle no menu mobile */}
+                        {mounted && (
+                            <button
+                                onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                                className="cursor-pointer transition-all hover:scale-110 duration-300"
+                            >
+                                {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
+                            </button>
+                        )}
                     </div>
                 </div>
             )}
@@ -86,6 +107,17 @@ export default function Header() {
                         className="h-8 w-8"
                     />
                 </div>
+
+                {/* theme toggle no desktop */}
+                {mounted && (
+                    <button
+                        onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                        className="ml-2 cursor-pointer transition-all hover:scale-110 duration-300 text-black dark:text-white"
+                    >
+                        {isDark ? <SunIcon size={20} /> : <MoonIcon size={20} />}
+                    </button>
+                )}
+
                 <div className="w-px h-6 bg-gray-400 mx-4" />
                 <Link href="https://www.linkedin.com/in/jo%C3%A3o-vitor-da-silva-5677202b1/" target='blank' className="bg-black dark:bg-gray-200 dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
                     <FaLinkedin size={20} />

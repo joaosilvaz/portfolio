@@ -6,19 +6,26 @@ import Home from "@/components/Home";
 import Projetos from "@/components/Projects";
 import About from "@/components/About";
 import Technologies from "@/components/Tecnologies";
-import { ThemeToggle } from "./ThemeToggle";
+import ScrollToTop from "./ScrollTop";
+import ScrollProgressBar from "./ScrollProgressBar";
+import Stats from "./Stats";
+import ChatBot from "./ChatBot";
 
 export default function Main() {
   return (
     <>
+      <ScrollProgressBar />
       <Header />
       <Home />
       <About />
+      <Stats />
       <Technologies />
       <Projetos />
-      <ContactForm />
+      {/* <ContactForm /> */}
+      <ChatBot />
       <Footer />
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
+      <ScrollToTop />
     </>
   );
 }

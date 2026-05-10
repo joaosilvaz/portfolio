@@ -22,6 +22,36 @@ export default function Technologies() {
 
     const technologies = [
         {
+            icon: <Image src="/java.svg" alt="Java icon" width={60} height={60} className="object-contain rounded-lg" />,
+            title: 'Java',
+            description: t('java'),
+            link: 'https://www.oracle.com/java/',
+        },
+        {
+            icon: <Image src="/sql.svg" alt="SQL icon" width={60} height={60} />,
+            title: 'SQL',
+            description: t('sql'),
+            link: 'https://learn.microsoft.com/pt-br/sql/?view=sql-server-ver16',
+        },
+        {
+            icon: <Image src="/aws.svg" alt="AWS Cloud icon" width={60} height={60} />,
+            title: 'AWS Cloud',
+            description: t('aws'),
+            link: 'https://aws.amazon.com',
+        },
+        {
+            icon: <Image src="/azure.svg" alt="Azure Cloud icon" width={60} height={60} />,
+            title: 'Azure Cloud',
+            description: t('azure'),
+            link: 'https://azure.microsoft.com/pt-br/',
+        },
+        {
+            icon: <Image src="/react.svg" alt="React icon" width={60} height={60} />,
+            title: 'React',
+            description: t('react'),
+            link: 'https://reactjs.org',
+        },
+        {
             icon: <Image src="/typescript.svg" alt="Typescript icon" width={60} height={60} />,
             title: 'TypeScript',
             description: t('typescript'),
@@ -32,12 +62,6 @@ export default function Technologies() {
             title: 'JavaScript',
             description: t('javascript'),
             link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-        },
-        {
-            icon: <Image src="/react.svg" alt="React icon" width={60} height={60} />,
-            title: 'React',
-            description: t('react'),
-            link: 'https://reactjs.org',
         },
         {
             icon: (
@@ -75,34 +99,10 @@ export default function Technologies() {
             link: 'https://nodejs.org/en',
         },
         {
-            icon: <Image src="/java.svg" alt="Java icon" width={60} height={60} className="object-contain rounded-lg" />,
-            title: 'Java',
-            description: t('java'),
-            link: 'https://www.oracle.com/java/',
-        },
-        {
             icon: <Image src="/python.svg" alt="Python icon" width={60} height={60} className="object-contain rounded-lg" />,
             title: 'Python',
             description: t('python'),
             link: 'https://www.python.org/doc/',
-        },
-        {
-            icon: <Image src="/sql.svg" alt="SQL icon" width={60} height={60} />,
-            title: 'SQL',
-            description: t('sql'),
-            link: 'https://learn.microsoft.com/pt-br/sql/?view=sql-server-ver16',
-        },
-        {
-            icon: <Image src="/aws.svg" alt="AWS Cloud icon" width={60} height={60} />,
-            title: 'AWS Cloud',
-            description: t('aws'),
-            link: 'https://aws.amazon.com',
-        },
-        {
-            icon: <Image src="/azure.svg" alt="Azure Cloud icon" width={60} height={60} />,
-            title: 'Azure Cloud',
-            description: t('azure'),
-            link: 'https://azure.microsoft.com/pt-br/',
         },
         {
             icon: <Image src="/strapi.svg" alt="Strapi icon" width={60} height={60} />,
@@ -124,8 +124,11 @@ export default function Technologies() {
         },
     ];
 
-    const visibleTechnologies =
-        isMobile && !showAll ? technologies.slice(0, 5) : technologies;
+    const visibleTechnologies = showAll
+        ? technologies
+        : isMobile
+            ? technologies.slice(0, 5)
+            : technologies.slice(0, 6)
 
     return (
         <section id="technologies" className="bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white pt-50 pb-20 px-0">
@@ -166,20 +169,16 @@ export default function Technologies() {
                     </TiltCard>
                 ))}
             </motion.div>
-            {isMobile && (
+            {technologies.length > 6 && (
                 <div className="mt-6 text-center">
                     <button
                         onClick={() => setShowAll(!showAll)}
                         className="bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg hover:opacity-90 text-white px-5 py-2 rounded-lg font-semibold transition duration-200 cursor-pointer"
                     >
                         {showAll ? (
-                            <>
-                                {t('seeLess')}<ChevronUp className="inline-block ml-2" size={16} />
-                            </>
+                            <>{t('seeLess')} <ChevronUp className="inline-block ml-2" size={16} /></>
                         ) : (
-                            <>
-                                {t('seeMore')} <ChevronDown className="inline-block ml-2" size={16} />
-                            </>
+                            <>{t('seeMore')} <ChevronDown className="inline-block ml-2" size={16} /></>
                         )}
                     </button>
                 </div>
