@@ -23,20 +23,27 @@ const SUGGESTED_QUESTIONS_EN = [
     'How can I contact you?',
 ]
 
+interface ChatWindowProps {
+    open: boolean
+    setOpen: (v: boolean) => void
+    messages: Message[]
+    input: string
+    setInput: (v: string) => void
+    loading: boolean
+    started: boolean
+    sendMessage: (text?: string) => void
+    bottomRef: React.RefObject<HTMLDivElement | null>
+    inputRef: React.RefObject<HTMLInputElement | null>
+    suggestedQuestions: string[]
+    t: (key: string) => string
+}
+
+
 function ChatWindow({
-    open,
-    setOpen,
-    messages,
-    input,
-    setInput,
-    loading,
-    started,
-    sendMessage,
-    bottomRef,
-    inputRef,
-    suggestedQuestions,
-    t,
-}: any) {
+    open, setOpen, messages, input, setInput,
+    loading, started, sendMessage, bottomRef, inputRef,
+    suggestedQuestions, t
+}: ChatWindowProps) {
     return (
         <AnimatePresence>
             {open && (
