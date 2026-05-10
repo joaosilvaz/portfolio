@@ -4,7 +4,7 @@
     "about": "About me",
     "tech": "Technologies",
     "projects": "Projects",
-    "chat": "ChatBot"
+    "chat": "AI ChatBot"
   },
   "home": {
     "welcome": "Welcome",
@@ -103,7 +103,7 @@
     "about": "About me",
     "techs": "Technologies",
     "projects": "Projects",
-    "contact": "Contact",
+    "chat": "AI ChatBot",
     "textFooter": "2025 João Vitor da Silva. All rights reserved."
   }
 }

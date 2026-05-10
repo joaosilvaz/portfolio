@@ -41,7 +41,7 @@ export default function Header() {
                     { label: t('about'), href: '#about' },
                     { label: t('tech'), href: '#technologies' },
                     { label: t('projects'), href: '#projects' },
-                    { label: t('chat'), href: '#chat' },
+                    { label: t('chat'), href: '#chatbot' },
                 ].map(({ label, href }) => (
                     <Link key={href} href={href} className="relative group">
                         <span>{label}</span>
@@ -61,7 +61,7 @@ export default function Header() {
                         { label: t('about'), href: '#about' },
                         { label: t('tech'), href: '#technologies' },
                         { label: t('projects'), href: '#projects' },
-                        { label: t('contact'), href: '#contact' },
+                        { label: t('chat'), href: '#chatbot' },
                     ].map(({ label, href }) => (
                         <Link key={href} href={href} onClick={() => setIsMenuOpen(false)}>
                             {label}

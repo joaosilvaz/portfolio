@@ -19,7 +19,7 @@ export default function Footer() {
                         <li><Link href="#about" className="hover:text-blue-300 transition-all">{t('about')}</Link></li>
                         <li><Link href="#technologies" className="hover:text-blue-300 transition-all">{t('techs')}</Link></li>
                         <li><Link href="#projects" className="hover:text-blue-300 transition-all">{t('projects')}</Link></li>
-                        <li><Link href="#contact" className="hover:text-blue-300 transition-all">{t('contact')}</Link></li>
+                        <li><Link href="#chatbot" className="hover:text-blue-300 transition-all">{t('chat')}</Link></li>
                     </ul>
                 </div>
 
