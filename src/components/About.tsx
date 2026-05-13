@@ -1,12 +1,14 @@
 'use client'
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Briefcase, GraduationCap, Calendar } from 'lucide-react';
+import { Briefcase, GraduationCap, Calendar, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
 
 export default function About() {
     const t = useTranslations('about')
+    const [expandedEdu, setExpandedEdu] = useState<number | null>(null)
 
     const experiences = [
         {
@@ -15,7 +17,6 @@ export default function About() {
             company: t("experienceClient"),
             date: t("experienceDate"),
             link: "https://www.mrmbrasil.com.br/",
-            type: 'experience' as const,
         },
     ]
 
@@ -26,7 +27,11 @@ export default function About() {
             institution: t("academicInstitution"),
             date: t("academicDate"),
             link: "https://www.fiap.com.br/",
-            type: 'education' as const,
+            subjects: [
+                'Desenvolvimento Web', 'Banco de Dados', 'Engenharia de Software',
+                'Estrutura de Dados', 'DevOps', 'Metodologias Ágeis',
+                'Cloud Computing', 'Mobile Development',
+            ],
         },
         {
             logo: "/images/logo-fiap.jpg",
@@ -34,7 +39,18 @@ export default function About() {
             institution: t("academicInstitution2"),
             date: t("academicDate2"),
             link: "https://www.fiap.com.br/",
-            type: 'education' as const,
+            subjects: [
+                'Arquitetura Java', 'Spring Boot Avançado', 'Microsserviços',
+                'Docker & Kubernetes', 'Design Patterns', 'API REST',
+            ],
+        },
+        {
+            logo: "/images/wizard.jpeg",
+            course: t("academicCourse3"),
+            institution: t("academicInstitution3"),
+            date: t("academicDate3"),
+            link: "https://wizard.com",
+            subjects: [],
         },
     ]
 
@@ -61,9 +77,7 @@ export default function About() {
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.8 }}
                     >
-                        {/* foto com fundo geométrico */}
                         <div className="flex-shrink-0 relative w-64 h-64 mx-auto md:mx-0">
-                            {/* foto */}
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <Image
                                     src='/images/profile.png'
@@ -75,7 +89,6 @@ export default function About() {
                             </div>
                         </div>
 
-                        {/* bio */}
                         <div className="flex-1">
                             <p className="text-black dark:text-gray-300 text-lg leading-relaxed text-justify mb-6">
                                 {t.raw("description").split("\n\n").map((paragraph: string, i: number) => (
@@ -112,9 +125,7 @@ export default function About() {
                             </div>
 
                             <div className="relative">
-                                {/* linha vertical */}
                                 <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500 via-purple-500/50 to-transparent" />
-
                                 <div className="flex flex-col gap-8">
                                     {experiences.map((exp, i) => (
                                         <motion.div
@@ -125,7 +136,6 @@ export default function About() {
                                             transition={{ duration: 0.5, delay: i * 0.1 }}
                                             className="flex gap-6 relative"
                                         >
-                                            {/* ponto na timeline */}
                                             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center z-10 shadow-md shadow-purple-500/30">
                                                 <Link href={exp.link} target="_blank">
                                                     <Image
@@ -137,8 +147,6 @@ export default function About() {
                                                     />
                                                 </Link>
                                             </div>
-
-                                            {/* conteúdo */}
                                             <div className="flex-1 pb-2">
                                                 <p className="font-semibold text-black dark:text-white text-sm">{exp.role}</p>
                                                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{exp.company}</p>
@@ -156,16 +164,14 @@ export default function About() {
                         {/* formação */}
                         <div>
                             <div className="flex items-center gap-2 mb-8">
-                                <div className="p-2 rounded-lg bg-cyan-400/10">
-                                    <GraduationCap size={18} className="text-cyan-500" />
+                                <div className="p-2 rounded-lg bg-purple-900/20">
+                                    <GraduationCap size={18} className="text-purple-700 dark:text-purple-300" />
                                 </div>
                                 <h3 className="font-bold text-xl text-black dark:text-white">{t("academicTitle")}</h3>
                             </div>
 
                             <div className="relative">
-                                {/* linha vertical */}
-                                <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-400 via-cyan-400/50 to-transparent" />
-
+                                <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-purple-800 via-purple-800/50 to-transparent" />
                                 <div className="flex flex-col gap-8">
                                     {education.map((edu, i) => (
                                         <motion.div
@@ -176,8 +182,8 @@ export default function About() {
                                             transition={{ duration: 0.5, delay: i * 0.1 }}
                                             className="flex gap-6 relative"
                                         >
-                                            {/* ponto na timeline */}
-                                            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center z-10 shadow-md shadow-cyan-400/30">
+                                            {/* ponto na timeline — roxo escuro */}
+                                            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-800 flex items-center justify-center z-10 shadow-md shadow-purple-900/50">
                                                 <Link href={edu.link} target="_blank">
                                                     <Image
                                                         src={edu.logo}
@@ -189,14 +195,60 @@ export default function About() {
                                                 </Link>
                                             </div>
 
-                                            {/* conteúdo */}
                                             <div className="flex-1 pb-2">
-                                                <p className="font-semibold text-black dark:text-white text-sm">{edu.course}</p>
-                                                <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{edu.institution}</p>
-                                                <div className="flex items-center gap-1 mt-1.5">
-                                                    <Calendar size={11} className="text-cyan-400" />
-                                                    <p className="text-xs text-cyan-400 font-medium">{edu.date}</p>
+                                                <div className="flex items-start justify-between gap-2">
+                                                    <div>
+                                                        <p className="font-semibold text-black dark:text-white text-sm">{edu.course}</p>
+                                                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{edu.institution}</p>
+                                                        <div className="flex items-center gap-1 mt-1.5">
+                                                            <Calendar size={11} className="text-purple-700 dark:text-purple-300" />
+                                                            <p className="text-xs text-purple-700 dark:text-purple-300 font-medium">{edu.date}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* botão expandir — só aparece se tiver matérias */}
+                                                    {edu.subjects.length > 0 && (
+                                                        <button
+                                                            onClick={() => setExpandedEdu(expandedEdu === i ? null : i)}
+                                                            className="flex-shrink-0 flex items-center gap-1 text-xs text-purple-600 dark:text-purple-400 hover:text-purple-500 transition-all cursor-pointer mt-0.5"
+                                                        >
+                                                            <span>{expandedEdu === i ? 'Ocultar' : 'Ver mais'}</span>
+                                                            <motion.div
+                                                                animate={{ rotate: expandedEdu === i ? 180 : 0 }}
+                                                                transition={{ duration: 0.2 }}
+                                                            >
+                                                                <ChevronDown size={14} />
+                                                            </motion.div>
+                                                        </button>
+                                                    )}
                                                 </div>
+
+                                                {/* card expansível com matérias */}
+                                                <AnimatePresence>
+                                                    {expandedEdu === i && edu.subjects.length > 0 && (
+                                                        <motion.div
+                                                            initial={{ opacity: 0, height: 0 }}
+                                                            animate={{ opacity: 1, height: 'auto' }}
+                                                            exit={{ opacity: 0, height: 0 }}
+                                                            transition={{ duration: 0.3 }}
+                                                            className="overflow-hidden"
+                                                        >
+                                                            <div className="mt-3 p-3 rounded-xl bg-purple-50 dark:bg-purple-900/20 ring-1 ring-purple-200 dark:ring-purple-800/50">
+                                                                <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-2">Principais matérias:</p>
+                                                                <div className="flex flex-wrap gap-1.5">
+                                                                    {edu.subjects.map((subject, j) => (
+                                                                        <span
+                                                                            key={j}
+                                                                            className="text-xs px-2.5 py-1 rounded-full bg-purple-100 dark:bg-purple-800/40 text-purple-700 dark:text-purple-300 font-medium"
+                                                                        >
+                                                                            {subject}
+                                                                        </span>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
                                             </div>
                                         </motion.div>
                                     ))}
