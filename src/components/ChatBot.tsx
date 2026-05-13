@@ -1,4 +1,5 @@
 'use client'
+import ReactMarkdown from 'react-markdown'
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from 'next-intl'
@@ -93,11 +94,29 @@ function ChatWindow({
 
                         {messages.map((msg: Message, i: number) => (
                             <div key={i} className={`flex gap-2 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                                <div className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center ${msg.role === 'user' ? 'bg-gradient-to-r from-purple-500 to-blue-500' : 'bg-gradient-to-r from-purple-500 to-cyan-400'}`}>
-                                    {msg.role === 'user' ? <User size={12} className="text-white" /> : <Bot size={12} className="text-white" />}
-                                </div>
-                                <div className={`max-w-[78%] px-3 py-2.5 rounded-2xl text-sm leading-relaxed ${msg.role === 'user' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-tr-sm' : 'bg-gray-100 dark:bg-zinc-800 text-black dark:text-gray-200 rounded-tl-sm'}`}>
-                                    {msg.content}
+                                <div className={`max-w-[78%] px-3 py-2.5 rounded-2xl text-sm leading-relaxed
+                                    ${msg.role === 'user'
+                                        ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-tr-sm'
+                                        : 'bg-gray-100 dark:bg-zinc-800 text-black dark:text-gray-200 rounded-tl-sm'
+                                    }`}
+                                >
+                                    {msg.role === 'assistant' ? (
+                                        <ReactMarkdown
+                                            components={{
+                                                p: ({ children }) => <p className="mb-1 last:mb-0">{children}</p>,
+                                                strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+                                                a: ({ href, children }) => (
+                                                    <a href={href} target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80">
+                                                        {children}
+                                                    </a>
+                                                ),
+                                            }}
+                                        >
+                                            {msg.content}
+                                        </ReactMarkdown>
+                                    ) : (
+                                        msg.content
+                                    )}
                                 </div>
                             </div>
                         ))}

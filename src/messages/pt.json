@@ -24,16 +24,19 @@
   },
   "about": {
     "title": "Sobre mim",
-    "description": "Sou um desenvolvedor em formação, tenho 19 anos e curso Análise e Desenvolvimento de Sistemas na FIAP. Desde junho/2024, atuo na MRM McCann Worldgroup, contribuindo com equipes ágeis em projetos de inovação digital.\n\n Embora hoje meu foco esteja mais voltado ao front-end, com tecnologias como React e Next.js, também possuo experiência full stack adquirida em projetos acadêmicos e pessoais, especialmente com desenvolvimento back-end utilizando Node.js, Java, Python e Strapi.",
+    "description": "Sou um desenvolvedor Junior com foco em desenvolvimento Frontend, formado em Análise e Desenvolvimento de Sistemas pela FIAP, onde também curso uma pós-graduação em Arquitetura e Desenvolvimento Java. Desde junho/2024, atuo na MRM McCann Worldgroup, contribuindo com equipes ágeis em projetos de inovação digital.\n\n Meu trabalho diário é voltado para o Frontend com React e Next.js, mas também possuo experiência Full Stack adquirida em projetos acadêmicos e pessoais, especialmente no backend com Java, Spring Boot e SQL.",
     "seeTechnologies": "Veja minhas tecnologias:",
     "experienceTitle": "Experiência Profissional",
     "experienceRole": "Desenvolvedor Full Stack - MRM McCann WorldGroup",
     "experienceClient": "Clientes: GM - Mastercard - Leroy Merlin - Diageo",
     "experienceDate": "Junho 2024 - Atual",
     "academicTitle": "Formação Acadêmica",
-    "academicCourse": "Estudante de Análise e Desenvolvimento de Sistemas - FIAP",
+    "academicCourse": "Formado em Análise e Desenvolvimento de Sistemas - FIAP",
     "academicInstitution": "Desenvolvimento Full Stack - Metodologias Ágeis",
-    "academicDate": "Fevereiro 2024 - Dezembro 2025"
+    "academicDate": "Fevereiro 2024 - Dezembro 2025",
+    "academicCourse2": "Estudante de Arquitetura e Desenvolvimento Java - FIAP",
+    "academicInstitution2": "Pós-Graduação Arquitetura e Desenvolvimento Java",
+    "academicDate2": "Março 2026 - Janeiro 2027"
   },
   "technologies": {
     "title": "Tecnologias",

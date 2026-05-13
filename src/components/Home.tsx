@@ -14,7 +14,7 @@ export default function Home() {
   const locale = useLocale();
   const texts = t.raw('texts') as string[];
 
-  const cvFile = locale === 'en' ? '/joaovitor-CV-en.pdf' : '/joaovitor-CV-pt.pdf';
+  const cvFile = locale === 'en' ? '/CURRICULO-JV-2026-EN.pdf' : '/CURRICULO-JV-2026-PT.pdf';
 
   useEffect(() => {
     const fullText = texts[textIndex];
