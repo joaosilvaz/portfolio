@@ -215,7 +215,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 3. Validação das mensagens
-    const messages = validateMessages((body as any)?.messages)
+    const messages = validateMessages((body as Record<string, unknown>)?.messages)
     if (!messages) {
         await logConversation({ ip, messages: [], reply: null, flagged: true, error: 'Validação falhou' })
         return NextResponse.json({ error: 'Formato de mensagem inválido.' }, { status: 400 })
