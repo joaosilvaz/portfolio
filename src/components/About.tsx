@@ -84,7 +84,7 @@ export default function About() {
                                     alt="Foto de perfil"
                                     width={290}
                                     height={290}
-                                    className="rounded-xl object-cover shadow z-10 relative"
+                                    className="rounded-xl object-cover relative"
                                 />
                             </div>
                         </div>

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Send, Bot, User, X, MessageCircle, Sparkles } from 'lucide-react'
+import '@/app/lib/supabase'
 
 type Message = {
     role: 'user' | 'assistant'
@@ -234,7 +235,7 @@ export default function ChatBot() {
                             </p>
                             <button
                                 onClick={() => setOpen(true)}
-                                className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-base hover:opacity-90 hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 cursor-pointer"
+                                className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-base hover:opacity-90 transition-all duration-300 cursor-pointer"
                             >
                                 <MessageCircle size={20} />
                                 {t('sectionButton')}
