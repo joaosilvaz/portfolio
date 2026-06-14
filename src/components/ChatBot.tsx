@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Send, Bot, User, X, MessageCircle, Sparkles } from 'lucide-react'
-import '@/app/lib/supabase'
 
 type Message = {
     role: 'user' | 'assistant'
