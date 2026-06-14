@@ -160,7 +160,7 @@ async function logConversation({
     try {
         await supabase.from('chat_logs').insert({
             ip_address: ip,
-            messages: messages,           // jsonb — histórico completo
+            messages: messages,        
             reply: reply,
             flagged: flagged,            // tentativa de jailbreak ou input inválido
             error_message: error ?? null,
