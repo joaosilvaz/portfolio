@@ -1,14 +1,17 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@supabase/supabase-js'
 import { NextRequest, NextResponse } from 'next/server'
-import '@/app/lib/supabase'
 
 // ─── Clients ────────────────────────────────────────────────────────────────
+// Instanciados via função para evitar inicialização em build-time (envs ausentes)
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY! // service role: nunca exponha no client
-)
+
+function getSupabase() {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+    if (!url || !key) throw new Error('Supabase env vars ausentes')
+    return createClient(url, key)
+}
 
 // ─── Constantes de segurança ─────────────────────────────────────────────────
 const MAX_MESSAGES = 20       // máx de turns por sessão
@@ -158,9 +161,9 @@ async function logConversation({
     error?: string
 }) {
     try {
-        await supabase.from('chat_logs').insert({
+        await getSupabase().from('chat_logs').insert({
             ip_address: ip,
-            messages: messages,        
+            messages: messages,           // jsonb — histórico completo
             reply: reply,
             flagged: flagged,            // tentativa de jailbreak ou input inválido
             error_message: error ?? null,
@@ -215,7 +218,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 3. Validação das mensagens
-    const messages = validateMessages((body as Record<string, unknown>)?.messages)
+    const messages = validateMessages((body as any)?.messages)
     if (!messages) {
         await logConversation({ ip, messages: [], reply: null, flagged: true, error: 'Validação falhou' })
         return NextResponse.json({ error: 'Formato de mensagem inválido.' }, { status: 400 })
