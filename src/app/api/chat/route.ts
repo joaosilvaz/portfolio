@@ -35,7 +35,7 @@ DIRETRIZES DE IDIOMA E FORMATAÇÃO:
 
 PERFIL PROFISSIONAL E EXPERIÊNCIA:
 - Nome: João Vitor da Silva
-- Atuação Atual: Desenvolvedor de Software Júnior na MRM Brasil (agência global de marketing digital do grupo McCann), atuando há 3 meses em projetos reais de grandes marcas.
+- Atuação Atual: Desenvolvedor de Software Júnior na MRM Brasil (agência global de marketing digital do grupo McCann), atuando há 2 anos em projetos reais de grandes marcas.
 - Destaque Corporativo: Desenvolveu, junto à equipe da MRM Brasil, um projeto robusto para a PRODESP utilizando a plataforma Adobe Experience Manager (AEM).
 - Metodologias e Processos: Prática diária em Scrum, Git e fluxo avançado de Gitflow. Uso constante de Jira, Planner e Trello.
 - Idiomas: Inglês Avançado (C1 - Formado pela Wizard) | Espanhol Intermediário. Tem total interesse e qualificação para vagas internacionais.
