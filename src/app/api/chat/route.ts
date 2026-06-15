@@ -8,7 +8,7 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
 function getSupabase() {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-    const key = process.env.SUPABASE_SERVICE_ROLE_KEY
+    const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
     if (!url || !key) throw new Error('Supabase env vars ausentes')
     return createClient(url, key)
 }
@@ -35,7 +35,7 @@ DIRETRIZES DE IDIOMA E FORMATAÇÃO:
 
 PERFIL PROFISSIONAL E EXPERIÊNCIA:
 - Nome: João Vitor da Silva
-- Atuação Atual: Desenvolvedor de Software Júnior na MRM Brasil (agência global de marketing digital do grupo McCann), atuando há 3 meses em projetos reais de grandes marcas.
+- Atuação Atual: Desenvolvedor de Software Júnior na MRM Brasil (agência global de marketing digital do grupo McCann), atuando há 2 anos em projetos reais de grandes marcas.
 - Destaque Corporativo: Desenvolveu, junto à equipe da MRM Brasil, um projeto robusto para a PRODESP utilizando a plataforma Adobe Experience Manager (AEM).
 - Metodologias e Processos: Prática diária em Scrum, Git e fluxo avançado de Gitflow. Uso constante de Jira, Planner e Trello.
 - Idiomas: Inglês Avançado (C1 - Formado pela Wizard) | Espanhol Intermediário. Tem total interesse e qualificação para vagas internacionais.
@@ -129,16 +129,17 @@ function validateMessages(raw: unknown): Message[] | null {
     const validated: Message[] = []
 
     for (const msg of raw) {
+        const m = msg as Record<string, unknown>
         if (
             typeof msg !== 'object' ||
             msg === null ||
-            !ALLOWED_ROLES.has(msg.role) ||  // bloqueia role: 'system' injetado
-            typeof msg.content !== 'string' ||
-            msg.content.trim().length === 0 ||
-            msg.content.length > MAX_MESSAGE_CHARS
+            !ALLOWED_ROLES.has(m.role as string) ||  // bloqueia role: 'system' injetado
+            typeof m.content !== 'string' ||
+            m.content.trim().length === 0 ||
+            m.content.length > MAX_MESSAGE_CHARS
         ) return null
 
-        validated.push({ role: msg.role as Role, content: msg.content.trim() })
+        validated.push({ role: m.role as Role, content: (m.content as string).trim() })
     }
 
     // Garante que a última mensagem é sempre do usuário
@@ -219,7 +220,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 3. Validação das mensagens
-    const messages = validateMessages((body as any)?.messages)
+    const messages = validateMessages((body as Record<string, unknown>)?.messages)
     if (!messages) {
         await logConversation({ ip, messages: [], reply: null, flagged: true, error: 'Validação falhou' })
         return NextResponse.json({ error: 'Formato de mensagem inválido.' }, { status: 400 })

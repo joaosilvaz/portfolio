@@ -77,14 +77,14 @@ export default function About() {
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <div className="flex-shrink-0 relative w-64 h-64 mx-auto md:mx-0">
+                        <div className="flex-shrink-0 relative w-72 h-72 mx-auto md:mx-0">
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <Image
-                                    src='/images/profile.png'
+                                    src='/images/joao-perfil.png'
                                     alt="Foto de perfil"
-                                    width={290}
-                                    height={290}
-                                    className="rounded-xl object-cover relative"
+                                    width={288}
+                                    height={288}
+                                    className="rounded-full object-cover w-72 h-72"
                                 />
                             </div>
                         </div>
