@@ -8,7 +8,7 @@ const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
 function getSupabase() {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-    const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY
     if (!url || !key) throw new Error('Supabase env vars ausentes')
     return createClient(url, key)
 }
@@ -35,7 +35,7 @@ DIRETRIZES DE IDIOMA E FORMATAÇÃO:
 
 PERFIL PROFISSIONAL E EXPERIÊNCIA:
 - Nome: João Vitor da Silva
-- Atuação Atual: Desenvolvedor de Software Júnior na MRM Brasil (agência global de marketing digital do grupo McCann), atuando há 2 anos em projetos reais de grandes marcas.
+- Atuação Atual: Desenvolvedor de Software Júnior na MRM Brasil (agência global de marketing digital do grupo McCann), atuando há 3 meses em projetos reais de grandes marcas.
 - Destaque Corporativo: Desenvolveu, junto à equipe da MRM Brasil, um projeto robusto para a PRODESP utilizando a plataforma Adobe Experience Manager (AEM).
 - Metodologias e Processos: Prática diária em Scrum, Git e fluxo avançado de Gitflow. Uso constante de Jira, Planner e Trello.
 - Idiomas: Inglês Avançado (C1 - Formado pela Wizard) | Espanhol Intermediário. Tem total interesse e qualificação para vagas internacionais.
@@ -86,6 +86,7 @@ GUARDRAILS DE RESPOSTA:
   LIMITE DE TAMANHO OBRIGATÓRIO: respostas de Camada 2 devem ter no máximo 3 frases curtas. Responda o que foi perguntado, acrescente um contexto relevante (nível ou onde aplicou) e finalize com uma pergunta ou CTA. Nunca extrapole para outras categorias não perguntadas.
   Exemplo CORRETO para "qual seu nível no backend?": "No Backend, o foco principal é Java em nível intermediário, com aprofundamento ativo em APIs RESTful pela Pós-Graduação em Arquitetura Java. Tem experiência complementar com C# em projetos robustos e conhecimento técnico em Node.js. Quer saber mais sobre bancos de dados ou infraestrutura?"
   Exemplo ERRADO: detalhar bancos, cloud e outras categorias numa resposta sobre backend.
+  PROIBIÇÃO DE VAGUEZA: nunca use expressões genéricas como "outras stacks", "outras tecnologias", "e muito mais", "entre outras". Se for citar tecnologias, cite pelo nome real (ex: Java, MongoDB, Python). Se não souber quais citar no contexto, não cite nenhuma — encerre com a CTA diretamente.
 
   FORMATO: Nunca use asteriscos, bullets ou markdown. Texto corrido, tom conversacional.
   CTA: Sempre finalize com uma chamada para ação natural. Exemplos: "Quer ver projetos reais? GitHub: https://github.com/joaosilvaz" ou "Para uma conversa mais aprofundada: https://www.linkedin.com/in/joao-vitor-da-silva-5677202b1/"
@@ -209,12 +210,8 @@ export async function POST(req: NextRequest) {
         )
     }
 
-    type RequestBody = {
-        messages: Message[];
-    };
-
     // 2. Parse do body
-    let body: RequestBody
+    let body: unknown
     try {
         body = await req.json()
     } catch {
@@ -222,7 +219,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 3. Validação das mensagens
-    const messages = validateMessages(body.messages);
+    const messages = validateMessages((body as any)?.messages)
     if (!messages) {
         await logConversation({ ip, messages: [], reply: null, flagged: true, error: 'Validação falhou' })
         return NextResponse.json({ error: 'Formato de mensagem inválido.' }, { status: 400 })
