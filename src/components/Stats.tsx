@@ -41,7 +41,7 @@ export default function Stats() {
     const stats = [
         {
             icon: <Briefcase size={28} className="text-purple-500" />,
-            value: 5,
+            value: 6,
             suffix: '+',
             label: t('projects'),
         },

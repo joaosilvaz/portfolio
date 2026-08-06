@@ -1,264 +1,281 @@
 'use client'
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from "next/link";
-import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { Briefcase, GraduationCap, Calendar, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+
+import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { AnimatePresence, motion } from 'framer-motion'
+import {
+    ArrowUpRight,
+    BrainCircuit,
+    Briefcase,
+    Building2,
+    Calendar,
+    ChevronDown,
+    Gauge,
+    GraduationCap,
+    Target,
+} from 'lucide-react'
 
 export default function About() {
     const t = useTranslations('about')
     const [expandedEdu, setExpandedEdu] = useState<number | null>(null)
 
+    const highlights = [
+        {
+            icon: Building2,
+            title: t('impactTitle'),
+            text: t('impactText'),
+            accent: 'text-cyan-600 dark:text-cyan-300',
+            background: 'bg-cyan-500/10',
+        },
+        {
+            icon: BrainCircuit,
+            title: t('aiTitle'),
+            text: t('aiText'),
+            accent: 'text-purple-600 dark:text-purple-300',
+            background: 'bg-purple-500/10',
+        },
+        {
+            icon: Gauge,
+            title: t('deliveryTitle'),
+            text: t('deliveryText'),
+            accent: 'text-blue-600 dark:text-blue-300',
+            background: 'bg-blue-500/10',
+        },
+    ]
+
     const experiences = [
         {
-            logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDRMun7l-k_b6II0SivAMoIkQnX50MXfk-ug&s",
-            role: t("experienceRole"),
-            company: t("experienceClient"),
-            date: t("experienceDate"),
-            link: "https://www.mrmbrasil.com.br/",
+            logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDRMun7l-k_b6II0SivAMoIkQnX50MXfk-ug&s',
+            role: t('experienceRole'),
+            company: t('experienceClient'),
+            summary: t('experienceSummary'),
+            date: t('experienceDate'),
+            link: 'https://www.mrmbrasil.com.br/',
         },
     ]
 
     const education = [
         {
-            logo: "/images/logo-fiap.jpg",
-            course: t("academicCourse"),
-            institution: t("academicInstitution"),
-            date: t("academicDate"),
-            link: "https://www.fiap.com.br/",
-            subjects: [
-                'Desenvolvimento Web', 'Banco de Dados', 'Engenharia de Software',
-                'Estrutura de Dados', 'DevOps', 'Metodologias Ágeis',
-                'Cloud Computing', 'Mobile Development',
-            ],
+            logo: '/images/logo-fiap.jpg',
+            course: t('academicCourse'),
+            institution: t('academicInstitution'),
+            date: t('academicDate'),
+            link: 'https://www.fiap.com.br/',
+            subjects: t.raw('academicSubjects1') as string[],
         },
         {
-            logo: "/images/logo-fiap.jpg",
-            course: t("academicCourse2"),
-            institution: t("academicInstitution2"),
-            date: t("academicDate2"),
-            link: "https://www.fiap.com.br/",
-            subjects: [
-                'Arquitetura Java', 'Spring Boot Avançado', 'Microsserviços',
-                'Docker & Kubernetes', 'Design Patterns', 'API REST',
-            ],
+            logo: '/images/logo-fiap.jpg',
+            course: t('academicCourse2'),
+            institution: t('academicInstitution2'),
+            date: t('academicDate2'),
+            link: 'https://www.fiap.com.br/',
+            subjects: t.raw('academicSubjects2') as string[],
         },
         {
-            logo: "/images/wizard.jpeg",
-            course: t("academicCourse3"),
-            institution: t("academicInstitution3"),
-            date: t("academicDate3"),
-            link: "https://wizard.com",
-            subjects: [],
+            logo: '/images/wizard.jpeg',
+            course: t('academicCourse3'),
+            institution: t('academicInstitution3'),
+            date: t('academicDate3'),
+            link: 'https://wizard.com',
+            subjects: [] as string[],
         },
     ]
 
+    const focusTags = t.raw('focusTags') as string[]
+    const paragraphs = (t.raw('description') as string).split('\n\n')
+
     return (
-        <div id="about" className="flex flex-col bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white">
-            <main className="flex-grow px-6 pt-30 pb-12 md:px-16 md:pt-40 md:pb-4">
-                <div className="max-w-7xl mx-auto">
+        <section id="about" className="bg-white px-6 pb-16 pt-28 text-black dark:bg-[var(--bg-gradient)] dark:text-white md:px-16 md:pt-36">
+            <div className="mx-auto max-w-7xl">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.65 }}
+                    className="max-w-3xl"
+                >
+                    <p className="text-sm font-bold uppercase tracking-[0.22em] text-purple-600 dark:text-purple-300">
+                        {t('eyebrow')}
+                    </p>
+                    <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">{t('title')}</h2>
+                    <p className="mt-5 text-2xl font-semibold leading-tight text-gray-800 dark:text-gray-100 md:text-3xl">
+                        {t('headline')}
+                    </p>
+                </motion.div>
 
-                    <motion.h2
-                        className="text-4xl font-bold mb-12 md:text-left text-center"
-                        initial={{ opacity: 0, y: 50 }}
+                <div className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+                    <motion.article
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
-                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.65 }}
+                        className="rounded-3xl border border-gray-200 bg-gray-50 p-7 dark:border-white/10 dark:bg-white/[0.035] md:p-9"
                     >
-                        {t("title")}
-                    </motion.h2>
-
-                    {/* foto + bio */}
-                    <motion.div
-                        className="flex flex-col md:flex-row gap-12 mb-20 items-center"
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="flex-shrink-0 relative w-72 h-72 mx-auto md:mx-0">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <Image
-                                    src='/images/joao-perfil.png'
-                                    alt="Foto de perfil"
-                                    width={288}
-                                    height={288}
-                                    className="rounded-full object-cover w-72 h-72"
-                                />
-                            </div>
+                        <div className="space-y-5 text-base leading-relaxed text-gray-600 dark:text-gray-300 md:text-lg">
+                            {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                         </div>
 
-                        <div className="flex-1">
-                            <p className="text-black dark:text-gray-300 text-lg leading-relaxed text-justify mb-6">
-                                {t.raw("description").split("\n\n").map((paragraph: string, i: number) => (
-                                    <span key={i}>
-                                        {paragraph}
-                                        <br /><br />
+                        <div className="mt-8 border-t border-gray-200 pt-6 dark:border-white/10">
+                            <div className="flex items-center gap-2 text-sm font-semibold text-gray-800 dark:text-gray-200">
+                                <Target size={17} className="text-purple-500" />
+                                {t('focusTitle')}
+                            </div>
+                            <div className="mt-3 flex flex-wrap gap-2">
+                                {focusTags.map((tag) => (
+                                    <span key={tag} className="rounded-full border border-purple-500/25 bg-purple-500/5 px-3 py-1.5 text-xs font-semibold text-purple-700 dark:text-purple-200">
+                                        {tag}
                                     </span>
                                 ))}
-                            </p>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                            <Link
+                                href="https://www.linkedin.com/in/joaovitorsilva-dev"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+                            >
+                                {t('linkedinCTA')} <ArrowUpRight size={17} />
+                            </Link>
                             <Link
                                 href="#technologies"
-                                className="inline-flex items-center gap-2 text-purple-500 hover:opacity-80 transition-all font-semibold duration-200 text-sm"
+                                className="inline-flex items-center justify-center gap-2 rounded-full border border-gray-300 px-5 py-3 text-sm font-semibold transition hover:border-purple-500 hover:text-purple-600 dark:border-white/20 dark:hover:border-purple-400 dark:hover:text-purple-300"
                             >
-                                {t("seeTechnologies")} →
+                                {t('seeTechnologies')} <ArrowUpRight size={17} />
                             </Link>
                         </div>
-                    </motion.div>
+                    </motion.article>
 
-                    {/* timeline */}
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-2 gap-12"
-                        initial={{ opacity: 0, y: 40 }}
+                        initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
-                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.65, delay: 0.1 }}
                     >
-                        {/* experiência */}
-                        <div>
-                            <div className="flex items-center gap-2 mb-8">
-                                <div className="p-2 rounded-lg bg-purple-500/10">
-                                    <Briefcase size={18} className="text-purple-500" />
+                        <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
+                            {t('highlightsTitle')}
+                        </h3>
+                        <div className="grid gap-4">
+                            {highlights.map(({ icon: Icon, title, text, accent, background }) => (
+                                <div key={title} className="group rounded-2xl border border-gray-200 bg-white p-6 transition hover:-translate-y-1 hover:border-purple-500/35 dark:border-white/10 dark:bg-white/[0.035]">
+                                    <div className="flex items-start gap-4">
+                                        <div className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl ${background}`}>
+                                            <Icon size={21} className={accent} />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-900 dark:text-white">{title}</h4>
+                                            <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{text}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h3 className="font-bold text-xl text-black dark:text-white">{t("experienceTitle")}</h3>
-                            </div>
-
-                            <div className="relative">
-                                <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-purple-500 via-purple-500/50 to-transparent" />
-                                <div className="flex flex-col gap-8">
-                                    {experiences.map((exp, i) => (
-                                        <motion.div
-                                            key={i}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: false, amount: 0.2 }}
-                                            transition={{ duration: 0.5, delay: i * 0.1 }}
-                                            className="flex gap-6 relative"
-                                        >
-                                            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center z-10 shadow-md shadow-purple-500/30">
-                                                <Link href={exp.link} target="_blank">
-                                                    <Image
-                                                        src={exp.logo}
-                                                        alt="Logo"
-                                                        width={28}
-                                                        height={28}
-                                                        className="w-7 h-7 object-contain rounded-full"
-                                                    />
-                                                </Link>
-                                            </div>
-                                            <div className="flex-1 pb-2">
-                                                <p className="font-semibold text-black dark:text-white text-sm">{exp.role}</p>
-                                                <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{exp.company}</p>
-                                                <div className="flex items-center gap-1 mt-1.5">
-                                                    <Calendar size={11} className="text-purple-400" />
-                                                    <p className="text-xs text-purple-400 font-medium">{exp.date}</p>
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* formação */}
-                        <div>
-                            <div className="flex items-center gap-2 mb-8">
-                                <div className="p-2 rounded-lg bg-purple-900/20">
-                                    <GraduationCap size={18} className="text-purple-700 dark:text-purple-300" />
-                                </div>
-                                <h3 className="font-bold text-xl text-black dark:text-white">{t("academicTitle")}</h3>
-                            </div>
-
-                            <div className="relative">
-                                <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-purple-800 via-purple-800/50 to-transparent" />
-                                <div className="flex flex-col gap-8">
-                                    {education.map((edu, i) => (
-                                        <motion.div
-                                            key={i}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: false, amount: 0.2 }}
-                                            transition={{ duration: 0.5, delay: i * 0.1 }}
-                                            className="flex gap-6 relative"
-                                        >
-                                            {/* ponto na timeline — roxo escuro */}
-                                            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-800 flex items-center justify-center z-10 shadow-md shadow-purple-900/50">
-                                                <Link href={edu.link} target="_blank">
-                                                    <Image
-                                                        src={edu.logo}
-                                                        alt="Logo"
-                                                        width={28}
-                                                        height={28}
-                                                        className="w-7 h-7 object-contain rounded-full"
-                                                    />
-                                                </Link>
-                                            </div>
-
-                                            <div className="flex-1 pb-2">
-                                                <div className="flex items-start justify-between gap-2">
-                                                    <div>
-                                                        <p className="font-semibold text-black dark:text-white text-sm">{edu.course}</p>
-                                                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{edu.institution}</p>
-                                                        <div className="flex items-center gap-1 mt-1.5">
-                                                            <Calendar size={11} className="text-purple-700 dark:text-purple-300" />
-                                                            <p className="text-xs text-purple-700 dark:text-purple-300 font-medium">{edu.date}</p>
-                                                        </div>
-                                                    </div>
-
-                                                    {/* botão expandir — só aparece se tiver matérias */}
-                                                    {edu.subjects.length > 0 && (
-                                                        <button
-                                                            onClick={() => setExpandedEdu(expandedEdu === i ? null : i)}
-                                                            className="flex-shrink-0 flex items-center gap-1 text-xs text-purple-600 dark:text-purple-400 hover:text-purple-500 transition-all cursor-pointer mt-0.5"
-                                                        >
-                                                            <span>{expandedEdu === i ? 'Ocultar' : 'Ver mais'}</span>
-                                                            <motion.div
-                                                                animate={{ rotate: expandedEdu === i ? 180 : 0 }}
-                                                                transition={{ duration: 0.2 }}
-                                                            >
-                                                                <ChevronDown size={14} />
-                                                            </motion.div>
-                                                        </button>
-                                                    )}
-                                                </div>
-
-                                                {/* card expansível com matérias */}
-                                                <AnimatePresence>
-                                                    {expandedEdu === i && edu.subjects.length > 0 && (
-                                                        <motion.div
-                                                            initial={{ opacity: 0, height: 0 }}
-                                                            animate={{ opacity: 1, height: 'auto' }}
-                                                            exit={{ opacity: 0, height: 0 }}
-                                                            transition={{ duration: 0.3 }}
-                                                            className="overflow-hidden"
-                                                        >
-                                                            <div className="mt-3 p-3 rounded-xl bg-purple-50 dark:bg-purple-900/20 ring-1 ring-purple-200 dark:ring-purple-800/50">
-                                                                <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-2">Principais matérias:</p>
-                                                                <div className="flex flex-wrap gap-1.5">
-                                                                    {edu.subjects.map((subject, j) => (
-                                                                        <span
-                                                                            key={j}
-                                                                            className="text-xs px-2.5 py-1 rounded-full bg-purple-100 dark:bg-purple-800/40 text-purple-700 dark:text-purple-300 font-medium"
-                                                                        >
-                                                                            {subject}
-                                                                        </span>
-                                                                    ))}
-                                                                </div>
-                                                            </div>
-                                                        </motion.div>
-                                                    )}
-                                                </AnimatePresence>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </motion.div>
-
                 </div>
-            </main>
-        </div>
-    );
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.12 }}
+                    transition={{ duration: 0.65 }}
+                    className="mt-20"
+                >
+                    <h3 className="text-2xl font-bold md:text-3xl">{t('journeyTitle')}</h3>
+
+                    <div className="mt-9 grid gap-8 lg:grid-cols-2">
+                        <div className="rounded-3xl border border-gray-200 p-6 dark:border-white/10 md:p-8">
+                            <div className="mb-7 flex items-center gap-3">
+                                <div className="rounded-xl bg-purple-500/10 p-2.5">
+                                    <Briefcase size={20} className="text-purple-500" />
+                                </div>
+                                <h4 className="text-lg font-bold">{t('experienceTitle')}</h4>
+                            </div>
+
+                            {experiences.map((experience) => (
+                                <div key={experience.role} className="flex gap-4">
+                                    <Link href={experience.link} target="_blank" rel="noreferrer" className="flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/10">
+                                        <Image src={experience.logo} alt="MRM Brasil" width={38} height={38} className="h-9 w-9 object-contain" />
+                                    </Link>
+                                    <div>
+                                        <p className="font-bold">{experience.role}</p>
+                                        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{experience.company}</p>
+                                        <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">{experience.summary}</p>
+                                        <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-purple-600 dark:text-purple-300">
+                                            <Calendar size={13} /> {experience.date}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="rounded-3xl border border-gray-200 p-6 dark:border-white/10 md:p-8">
+                            <div className="mb-7 flex items-center gap-3">
+                                <div className="rounded-xl bg-cyan-500/10 p-2.5">
+                                    <GraduationCap size={20} className="text-cyan-600 dark:text-cyan-300" />
+                                </div>
+                                <h4 className="text-lg font-bold">{t('academicTitle')}</h4>
+                            </div>
+
+                            <div className="space-y-7">
+                                {education.map((item, index) => (
+                                    <div key={item.course} className="flex gap-4">
+                                        <Link href={item.link} target="_blank" rel="noreferrer" className="flex h-11 w-11 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/10">
+                                            <Image src={item.logo} alt="" width={34} height={34} className="h-8 w-8 rounded-lg object-contain" />
+                                        </Link>
+                                        <div className="min-w-0 flex-1">
+                                            <p className="text-sm font-bold">{item.course}</p>
+                                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{item.institution}</p>
+                                            <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
+                                                <p className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-700 dark:text-cyan-300">
+                                                    <Calendar size={12} /> {item.date}
+                                                </p>
+                                                {item.subjects.length > 0 && (
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setExpandedEdu(expandedEdu === index ? null : index)}
+                                                        aria-expanded={expandedEdu === index}
+                                                        className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 transition hover:text-purple-500 dark:text-purple-300"
+                                                    >
+                                                        {expandedEdu === index ? t('showLess') : t('showMore')}
+                                                        <motion.span animate={{ rotate: expandedEdu === index ? 180 : 0 }}>
+                                                            <ChevronDown size={14} />
+                                                        </motion.span>
+                                                    </button>
+                                                )}
+                                            </div>
+
+                                            <AnimatePresence>
+                                                {expandedEdu === index && item.subjects.length > 0 && (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, height: 0 }}
+                                                        animate={{ opacity: 1, height: 'auto' }}
+                                                        exit={{ opacity: 0, height: 0 }}
+                                                        className="overflow-hidden"
+                                                    >
+                                                        <div className="mt-3 rounded-xl bg-gray-50 p-3 dark:bg-white/5">
+                                                            <p className="mb-2 text-xs font-bold text-gray-700 dark:text-gray-200">{t('subjectsTitle')}</p>
+                                                            <div className="flex flex-wrap gap-1.5">
+                                                                {item.subjects.map((subject) => (
+                                                                    <span key={subject} className="rounded-full bg-purple-500/10 px-2.5 py-1 text-xs font-medium text-purple-700 dark:text-purple-200">
+                                                                        {subject}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    )
 }

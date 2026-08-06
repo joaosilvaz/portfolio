@@ -1,229 +1,413 @@
-import { Airplay } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import Link from "next/link";
-import { useEffect, useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
-import Image from "next/image";
-import { useTheme } from 'next-themes';
-import { FaGithub } from 'react-icons/fa'
+'use client'
+
+import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { motion } from 'framer-motion'
+import {
+    ArrowUpRight,
+    Bot,
+    BriefcaseBusiness,
+    Code2,
+    ExternalLink,
+    Github,
+    LockKeyhole,
+    Sparkles,
+} from 'lucide-react'
+
+type FeaturedProject = {
+    id: 'dealer' | 'lens' | 'assistant'
+    category: string
+    status: string
+    title: string
+    summary: string
+    role: string
+    impact: string
+    stack: string[]
+    tags: string[]
+    primaryLink?: string
+    primaryLabel?: string
+    githubLink?: string
+    confidential?: boolean
+}
+
+type SelectedProject = {
+    title: string
+    category: string
+    description: string
+    impact: string
+    image: string
+    stack: string[]
+    tags: string[]
+    liveLink?: string
+    githubLink?: string
+}
+
+function ProjectVisual({ variant }: { variant: FeaturedProject['id'] }) {
+    if (variant === 'lens') {
+        return (
+            <div className="relative flex min-h-72 flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950 p-7 text-white lg:min-h-full">
+                <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl" />
+                <div className="relative flex items-center justify-between">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1.5 text-xs font-bold text-cyan-200">
+                        <Sparkles size={13} /> AWS BEDROCK
+                    </span>
+                    <span className="font-mono text-xs text-white/50">GENERATIVE AI</span>
+                </div>
+                <div className="relative my-10 grid grid-cols-[1fr_auto] items-end gap-6">
+                    <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.25em] text-purple-300">Lens Analytics</p>
+                        <p className="mt-3 text-4xl font-bold tracking-tight">Hours <span className="text-cyan-300">→</span> seconds</p>
+                    </div>
+                    <div className="flex h-24 items-end gap-2" aria-hidden="true">
+                        {[35, 52, 44, 72, 64, 92].map((height, index) => (
+                            <span key={index} className="w-3 rounded-t bg-gradient-to-t from-purple-500 to-cyan-300" style={{ height: `${height}%` }} />
+                        ))}
+                    </div>
+                </div>
+                <div className="relative flex items-center gap-2 text-sm text-slate-300">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400" /> AI insights in production
+                </div>
+            </div>
+        )
+    }
+
+    if (variant === 'assistant') {
+        return (
+            <div className="flex min-h-72 flex-col justify-between rounded-3xl bg-gradient-to-br from-blue-50 to-purple-100 p-7 text-slate-950 dark:from-slate-900 dark:to-indigo-950 dark:text-white lg:min-h-full">
+                <div className="flex items-center justify-between">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-3 py-1.5 text-xs font-bold text-purple-700 dark:text-purple-200">
+                        <Bot size={14} /> CLAUDE API
+                    </span>
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                </div>
+                <div className="my-8 space-y-3">
+                    <div className="mr-10 rounded-2xl rounded-bl-sm bg-white p-4 text-sm text-gray-700 shadow-sm dark:bg-white/10 dark:text-gray-200">
+                        Como João aplica IA em produtos reais?
+                    </div>
+                    <div className="ml-10 rounded-2xl rounded-br-sm bg-gradient-to-r from-purple-500 to-blue-500 p-4 text-sm text-white">
+                        Posso explicar sua experiência com AWS Bedrock, Claude API e Lens Analytics.
+                    </div>
+                </div>
+                <p className="font-mono text-xs text-gray-500 dark:text-gray-400">SECURE • BILINGUAL • CONTEXT-AWARE</p>
+            </div>
+        )
+    }
+
+    return (
+        <div className="relative flex min-h-72 flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-slate-950 to-indigo-950 p-7 text-white lg:min-h-full">
+            <div className="absolute -bottom-24 -right-20 h-64 w-64 rounded-full border-[32px] border-blue-500/10" />
+            <div className="relative flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-bold text-white/80">
+                    <BriefcaseBusiness size={13} /> ENTERPRISE
+                </span>
+                <span className="text-sm font-black tracking-[0.28em] text-white/70">GM</span>
+            </div>
+            <div className="relative my-10">
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-purple-300">Dealer 4.0</p>
+                <p className="mt-3 text-4xl font-bold tracking-tight">Blazer EV <span className="text-cyan-300">RS</span></p>
+                <p className="mt-2 text-sm text-white/55">Interactive touchscreen configurator</p>
+            </div>
+            <div className="relative flex gap-2">
+                {['TOUCH', '3D', 'REAL-TIME'].map((item) => (
+                    <span key={item} className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-bold tracking-wider text-white/60">{item}</span>
+                ))}
+            </div>
+        </div>
+    )
+}
 
 export default function Projects() {
-    const t = useTranslations('projects');
-    const [showAll, setShowAll] = useState(false);
-    const { theme } = useTheme();
-    const [mounted, setMounted] = useState(false);
+    const t = useTranslations('projects')
     const [activeFilter, setActiveFilter] = useState('all')
 
     const filters = [
-        { label: 'All', value: 'all' },
-        { label: 'React', value: 'react' },
-        { label: 'TypeScript', value: 'typescript' },
-        { label: 'JavaScript', value: 'javascript' },
-        { label: 'Java', value: 'java' },
+        { label: t('filterAll'), value: 'all' },
+        { label: t('filterEnterprise'), value: 'enterprise' },
+        { label: t('filterAI'), value: 'ai' },
+        { label: t('filterBackend'), value: 'backend' },
+        { label: t('filterFrontend'), value: 'frontend' },
     ]
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    const featuredProjects: FeaturedProject[] = [
+        {
+            id: 'lens',
+            category: t('lensCategory'),
+            status: t('lensStatus'),
+            title: t('lensTitle'),
+            summary: t('lensSummary'),
+            role: t('lensRole'),
+            impact: t('lensImpact'),
+            stack: ['AWS Bedrock', 'Generative AI', 'Full Stack', 'AWS'],
+            tags: ['enterprise', 'ai', 'backend'],
+            confidential: true,
+        },
+        {
+            id: 'dealer',
+            category: t('dealerCategory'),
+            status: t('dealerStatus'),
+            title: t('dealerTitle'),
+            summary: t('dealerSummary'),
+            role: t('dealerRole'),
+            impact: t('dealerImpact'),
+            stack: ['React', 'JavaScript', 'SCSS', 'HTML5'],
+            tags: ['enterprise', 'frontend'],
+            primaryLink: 'https://dealer-28afe.web.app/menu-intro.html',
+            primaryLabel: t('viewProduct'),
+        },
+        {
+            id: 'assistant',
+            category: t('assistantCategory'),
+            status: t('assistantStatus'),
+            title: t('assistantTitle'),
+            summary: t('assistantSummary'),
+            role: t('assistantRole'),
+            impact: t('assistantImpact'),
+            stack: ['Next.js', 'Claude API', 'Supabase', 'TypeScript'],
+            tags: ['ai', 'backend', 'frontend'],
+            primaryLink: '#chatbot',
+            primaryLabel: t('openAssistant'),
+            githubLink: 'https://github.com/joaosilvaz/portfolio',
+        },
+    ]
 
-    const projects = [
+    const selectedProjects: SelectedProject[] = [
         {
-            title: t('titleProject1'),
-            description: t('descriptionProject1'),
-            image: "/images/ecosmart.png",
-            techs: ["/nextjs-dark.svg", "/typescript.svg", "/tailwind.svg", "/react.svg"],
-            tags: ['react', 'typescript'],
-            liveLink: "https://global-solution-s2.vercel.app/",
-            githubLink: "https://github.com/joaosilvaz/Global-Solution-S2",
+            title: t('ecoTitle'),
+            category: t('ecoCategory'),
+            description: t('ecoDescription'),
+            impact: t('ecoImpact'),
+            image: '/images/ecosmart.png',
+            stack: ['Next.js', 'TypeScript', 'Tailwind'],
+            tags: ['frontend', 'backend'],
+            liveLink: 'https://global-solution-s2.vercel.app/',
+            githubLink: 'https://github.com/joaosilvaz/Global-Solution-S2',
         },
         {
-            title: t('titleProject2'),
-            description: t('descriptionProject2'),
-            image: "/images/god-of-war.png",
-            techs: ["/vite.svg", "/typescript.svg", "/tailwind.svg", "/react.svg"],
-            tags: ['react', 'typescript'],
-            liveLink: "https://lp-check-point1.vercel.app/",
-            githubLink: "https://github.com/joaosilvaz/LP-CheckPoint1",
+            title: t('bankTitle'),
+            category: t('bankCategory'),
+            description: t('bankDescription'),
+            impact: t('bankImpact'),
+            image: '/images/bank-project.jpg',
+            stack: ['Java', 'Spring Boot', 'REST API'],
+            tags: ['backend'],
+            githubLink: 'https://github.com/joaosilvaz/bank-project',
         },
         {
-            title: t('titleProject3'),
-            description: t('descriptionProject3'),
-            image: "/images/ocean-guard.png",
-            techs: ["/javascript.svg", "/html.svg", "/css.svg"],
-            tags: ['javascript'],
-            liveLink: "https://ocean-guard-flax.vercel.app/",
-            githubLink: "https://github.com/joaosilvaz/OceanGuard",
+            title: t('oceanTitle'),
+            category: t('oceanCategory'),
+            description: t('oceanDescription'),
+            impact: t('oceanImpact'),
+            image: '/images/ocean-guard.png',
+            stack: ['JavaScript', 'HTML', 'CSS'],
+            tags: ['frontend'],
+            liveLink: 'https://ocean-guard-flax.vercel.app/',
+            githubLink: 'https://github.com/joaosilvaz/OceanGuard',
         },
-        {
-            title: t('titleProject4'),
-            description: t('descriptionProject4'),
-            image: "/images/e-commerce.png",
-            techs: ["/html.svg", "/css.svg", "/javascript.svg"],
-            tags: ['javascript'],
-            liveLink: "https://e-commerce-two-puce.vercel.app/",
-            githubLink: "https://github.com/joaosilvaz/e-commerce",
-        },
-        {
-            title: t('titleProject5'),
-            description: t('descriptionProject5'),
-            image: "/images/bank-project.jpg",
-            techs: ["/java.svg", "/spring-boot.svg"],
-            tags: ['java'],
-            liveLink: "",
-            githubLink: "https://github.com/joaosilvaz/bank-project",
-        },
-    ];
+    ]
 
-    const filteredProjects = activeFilter === 'all'
-        ? projects
-        : projects.filter(p => p.tags.includes(activeFilter))
+    const archivedProjects = [
+        {
+            title: t('godTitle'),
+            tags: ['frontend'],
+            liveLink: 'https://lp-check-point1.vercel.app/',
+            githubLink: 'https://github.com/joaosilvaz/LP-CheckPoint1',
+        },
+        {
+            title: t('commerceTitle'),
+            tags: ['frontend'],
+            liveLink: 'https://e-commerce-two-puce.vercel.app/',
+            githubLink: 'https://github.com/joaosilvaz/e-commerce',
+        },
+    ]
 
-    const visibleProjects = showAll ? filteredProjects : filteredProjects.slice(0, 3)
+    const matchesFilter = (tags: string[]) => activeFilter === 'all' || tags.includes(activeFilter)
+    const visibleFeatured = featuredProjects.filter((project) => matchesFilter(project.tags))
+    const visibleSelected = selectedProjects.filter((project) => matchesFilter(project.tags))
+    const visibleArchived = archivedProjects.filter((project) => matchesFilter(project.tags))
+    const hasResults = visibleFeatured.length + visibleSelected.length + visibleArchived.length > 0
 
     return (
-        <section id="projects" className="bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white pt-50 pb-20 px-6 md:px-16">
-            <div className="max-w-7xl mx-auto md:text-left text-center">
-                <motion.h2
-                    className="text-4xl font-bold mb-4"
-                    initial={{ opacity: 0, y: 50 }}
+        <section id="projects" className="bg-white px-6 pb-24 pt-28 text-black dark:bg-[var(--bg-gradient)] dark:text-white md:px-16 md:pt-36">
+            <div className="mx-auto max-w-7xl">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.65 }}
+                    className="max-w-3xl"
                 >
-                    {t('title')}
-                </motion.h2>
-                <p className="text-black dark:text-gray-300 mb-12 max-w-xl">
-                    {t('description')}
-                </p>
+                    <p className="text-sm font-bold uppercase tracking-[0.22em] text-purple-600 dark:text-purple-300">{t('eyebrow')}</p>
+                    <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">{t('title')}</h2>
+                    <p className="mt-5 text-lg leading-relaxed text-gray-600 dark:text-gray-400">{t('description')}</p>
+                </motion.div>
 
-                <div className="flex flex-wrap gap-2 mb-10">
-                    {filters.map(filter => (
+                <div className="mt-9 flex flex-wrap gap-2" role="group" aria-label={t('title')}>
+                    {filters.map((filter) => (
                         <button
                             key={filter.value}
-                            onClick={() => {
-                                setActiveFilter(filter.value)
-                                setShowAll(false)
-                            }}
-                            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer
-                                ${activeFilter === filter.value
-                                    ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md'
-                                    : 'border border-purple-500/40 text-black dark:text-white hover:border-purple-500 hover:bg-purple-500/10'
-                                }`}
+                            type="button"
+                            onClick={() => setActiveFilter(filter.value)}
+                            aria-pressed={activeFilter === filter.value}
+                            className={activeFilter === filter.value
+                                ? 'rounded-full bg-gradient-to-r from-purple-500 to-blue-500 px-4 py-2 text-sm font-bold text-white'
+                                : 'rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 transition hover:border-purple-500 hover:text-purple-600 dark:border-white/15 dark:text-gray-300 dark:hover:border-purple-400 dark:hover:text-purple-300'
+                            }
                         >
                             {filter.label}
                         </button>
                     ))}
                 </div>
 
-                <div className="grid gap-10 grid-cols-1 min-[900px]:grid-cols-2 min-[1218px]:grid-cols-3">
-                    {visibleProjects.map((project) => (
-                        <motion.div
-                            key={project.title}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.2 }}
-                            transition={{ duration: 0.8 }}
-                            className="h-auto rounded-xl px-8 py-8 bg-white dark:bg-[var(--bg-gradient)] shadow-md flex flex-col justify-between ring-1 ring-purple-500/30 hover:ring-purple-500/60 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300"
-                        >
-                            <div className="relative overflow-hidden rounded-md group/img">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-48 object-cover transition-transform duration-500 group-hover/img:scale-110"
-                                    width={500}
-                                    height={300}
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover/img:opacity-100 transition-all duration-300 flex flex-col justify-end p-4">
-                                    <div className="flex gap-2 translate-y-4 group-hover/img:translate-y-0 transition-transform duration-500">
-                                        {project.liveLink && (
-                                            <a
-                                                href={project.liveLink}
-                                                target="_blank"
-                                                onClick={e => e.stopPropagation()}
-                                                className="flex items-center gap-1 bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full hover:bg-white/30 transition-all"
-                                            >
-                                                <Airplay size={12} />
-                                                Demo
-                                            </a>
-                                        )}
-                                        <a
-                                            href={project.githubLink}
-                                            target="_blank"
-                                            onClick={e => e.stopPropagation()}
-                                            className="flex items-center gap-1 bg-white/20 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full hover:bg-white/30 transition-all"
-                                        >
-                                            <FaGithub size={12} />
-                                            GitHub
-                                        </a>
+                {!hasResults && (
+                    <p className="mt-12 rounded-2xl border border-dashed border-gray-300 p-8 text-center text-gray-500 dark:border-white/15 dark:text-gray-400">{t('emptyFilter')}</p>
+                )}
+
+                {visibleFeatured.length > 0 && (
+                    <div className="mt-16">
+                        <h3 className="text-2xl font-bold md:text-3xl">{t('featuredTitle')}</h3>
+                        <p className="mt-2 max-w-2xl text-gray-600 dark:text-gray-400">{t('featuredDescription')}</p>
+
+                        <div className="mt-8 space-y-7">
+                            {visibleFeatured.map((project, index) => (
+                                <motion.article
+                                    key={project.id}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, amount: 0.12 }}
+                                    transition={{ duration: 0.6 }}
+                                    className="grid overflow-hidden rounded-[2rem] border border-gray-200 bg-gray-50 dark:border-white/10 dark:bg-white/[0.035] lg:grid-cols-[0.9fr_1.1fr]"
+                                >
+                                    <div className={`p-4 md:p-6 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                                        <ProjectVisual variant={project.id} />
+                                    </div>
+
+                                    <div className="flex flex-col p-7 md:p-9 lg:p-10">
+                                        <div className="flex flex-wrap items-center justify-between gap-3">
+                                            <p className="text-xs font-bold uppercase tracking-[0.18em] text-purple-600 dark:text-purple-300">{project.category}</p>
+                                            <span className="rounded-full bg-emerald-500/10 px-3 py-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-300">{project.status}</span>
+                                        </div>
+
+                                        <h4 className="mt-5 text-3xl font-bold tracking-tight">{project.title}</h4>
+                                        <p className="mt-4 leading-relaxed text-gray-600 dark:text-gray-300">{project.summary}</p>
+
+                                        <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                                            <div>
+                                                <p className="text-xs font-bold uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400">{t('roleLabel')}</p>
+                                                <p className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">{project.role}</p>
+                                            </div>
+                                            <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/5 p-4">
+                                                <p className="text-xs font-bold uppercase tracking-[0.15em] text-cyan-700 dark:text-cyan-300">{t('impactLabel')}</p>
+                                                <p className="mt-2 text-sm font-semibold leading-relaxed text-gray-800 dark:text-gray-100">{project.impact}</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="mt-6 flex flex-wrap gap-2">
+                                            {project.stack.map((technology) => (
+                                                <span key={technology} className="rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 dark:border-white/10 dark:bg-white/5 dark:text-gray-200">{technology}</span>
+                                            ))}
+                                        </div>
+
+                                        <div className="mt-auto flex flex-wrap items-center gap-3 pt-8">
+                                            {project.primaryLink && project.primaryLabel && (
+                                                <Link
+                                                    href={project.primaryLink}
+                                                    target={project.primaryLink.startsWith('#') ? undefined : '_blank'}
+                                                    rel={project.primaryLink.startsWith('#') ? undefined : 'noreferrer'}
+                                                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 px-5 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5"
+                                                >
+                                                    {project.primaryLabel} <ArrowUpRight size={16} />
+                                                </Link>
+                                            )}
+                                            {project.githubLink && (
+                                                <Link href={project.githubLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-5 py-2.5 text-sm font-bold transition hover:border-purple-500 hover:text-purple-600 dark:border-white/20 dark:hover:border-purple-400 dark:hover:text-purple-300">
+                                                    <Github size={16} /> {t('viewCode')}
+                                                </Link>
+                                            )}
+                                            {project.confidential && (
+                                                <span className="inline-flex items-center gap-2 text-xs font-semibold text-gray-500 dark:text-gray-400">
+                                                    <LockKeyhole size={14} /> {t('confidential')}
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+                                </motion.article>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {visibleSelected.length > 0 && (
+                    <div className="mt-20">
+                        <h3 className="text-2xl font-bold md:text-3xl">{t('selectedTitle')}</h3>
+                        <p className="mt-2 max-w-2xl text-gray-600 dark:text-gray-400">{t('selectedDescription')}</p>
+
+                        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                            {visibleSelected.map((project) => (
+                                <motion.article
+                                    key={project.title}
+                                    initial={{ opacity: 0, y: 24 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, amount: 0.15 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="flex overflow-hidden rounded-3xl border border-gray-200 bg-white transition hover:-translate-y-1 hover:border-purple-500/35 dark:border-white/10 dark:bg-white/[0.035] md:flex-col"
+                                >
+                                    <div className="relative w-32 flex-shrink-0 overflow-hidden bg-gray-100 md:h-48 md:w-full dark:bg-white/5">
+                                        <Image src={project.image} alt={project.title} fill className="object-cover transition duration-500 hover:scale-105" sizes="(max-width: 768px) 128px, 33vw" />
+                                    </div>
+                                    <div className="flex flex-1 flex-col p-5 md:p-6">
+                                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-purple-600 dark:text-purple-300">{project.category}</p>
+                                        <h4 className="mt-2 text-xl font-bold">{project.title}</h4>
+                                        <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{project.description}</p>
+                                        <p className="mt-4 border-l-2 border-cyan-400 pl-3 text-xs font-semibold text-gray-700 dark:text-gray-200">{project.impact}</p>
+                                        <div className="mt-5 flex flex-wrap gap-1.5">
+                                            {project.stack.map((technology) => (
+                                                <span key={technology} className="rounded-full bg-gray-100 px-2.5 py-1 text-[11px] font-semibold text-gray-700 dark:bg-white/5 dark:text-gray-300">{technology}</span>
+                                            ))}
+                                        </div>
+                                        <div className="mt-auto flex flex-wrap gap-4 pt-6 text-sm font-bold">
+                                            {project.liveLink && (
+                                                <Link href={project.liveLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-purple-600 hover:text-purple-500 dark:text-purple-300">
+                                                    <ExternalLink size={15} /> {t('viewProject')}
+                                                </Link>
+                                            )}
+                                            {project.githubLink && (
+                                                <Link href={project.githubLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-300">
+                                                    <Github size={15} /> {t('viewCode')}
+                                                </Link>
+                                            )}
+                                        </div>
+                                    </div>
+                                </motion.article>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {visibleArchived.length > 0 && (
+                    <div className="mt-16 rounded-3xl border border-dashed border-gray-300 p-6 dark:border-white/15 md:p-8">
+                        <div className="flex items-center gap-3">
+                            <Code2 size={20} className="text-gray-500" />
+                            <div>
+                                <h3 className="font-bold">{t('archiveTitle')}</h3>
+                                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t('archiveDescription')}</p>
+                            </div>
+                        </div>
+                        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                            {visibleArchived.map((project) => (
+                                <div key={project.title} className="flex items-center justify-between gap-4 rounded-2xl bg-gray-50 p-4 dark:bg-white/5">
+                                    <span className="text-sm font-semibold">{project.title}</span>
+                                    <div className="flex gap-3">
+                                        <Link href={project.liveLink} target="_blank" rel="noreferrer" aria-label={`${t('viewProject')}: ${project.title}`} className="text-gray-500 transition hover:text-purple-500"><ExternalLink size={17} /></Link>
+                                        <Link href={project.githubLink} target="_blank" rel="noreferrer" aria-label={`${t('viewCode')}: ${project.title}`} className="text-gray-500 transition hover:text-purple-500"><Github size={17} /></Link>
                                     </div>
                                 </div>
-                            </div>
-
-                            <h3 className="md:text-2xl text-xl font-bold mb-4 mt-4">{project.title}</h3>
-                            <p className="text-[rgb(95,95,95)] dark:text-[rgb(146,158,176)] mb-6 md:text-sm text-sm">{project.description}</p>
-
-                            <div className="flex flex-wrap gap-4 mb-4 md:justify-start justify-center">
-                                {mounted && project.techs.map((tech, idx) => {
-                                    const isNextJs = tech.includes('nextjs');
-                                    return (
-                                        <Image
-                                            key={idx}
-                                            src={
-                                                isNextJs
-                                                    ? (theme === 'dark' ? '/nextjs-light.svg' : '/nextjs-dark.svg')
-                                                    : tech
-                                            }
-                                            alt={`Tecnologia ${idx}`}
-                                            className="w-7 h-7 cursor-pointer hover:scale-115 transition-all duration-300"
-                                            width={28}
-                                            height={28}
-                                        />
-                                    );
-                                })}
-                            </div>
-
-                            <div className="flex flex-col min-[370px]:flex-row justify-between gap-3 mt-auto pt-3">
-                                {project.liveLink && (
-                                    <Link
-                                        href={project.liveLink}
-                                        target="_blank"
-                                        className="bg-gradient-to-l from-purple-500 to-cyan-400 text-white px-3 py-3 md:px-3 rounded-full font-semibold text-sm transition-all ease-in duration-100 hover:shadow-[0_6px_20px_rgba(139,92,246,0.4),_0_3px_10px_rgba(34,211,238,0.3)] dark:hover:shadow-[0px_4px_15px_rgba(255,255,255,0.4)] text-center w-full min-[370px]:w-auto"
-                                    >
-                                        {t('deploy')}
-                                    </Link>
-                                )}
-                                <Link
-                                    href={project.githubLink}
-                                    target="_blank"
-                                    className="border px-2 py-3 rounded-full font-semibold md:px-4 lg:px-3 text-sm text-black dark:text-white border-black dark:border-white hover:text-white hover:bg-black dark:hover:bg-white dark:hover:text-black transition-all ease-in duration-200 text-center w-full min-[370px]:w-auto"
-                                >
-                                    {t('github')}
-                                </Link>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {filteredProjects.length > 3 && (
-                    <div className="flex justify-center mt-10">
-                        <button
-                            onClick={() => setShowAll(!showAll)}
-                            className="bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg hover:opacity-90 text-white px-5 py-2 rounded-lg font-semibold transition duration-200 cursor-pointer"
-                        >
-                            {showAll ? (
-                                <>
-                                    {t('seeLess')} <ChevronUp className="inline-block ml-2" size={16} />
-                                </>
-                            ) : (
-                                <>
-                                    {t('seeMore')} <ChevronDown className="inline-block ml-2" size={16} />
-                                </>
-                            )}
-                        </button>
+                            ))}
+                        </div>
                     </div>
                 )}
             </div>
         </section>
-    );
+    )
 }

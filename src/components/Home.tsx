@@ -1,99 +1,136 @@
 'use client'
-import React, { useEffect, useState } from "react";
-import { motion } from 'framer-motion';
-import Link from "next/link";
-import { useTranslations, useLocale } from "next-intl";
-import Image from 'next/image';
+
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import Image from 'next/image'
+import { useLocale, useTranslations } from 'next-intl'
+import { ArrowDownToLine, ArrowUpRight, Building2, CheckCircle2, Languages } from 'lucide-react'
 
 export default function Home() {
-  const [textIndex, setTextIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [speed, setSpeed] = useState(150);
-  const t = useTranslations('home');
-  const locale = useLocale();
-  const texts = t.raw('texts') as string[];
-
-  const cvFile = locale === 'en' ? '/CURRICULO-JV-2026-EN.pdf' : '/CURRICULO-JV-2026-PT.pdf';
+  const [textIndex, setTextIndex] = useState(0)
+  const [displayedText, setDisplayedText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [speed, setSpeed] = useState(110)
+  const t = useTranslations('home')
+  const locale = useLocale()
+  const texts = t.raw('texts') as string[]
+  const cvFile = locale === 'en' ? '/CURRICULO-JV-2026-EN.pdf' : '/CURRICULO-JV-2026-PT.pdf'
 
   useEffect(() => {
-    const fullText = texts[textIndex];
+    const fullText = texts[textIndex]
     const timeout = setTimeout(() => {
-      setDisplayedText((prev) =>
-        isDeleting ? fullText.substring(0, prev.length - 1) : fullText.substring(0, prev.length + 1)
-      );
-      setSpeed(isDeleting ? 50 : 150);
+      setDisplayedText((previous) =>
+        isDeleting
+          ? fullText.substring(0, previous.length - 1)
+          : fullText.substring(0, previous.length + 1)
+      )
+      setSpeed(isDeleting ? 35 : 90)
 
       if (!isDeleting && displayedText === fullText) {
-        setTimeout(() => setIsDeleting(true), 1500);
+        setTimeout(() => setIsDeleting(true), 1600)
       } else if (isDeleting && displayedText === '') {
-        setIsDeleting(false);
-        setTextIndex((prev) => (prev + 1) % texts.length);
+        setIsDeleting(false)
+        setTextIndex((previous) => (previous + 1) % texts.length)
       }
-    }, speed);
+    }, speed)
 
-    return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, textIndex, speed, texts]);
+    return () => clearTimeout(timeout)
+  }, [displayedText, isDeleting, speed, textIndex, texts])
 
+  const proofPoints = [
+    { icon: CheckCircle2, label: t('proofExperience') },
+    { icon: Building2, label: t('proofCompany') },
+    { icon: Languages, label: t('proofLanguage') },
+  ]
 
   return (
-    <section id="home" className="md:pt-70 pt-40 pb-30 flex items-center justify-center bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white px-4">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 items-center gap-10">
+    <section
+      id="home"
+      className="relative overflow-hidden bg-white px-6 pb-24 pt-40 text-black dark:bg-[var(--bg-gradient)] dark:text-white md:px-16 md:pb-32 md:pt-52"
+    >
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.8 }}
-          className="text-center"
+          initial={{ opacity: 0, y: 35 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-center lg:text-left"
         >
-          <p className="text-[24px] text-black dark:text-gray-400">
-            {t('welcome')} <span className="inline-block animate-wiggle">👋</span>, {t('iAm')}
-          </p>
-          <h1 className="md:text-[80px] text-[50px] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500">
-            JOÃO VITOR
+          <span className="inline-flex items-center rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm font-semibold text-purple-700 dark:text-purple-300">
+            {t('badge')}
+          </span>
+
+          <p className="mt-7 text-lg text-gray-600 dark:text-gray-400">{t('welcome')}</p>
+          <h1 className="mt-1 text-5xl font-extrabold leading-[1.05] tracking-tight md:text-7xl">
+            João Vitor
+            <span className="block bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent">
+              da Silva
+            </span>
           </h1>
 
-          <h2 className="text-3xl font-semibold text-black dark:text-gray-200">
-            {displayedText}
-            <span className="animate-blink">|</span>
+          <h2 className="mt-6 min-h-10 text-xl font-semibold text-gray-800 dark:text-gray-200 md:text-2xl">
+            {displayedText}<span className="animate-blink text-purple-500">|</span>
           </h2>
 
-          <div className="flex justify-center gap-3 mt-6 text-2xl text-black dark:text-gray-400 relative">
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0 md:text-lg">
+            {t('description')}
+          </p>
+
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+            <Link
+              href="#projects"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 px-6 py-3 font-semibold text-white transition hover:-translate-y-0.5"
+            >
+              {t('portfolio')} <ArrowUpRight size={18} />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/joaovitorsilva-dev"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-gray-300 px-6 py-3 font-semibold transition hover:border-purple-500 hover:text-purple-600 dark:border-white/20 dark:hover:border-purple-400 dark:hover:text-purple-300"
+            >
+              {t('linkedin')} <ArrowUpRight size={18} />
+            </Link>
             <a
               href={cvFile}
               download
-              title={t('downloadCV')}
-              className="flex flex-col items-center relative"
+              className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 font-semibold text-gray-600 transition hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-300"
             >
-              <Image
-                src='/logoCurriculo.svg'
-                alt={t('downloadCV')}
-                width={40}
-                height={40}
-                className="w-10 h-10 opacity-30 hover:opacity-100 transform hover:scale-110 hover:shadow-lg hover:shadow-[rgb(132_133_246)] transition-all duration-300 peer
-             brightness-0 dark:brightness-100"
-              />
-              <span className="absolute top-12 bg-indigo-500 text-white text-xs px-2 py-1 rounded shadow opacity-0 peer-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap">
-                {t('downloadCV')}
-              </span>
+              <ArrowDownToLine size={18} /> {t('downloadCV')}
             </a>
           </div>
 
-          <div className="mt-10">
-            <Link
-              href="#projects"
-              style={{
-                borderWidth: '2px',
-                borderStyle: 'solid',
-                borderImage: 'linear-gradient(225deg, rgb(0, 144, 255) 0%, rgb(192, 1, 250) 100%) 1',
-              }}
-              className="inline-block px-6 py-4 border-2 border-purple-500 to-blue-500 rounded-md text-black dark:text-white font-semibold hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-500 transition duration-300"
-            >
-              {t('portfolio')}
-            </Link>
+          <div className="mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-gray-600 dark:text-gray-400 lg:justify-start">
+            {proofPoints.map(({ icon: Icon, label }) => (
+              <span key={label} className="inline-flex items-center gap-2">
+                <Icon size={17} className="text-purple-500" /> {label}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="relative mx-auto hidden w-full max-w-md lg:block"
+        >
+          <div className="relative overflow-hidden rounded-[2rem] border border-purple-500/20 bg-gradient-to-br from-purple-100 to-cyan-50 p-5 shadow-xl dark:from-zinc-900 dark:to-slate-900">
+            <Image
+              src="/images/joao software engineer api java docker AI.png"
+              alt="João Vitor da Silva"
+              width={520}
+              height={520}
+              priority
+              className="aspect-square w-full rounded-[1.5rem] object-cover"
+            />
+            <div className="absolute bottom-8 left-8 right-8 rounded-2xl border border-white/30 bg-black/65 p-4 text-white backdrop-blur-md">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">MRM Brasil</p>
+              <p className="mt-1 font-semibold">Software Engineer</p>
+            </div>
           </div>
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

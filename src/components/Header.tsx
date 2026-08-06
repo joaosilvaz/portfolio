@@ -50,7 +50,7 @@ export default function Header() {
                 ))}
             </nav>
 
-            <button className="lg:hidden z-20" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button className="lg:hidden z-20" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={isMenuOpen}>
                 {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
 
@@ -72,7 +72,7 @@ export default function Header() {
                         <Link href="https://github.com/joaosilvaz" target="_blank">
                             <FaGithub size={18} />
                         </Link>
-                        <Link href="https://www.linkedin.com/in/jo%C3%A3o-vitor-da-silva-5677202b1/" target="_blank">
+                        <Link href="https://www.linkedin.com/in/joaovitorsilva-dev" target="_blank">
                             <FaLinkedinIn size={18} />
                         </Link>
                         <div className="cursor-pointer transition-all" onClick={toggleLanguage}>
@@ -88,6 +88,7 @@ export default function Header() {
                         {mounted && (
                             <button
                                 onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                                aria-label={isDark ? 'Ativar tema claro' : 'Ativar tema escuro'}
                                 className="cursor-pointer transition-all hover:scale-110 duration-300"
                             >
                                 {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
@@ -112,6 +113,7 @@ export default function Header() {
                 {mounted && (
                     <button
                         onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                        aria-label={isDark ? 'Ativar tema claro' : 'Ativar tema escuro'}
                         className="ml-2 cursor-pointer transition-all hover:scale-110 duration-300 text-black dark:text-white"
                     >
                         {isDark ? <SunIcon size={20} /> : <MoonIcon size={20} />}
@@ -119,10 +121,10 @@ export default function Header() {
                 )}
 
                 <div className="w-px h-6 bg-gray-400 mx-4" />
-                <Link href="https://www.linkedin.com/in/jo%C3%A3o-vitor-da-silva-5677202b1/" target='blank' className="bg-gradient-to-r from-purple-500 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
+                <Link href="https://www.linkedin.com/in/joaovitorsilva-dev" target="_blank" className="bg-gradient-to-r from-purple-500 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
                     <FaLinkedin size={20} />
                 </Link>
-                <Link href="https://github.com/joaosilvaz" target='blank' className="bg-gradient-to-r from-purple-500 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
+                <Link href="https://github.com/joaosilvaz" target="_blank" className="bg-gradient-to-r from-purple-500 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
                     <FaGithub size={20} />
                 </Link>
             </div>
