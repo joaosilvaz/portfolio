@@ -1,10 +1,28 @@
 {
+  "seo": {
+    "title": "João Vitor da Silva — Software Engineer Full Stack",
+    "description": "Software Engineer full stack com mais de 2 anos de experiência criando produtos digitais para marcas como GM, Mastercard, LATAM e L'Oréal. Especialista em React, Next.js, Java e IA aplicada a produtos reais.",
+    "keywords": ["João Vitor da Silva", "Software Engineer", "Desenvolvedor Full Stack", "React", "Next.js", "Java", "TypeScript", "Spring Boot", "Desenvolvedor de Software São Paulo"]
+  },
+  "common": {
+    "scrollToTop": "Voltar ao topo",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "lightTheme": "Ativar tema claro",
+    "darkTheme": "Ativar tema escuro",
+    "github": "Abrir GitHub",
+    "linkedin": "Abrir LinkedIn",
+    "switchLanguage": "Mudar idioma",
+    "openChat": "Abrir assistente de IA",
+    "closeChat": "Fechar assistente"
+  },
   "header": {
     "home": "Home",
     "about": "Sobre mim",
     "tech": "Tecnologias",
     "projects": "Projetos",
-    "chat": "ChatBot IA"
+    "chat": "ChatBot IA",
+    "contact": "Contato"
   },
   "home": {
     "badge": "Software Engineer • São Paulo",
@@ -32,7 +50,7 @@
     "title": "Sobre mim",
     "eyebrow": "Perfil profissional",
     "headline": "Engenharia de software com impacto real no negócio.",
-    "description": "Sou Software Engineer com atuação full stack e mais de 2 anos de experiência criando produtos digitais enterprise para marcas como GM, Mastercard, Leroy Merlin, LATAM Airlines, Stellantis, L’Oréal e Diageo. Na MRM McCann Worldgroup, desenvolvo plataformas de alta performance em squads ágeis e atualmente trabalho no Lens Analytics, produto interno com IA generativa via AWS Bedrock que transforma horas de relatórios manuais em insights entregues em segundos.\n\nMinha experiência inclui campanhas para The Town, Lollapalooza Brasil e Rock in Rio, além de plataformas governamentais em AEM para a PRODESP. Agora, especializo-me em produtos com IA e arquitetura backend com Java, Spring Boot e Docker por meio da Pós-Tech FIAP e de projetos com AWS Bedrock e Claude API.",
+    "description": "Sou Engenheiro de Software com atuação full stack e mais de 2 anos de experiência criando produtos digitais enterprise para marcas como GM, Mastercard, Leroy Merlin, LATAM Airlines, Stellantis, L’Oréal e Diageo. Na MRM McCann Worldgroup, desenvolvo plataformas de alta performance em squads ágeis e atualmente trabalho no Lens Analytics, produto interno com IA generativa via AWS Bedrock que transforma horas de relatórios manuais em insights entregues em segundos.\n\nMinha experiência inclui campanhas para The Town, Lollapalooza Brasil e Rock in Rio, além de plataformas governamentais em AEM para a PRODESP. Agora, especializo-me em produtos com IA e arquitetura backend com Java, Spring Boot e Docker por meio da Pós-Tech FIAP e de projetos com AWS Bedrock e Claude API.",
     "seeTechnologies": "Explorar tecnologias",
     "linkedinCTA": "Conversar no LinkedIn",
     "highlightsTitle": "O que eu entrego",
@@ -176,7 +194,7 @@
     "placeholderTitle": "Título",
     "placeholderName": "Seu nome",
     "placeholderEmail": "Seu email",
-    "placeholderMessage": "Messagem",
+    "placeholderMessage": "Mensagem",
     "button": "Enviar mensagem",
     "success": "Mensagem enviada com sucesso!",
     "error": "Erro ao enviar. Tente novamente."
@@ -187,6 +205,7 @@
     "techs": "Tecnologias",
     "projects": "Projetos",
     "chat": "ChatBot IA",
+    "contact": "Contato",
     "textFooter": "2026 João Vitor da Silva. Todos os direitos reservados."
   }
 }

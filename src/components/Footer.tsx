@@ -4,13 +4,14 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export default function Footer() {
     const t = useTranslations('footer');
+    const tc = useTranslations('common');
 
     return (
         <footer className="bg-white dark:bg-[var(--bg-gradient)] text-black dark:text-white transition-all py-[50px] overflow-hidden">
             <div className="container mx-auto px-4 flex flex-col items-center justify-center">
                 <div className="flex flex-col md:flex-row items-center md:justify-center gap-4 md:gap-30 mb-12 w-full">
                     <Link href="#home">
-                        <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-500">
+                        <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">
                             &lt;/&gt; João Vitor
                         </span>
                     </Link>
@@ -20,16 +21,17 @@ export default function Footer() {
                         <li><Link href="#technologies" className="hover:text-blue-300 transition-all">{t('techs')}</Link></li>
                         <li><Link href="#projects" className="hover:text-blue-300 transition-all">{t('projects')}</Link></li>
                         <li><Link href="#chatbot" className="hover:text-blue-300 transition-all">{t('chat')}</Link></li>
+                        <li><Link href="#contact" className="hover:text-blue-300 transition-all">{t('contact')}</Link></li>
                     </ul>
                 </div>
 
                 <hr className="w-full border-slate-200 mb-10 dark:border-slate-800" />
 
                 <div className="flex items-center gap-2 mb-4">
-                    <Link href="https://www.linkedin.com/in/joaovitorsilva-dev" target="_blank" className="bg-gradient-to-r from-purple-500 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
+                    <Link href="https://www.linkedin.com/in/joaovitorsilva-dev" target="_blank" aria-label={tc('linkedin')} className="bg-gradient-to-r from-blue-600 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
                         <FaLinkedin size={20} />
                     </Link>
-                    <Link href="https://github.com/joaosilvaz" target="_blank" className="bg-gradient-to-r from-purple-500 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
+                    <Link href="https://github.com/joaosilvaz" target="_blank" aria-label={tc('github')} className="bg-gradient-to-r from-blue-600 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
                         <FaGithub size={20} />
                     </Link>
                 </div>

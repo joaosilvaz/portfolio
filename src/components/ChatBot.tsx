@@ -37,13 +37,14 @@ interface ChatWindowProps {
     inputRef: React.RefObject<HTMLInputElement | null>
     suggestedQuestions: string[]
     t: (key: string) => string
+    closeLabel: string
 }
 
 
 function ChatWindow({
     open, setOpen, messages, input, setInput,
     loading, started, sendMessage, bottomRef, inputRef,
-    suggestedQuestions, t
+    suggestedQuestions, t, closeLabel
 }: ChatWindowProps) {
     return (
         <AnimatePresence>
@@ -53,10 +54,10 @@ function ChatWindow({
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 20, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="fixed bottom-24 right-6 z-50 w-[90vw] max-w-sm rounded-2xl shadow-2xl shadow-purple-500/20 ring-1 ring-purple-500/30 bg-white dark:bg-zinc-900 overflow-hidden flex flex-col"
+                    className="fixed bottom-24 right-6 z-50 w-[90vw] max-w-sm rounded-2xl shadow-2xl shadow-blue-600/20 ring-1 ring-blue-600/30 bg-white dark:bg-zinc-900 overflow-hidden flex flex-col"
                     style={{ height: '520px' }}
                 >
-                    <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-purple-500 to-blue-500">
+                    <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-blue-600 to-blue-500">
                         <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
                                 <Bot size={18} className="text-white" />
@@ -69,7 +70,7 @@ function ChatWindow({
                                 </div>
                             </div>
                         </div>
-                        <button onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors cursor-pointer">
+                        <button onClick={() => setOpen(false)} aria-label={closeLabel} className="text-white/70 hover:text-white transition-colors cursor-pointer">
                             <X size={20} />
                         </button>
                     </div>
@@ -83,7 +84,7 @@ function ChatWindow({
                                         <button
                                             key={i}
                                             onClick={() => sendMessage(q)}
-                                            className="text-xs px-3 py-2 rounded-full border border-purple-500/40 text-black dark:text-white hover:bg-purple-500/10 hover:border-purple-500 transition-all duration-200 cursor-pointer text-left"
+                                            className="text-xs px-3 py-2 rounded-full border border-blue-600/40 text-black dark:text-white hover:bg-blue-600/10 hover:border-blue-600 transition-all duration-200 cursor-pointer text-left"
                                         >
                                             {q}
                                         </button>
@@ -96,7 +97,7 @@ function ChatWindow({
                             <div key={i} className={`flex gap-2 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                                 <div className={`max-w-[78%] px-3 py-2.5 rounded-2xl text-sm leading-relaxed
                                     ${msg.role === 'user'
-                                        ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-tr-sm'
+                                        ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-tr-sm'
                                         : 'bg-gray-100 dark:bg-zinc-800 text-black dark:text-gray-200 rounded-tl-sm'
                                     }`}
                                 >
@@ -123,13 +124,13 @@ function ChatWindow({
 
                         {loading && (
                             <div className="flex gap-2">
-                                <div className="w-7 h-7 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 flex items-center justify-center flex-shrink-0">
+                                <div className="w-7 h-7 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 flex items-center justify-center flex-shrink-0">
                                     <Bot size={12} className="text-white" />
                                 </div>
                                 <div className="bg-gray-100 dark:bg-zinc-800 px-4 py-3 rounded-2xl rounded-tl-sm flex gap-1 items-center">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce [animation-delay:0ms]" />
-                                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce [animation-delay:150ms]" />
-                                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce [animation-delay:300ms]" />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-bounce [animation-delay:0ms]" />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-bounce [animation-delay:150ms]" />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-bounce [animation-delay:300ms]" />
                                 </div>
                             </div>
                         )}
@@ -144,12 +145,12 @@ function ChatWindow({
                             onChange={e => setInput(e.target.value)}
                             onKeyDown={e => e.key === 'Enter' && sendMessage()}
                             placeholder={t('placeholder')}
-                            className="flex-1 bg-gray-100 dark:bg-zinc-800 text-black dark:text-white rounded-full px-4 py-2 text-sm outline-none placeholder-gray-400 focus:ring-1 focus:ring-purple-500/50 transition-all"
+                            className="flex-1 bg-gray-100 dark:bg-zinc-800 text-black dark:text-white rounded-full px-4 py-2 text-sm outline-none placeholder-gray-400 focus:ring-1 focus:ring-blue-600/50 transition-all"
                         />
                         <button
                             onClick={() => sendMessage()}
                             disabled={!input.trim() || loading}
-                            className="p-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:opacity-90 transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                            className="p-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:opacity-90 transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
                         >
                             <Send size={16} />
                         </button>
@@ -162,6 +163,7 @@ function ChatWindow({
 
 export default function ChatBot() {
     const t = useTranslations('chatbot')
+    const tc = useTranslations('common')
     const [open, setOpen] = useState(false)
     const [messages, setMessages] = useState<Message[]>([])
     const [input, setInput] = useState('')
@@ -218,11 +220,11 @@ export default function ChatBot() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.8 }}
-                        className="rounded-2xl ring-1 ring-purple-500/30 bg-gradient-to-br from-purple-500/5 to-cyan-400/5 dark:from-purple-500/10 dark:to-cyan-400/10 p-10 md:p-16 flex flex-col md:flex-row items-center gap-10"
+                        className="rounded-2xl ring-1 ring-blue-600/30 bg-gradient-to-br from-blue-600/5 to-cyan-400/5 dark:from-blue-600/10 dark:to-cyan-400/10 p-10 md:p-16 flex flex-col md:flex-row items-center gap-10"
                     >
                         {/* texto */}
                         <div className="flex-1 md:text-left text-center">
-                            <div className="inline-flex items-center gap-2 bg-purple-500/10 text-purple-500 text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
+                            <div className="inline-flex items-center gap-2 bg-blue-600/10 text-blue-600 text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
                                 <Sparkles size={14} />
                                 {t('badge')}
                             </div>
@@ -234,7 +236,7 @@ export default function ChatBot() {
                             </p>
                             <button
                                 onClick={() => setOpen(true)}
-                                className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-base hover:opacity-90 transition-all duration-300 cursor-pointer"
+                                className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-base hover:opacity-90 transition-all duration-300 cursor-pointer"
                             >
                                 <MessageCircle size={20} />
                                 {t('sectionButton')}
@@ -242,8 +244,8 @@ export default function ChatBot() {
                         </div>
 
                         {/* preview decorativo */}
-                        <div className="flex-shrink-0 w-full md:w-80 rounded-2xl ring-1 ring-purple-500/20 bg-white dark:bg-zinc-900 overflow-hidden shadow-xl shadow-purple-500/10">
-                            <div className="px-4 py-3 bg-gradient-to-r from-purple-500 to-blue-500 flex items-center gap-2">
+                        <div className="flex-shrink-0 w-full md:w-80 rounded-2xl ring-1 ring-blue-600/20 bg-white dark:bg-zinc-900 overflow-hidden shadow-xl shadow-blue-600/10">
+                            <div className="px-4 py-3 bg-gradient-to-r from-blue-600 to-blue-500 flex items-center gap-2">
                                 <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
                                     <Bot size={13} className="text-white" />
                                 </div>
@@ -255,7 +257,7 @@ export default function ChatBot() {
                             </div>
                             <div className="p-4 flex flex-col gap-3">
                                 <div className="flex gap-2">
-                                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 flex items-center justify-center flex-shrink-0">
+                                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 flex items-center justify-center flex-shrink-0">
                                         <Bot size={11} className="text-white" />
                                     </div>
                                     <div className="bg-gray-100 dark:bg-zinc-800 px-3 py-2 rounded-2xl rounded-tl-sm text-xs text-black dark:text-gray-200 max-w-[85%]">
@@ -263,15 +265,15 @@ export default function ChatBot() {
                                     </div>
                                 </div>
                                 <div className="flex gap-2 flex-row-reverse">
-                                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0">
+                                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 flex items-center justify-center flex-shrink-0">
                                         <User size={11} className="text-white" />
                                     </div>
-                                    <div className="bg-gradient-to-r from-purple-500 to-blue-500 px-3 py-2 rounded-2xl rounded-tr-sm text-xs text-white max-w-[85%]">
+                                    <div className="bg-gradient-to-r from-blue-600 to-blue-500 px-3 py-2 rounded-2xl rounded-tr-sm text-xs text-white max-w-[85%]">
                                         {t('previewMessage2')}
                                     </div>
                                 </div>
                                 <div className="flex gap-2">
-                                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-cyan-400 flex items-center justify-center flex-shrink-0">
+                                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 flex items-center justify-center flex-shrink-0">
                                         <Bot size={11} className="text-white" />
                                     </div>
                                     <div className="bg-gray-100 dark:bg-zinc-800 px-3 py-2 rounded-2xl rounded-tl-sm text-xs text-black dark:text-gray-200 max-w-[85%]">
@@ -279,9 +281,9 @@ export default function ChatBot() {
                                     </div>
                                 </div>
                                 <div className="flex gap-1 items-center mt-1 ml-8">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce [animation-delay:0ms]" />
-                                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce [animation-delay:150ms]" />
-                                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-bounce [animation-delay:300ms]" />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-bounce [animation-delay:0ms]" />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-bounce [animation-delay:150ms]" />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-bounce [animation-delay:300ms]" />
                                 </div>
                             </div>
                         </div>
@@ -303,12 +305,14 @@ export default function ChatBot() {
                 inputRef={inputRef}
                 suggestedQuestions={suggestedQuestions}
                 t={t}
+                closeLabel={tc('closeChat')}
             />
 
             {/* botão flutuante */}
             <motion.button
                 onClick={() => setOpen(prev => !prev)}
-                className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg shadow-purple-500/40 flex items-center justify-center hover:opacity-90 transition-all cursor-pointer"
+                aria-label={open ? tc('closeChat') : tc('openChat')}
+                className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-600/40 flex items-center justify-center hover:opacity-90 transition-all cursor-pointer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
             >

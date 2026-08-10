@@ -9,6 +9,7 @@
 }
 
 :root {
+  --bg-gradient: linear-gradient(180deg, #000000 0%, #050b18 45%, #030712 100%);
   --radius: 0.5rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
@@ -101,9 +102,9 @@ body {
   background: rgb(14, 14, 14);
 }
 
-::-webkit-scrollbar-thumb { 
+::-webkit-scrollbar-thumb {
   border-radius: 0.5rem;
-  background-color: rgb(99, 94, 255);
+  background-color: rgb(37, 99, 235);
 }
 
 @keyframes blink {

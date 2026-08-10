@@ -47,7 +47,7 @@ type SelectedProject = {
 function ProjectVisual({ variant }: { variant: FeaturedProject['id'] }) {
     if (variant === 'lens') {
         return (
-            <div className="relative flex min-h-72 flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950 p-7 text-white lg:min-h-full">
+            <div className="relative flex min-h-72 flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-black via-slate-950 to-blue-950 p-7 text-white lg:min-h-full">
                 <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl" />
                 <div className="relative flex items-center justify-between">
                     <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-1.5 text-xs font-bold text-cyan-200">
@@ -57,12 +57,12 @@ function ProjectVisual({ variant }: { variant: FeaturedProject['id'] }) {
                 </div>
                 <div className="relative my-10 grid grid-cols-[1fr_auto] items-end gap-6">
                     <div>
-                        <p className="text-xs font-bold uppercase tracking-[0.25em] text-purple-300">Lens Analytics</p>
+                        <p className="text-xs font-bold uppercase tracking-[0.25em] text-blue-300">Lens Analytics</p>
                         <p className="mt-3 text-4xl font-bold tracking-tight">Hours <span className="text-cyan-300">→</span> seconds</p>
                     </div>
                     <div className="flex h-24 items-end gap-2" aria-hidden="true">
                         {[35, 52, 44, 72, 64, 92].map((height, index) => (
-                            <span key={index} className="w-3 rounded-t bg-gradient-to-t from-purple-500 to-cyan-300" style={{ height: `${height}%` }} />
+                            <span key={index} className="w-3 rounded-t bg-gradient-to-t from-blue-600 to-cyan-300" style={{ height: `${height}%` }} />
                         ))}
                     </div>
                 </div>
@@ -75,9 +75,9 @@ function ProjectVisual({ variant }: { variant: FeaturedProject['id'] }) {
 
     if (variant === 'assistant') {
         return (
-            <div className="flex min-h-72 flex-col justify-between rounded-3xl bg-gradient-to-br from-blue-50 to-purple-100 p-7 text-slate-950 dark:from-slate-900 dark:to-indigo-950 dark:text-white lg:min-h-full">
+            <div className="flex min-h-72 flex-col justify-between rounded-3xl bg-gradient-to-br from-blue-50 to-blue-100 p-7 text-slate-950 dark:from-slate-900 dark:to-blue-950 dark:text-white lg:min-h-full">
                 <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-purple-500/10 px-3 py-1.5 text-xs font-bold text-purple-700 dark:text-purple-200">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-blue-600/10 px-3 py-1.5 text-xs font-bold text-blue-800 dark:text-blue-200">
                         <Bot size={14} /> CLAUDE API
                     </span>
                     <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
@@ -86,7 +86,7 @@ function ProjectVisual({ variant }: { variant: FeaturedProject['id'] }) {
                     <div className="mr-10 rounded-2xl rounded-bl-sm bg-white p-4 text-sm text-gray-700 shadow-sm dark:bg-white/10 dark:text-gray-200">
                         Como João aplica IA em produtos reais?
                     </div>
-                    <div className="ml-10 rounded-2xl rounded-br-sm bg-gradient-to-r from-purple-500 to-blue-500 p-4 text-sm text-white">
+                    <div className="ml-10 rounded-2xl rounded-br-sm bg-gradient-to-r from-blue-600 to-blue-500 p-4 text-sm text-white">
                         Posso explicar sua experiência com AWS Bedrock, Claude API e Lens Analytics.
                     </div>
                 </div>
@@ -96,7 +96,7 @@ function ProjectVisual({ variant }: { variant: FeaturedProject['id'] }) {
     }
 
     return (
-        <div className="relative flex min-h-72 flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-slate-950 to-indigo-950 p-7 text-white lg:min-h-full">
+        <div className="relative flex min-h-72 flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-slate-950 to-blue-950 p-7 text-white lg:min-h-full">
             <div className="absolute -bottom-24 -right-20 h-64 w-64 rounded-full border-[32px] border-blue-500/10" />
             <div className="relative flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-bold text-white/80">
@@ -105,7 +105,7 @@ function ProjectVisual({ variant }: { variant: FeaturedProject['id'] }) {
                 <span className="text-sm font-black tracking-[0.28em] text-white/70">GM</span>
             </div>
             <div className="relative my-10">
-                <p className="text-xs font-bold uppercase tracking-[0.25em] text-purple-300">Dealer 4.0</p>
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-blue-300">Dealer 4.0</p>
                 <p className="mt-3 text-4xl font-bold tracking-tight">Blazer EV <span className="text-cyan-300">RS</span></p>
                 <p className="mt-2 text-sm text-white/55">Interactive touchscreen configurator</p>
             </div>
@@ -238,7 +238,7 @@ export default function Projects() {
                     transition={{ duration: 0.65 }}
                     className="max-w-3xl"
                 >
-                    <p className="text-sm font-bold uppercase tracking-[0.22em] text-purple-600 dark:text-purple-300">{t('eyebrow')}</p>
+                    <p className="text-sm font-bold uppercase tracking-[0.22em] text-blue-700 dark:text-blue-300">{t('eyebrow')}</p>
                     <h2 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">{t('title')}</h2>
                     <p className="mt-5 text-lg leading-relaxed text-gray-600 dark:text-gray-400">{t('description')}</p>
                 </motion.div>
@@ -251,8 +251,8 @@ export default function Projects() {
                             onClick={() => setActiveFilter(filter.value)}
                             aria-pressed={activeFilter === filter.value}
                             className={activeFilter === filter.value
-                                ? 'rounded-full bg-gradient-to-r from-purple-500 to-blue-500 px-4 py-2 text-sm font-bold text-white'
-                                : 'rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 transition hover:border-purple-500 hover:text-purple-600 dark:border-white/15 dark:text-gray-300 dark:hover:border-purple-400 dark:hover:text-purple-300'
+                                ? 'rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-4 py-2 text-sm font-bold text-white'
+                                : 'rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 transition hover:border-blue-600 hover:text-blue-700 dark:border-white/15 dark:text-gray-300 dark:hover:border-blue-400 dark:hover:text-blue-300'
                             }
                         >
                             {filter.label}
@@ -285,7 +285,7 @@ export default function Projects() {
 
                                     <div className="flex flex-col p-7 md:p-9 lg:p-10">
                                         <div className="flex flex-wrap items-center justify-between gap-3">
-                                            <p className="text-xs font-bold uppercase tracking-[0.18em] text-purple-600 dark:text-purple-300">{project.category}</p>
+                                            <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-300">{project.category}</p>
                                             <span className="rounded-full bg-emerald-500/10 px-3 py-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-300">{project.status}</span>
                                         </div>
 
@@ -315,13 +315,13 @@ export default function Projects() {
                                                     href={project.primaryLink}
                                                     target={project.primaryLink.startsWith('#') ? undefined : '_blank'}
                                                     rel={project.primaryLink.startsWith('#') ? undefined : 'noreferrer'}
-                                                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 px-5 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5"
+                                                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-2.5 text-sm font-bold text-white transition hover:-translate-y-0.5"
                                                 >
                                                     {project.primaryLabel} <ArrowUpRight size={16} />
                                                 </Link>
                                             )}
                                             {project.githubLink && (
-                                                <Link href={project.githubLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-5 py-2.5 text-sm font-bold transition hover:border-purple-500 hover:text-purple-600 dark:border-white/20 dark:hover:border-purple-400 dark:hover:text-purple-300">
+                                                <Link href={project.githubLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-5 py-2.5 text-sm font-bold transition hover:border-blue-600 hover:text-blue-700 dark:border-white/20 dark:hover:border-blue-400 dark:hover:text-blue-300">
                                                     <Github size={16} /> {t('viewCode')}
                                                 </Link>
                                             )}
@@ -351,13 +351,13 @@ export default function Projects() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true, amount: 0.15 }}
                                     transition={{ duration: 0.5 }}
-                                    className="flex overflow-hidden rounded-3xl border border-gray-200 bg-white transition hover:-translate-y-1 hover:border-purple-500/35 dark:border-white/10 dark:bg-white/[0.035] md:flex-col"
+                                    className="flex overflow-hidden rounded-3xl border border-gray-200 bg-white transition hover:-translate-y-1 hover:border-blue-600/35 dark:border-white/10 dark:bg-white/[0.035] md:flex-col"
                                 >
                                     <div className="relative w-32 flex-shrink-0 overflow-hidden bg-gray-100 md:h-48 md:w-full dark:bg-white/5">
                                         <Image src={project.image} alt={project.title} fill className="object-cover transition duration-500 hover:scale-105" sizes="(max-width: 768px) 128px, 33vw" />
                                     </div>
                                     <div className="flex flex-1 flex-col p-5 md:p-6">
-                                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-purple-600 dark:text-purple-300">{project.category}</p>
+                                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-700 dark:text-blue-300">{project.category}</p>
                                         <h4 className="mt-2 text-xl font-bold">{project.title}</h4>
                                         <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{project.description}</p>
                                         <p className="mt-4 border-l-2 border-cyan-400 pl-3 text-xs font-semibold text-gray-700 dark:text-gray-200">{project.impact}</p>
@@ -368,12 +368,12 @@ export default function Projects() {
                                         </div>
                                         <div className="mt-auto flex flex-wrap gap-4 pt-6 text-sm font-bold">
                                             {project.liveLink && (
-                                                <Link href={project.liveLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-purple-600 hover:text-purple-500 dark:text-purple-300">
+                                                <Link href={project.liveLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-blue-700 hover:text-blue-600 dark:text-blue-300">
                                                     <ExternalLink size={15} /> {t('viewProject')}
                                                 </Link>
                                             )}
                                             {project.githubLink && (
-                                                <Link href={project.githubLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-300">
+                                                <Link href={project.githubLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-gray-700 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-300">
                                                     <Github size={15} /> {t('viewCode')}
                                                 </Link>
                                             )}
@@ -399,8 +399,8 @@ export default function Projects() {
                                 <div key={project.title} className="flex items-center justify-between gap-4 rounded-2xl bg-gray-50 p-4 dark:bg-white/5">
                                     <span className="text-sm font-semibold">{project.title}</span>
                                     <div className="flex gap-3">
-                                        <Link href={project.liveLink} target="_blank" rel="noreferrer" aria-label={`${t('viewProject')}: ${project.title}`} className="text-gray-500 transition hover:text-purple-500"><ExternalLink size={17} /></Link>
-                                        <Link href={project.githubLink} target="_blank" rel="noreferrer" aria-label={`${t('viewCode')}: ${project.title}`} className="text-gray-500 transition hover:text-purple-500"><Github size={17} /></Link>
+                                        <Link href={project.liveLink} target="_blank" rel="noreferrer" aria-label={`${t('viewProject')}: ${project.title}`} className="text-gray-500 transition hover:text-blue-600"><ExternalLink size={17} /></Link>
+                                        <Link href={project.githubLink} target="_blank" rel="noreferrer" aria-label={`${t('viewCode')}: ${project.title}`} className="text-gray-500 transition hover:text-blue-600"><Github size={17} /></Link>
                                     </div>
                                 </div>
                             ))}

@@ -9,6 +9,7 @@ import ScrollToTop from "./ScrollTop";
 import ScrollProgressBar from "./ScrollProgressBar";
 import Stats from "./Stats";
 import ChatBot from "./ChatBot";
+import Contact from "./Contact";
 
 export default function Main() {
   return (
@@ -21,6 +22,7 @@ export default function Main() {
       <Technologies />
       <Projetos />
       <ChatBot />
+      <Contact />
       <Footer />
       <ScrollToTop />
     </>

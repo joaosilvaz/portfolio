@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 
 import { AOSInitializer } from "@/components/AOSInitializer";
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
@@ -16,18 +16,56 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-export const metadata: Metadata = {
-  title: 'João Vitor da Silva - Portfolio',
-  description: 'Portfólio of João Vitor da Silva, Full Stack Developer',
-  icons: {
-    icon: '/favicon.ico',
-  },
-};
+const siteUrl = 'https://joaovitor.tech';
 
 type LayoutProps = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'seo' });
+
+  const title = t('title');
+  const description = t('description');
+  const keywords = t.raw('keywords') as string[];
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: title,
+      template: '%s · João Vitor da Silva',
+    },
+    description,
+    keywords,
+    authors: [{ name: 'João Vitor da Silva', url: siteUrl }],
+    creator: 'João Vitor da Silva',
+    icons: {
+      icon: '/favicon.ico',
+    },
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        pt: '/pt',
+        en: '/en',
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/${locale}`,
+      siteName: 'João Vitor da Silva',
+      locale: locale === 'pt' ? 'pt_BR' : 'en_US',
+      type: 'profile',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+  };
+}
 
 
 const Layout: React.FC<LayoutProps> = async ({ children, params }) => {

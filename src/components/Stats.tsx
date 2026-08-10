@@ -40,7 +40,7 @@ export default function Stats() {
 
     const stats = [
         {
-            icon: <Briefcase size={28} className="text-purple-500" />,
+            icon: <Briefcase size={28} className="text-blue-600" />,
             value: 6,
             suffix: '+',
             label: t('projects'),
@@ -52,7 +52,7 @@ export default function Stats() {
             label: t('technologies'),
         },
         {
-            icon: <GitCommit size={28} className="text-purple-500" />,
+            icon: <GitCommit size={28} className="text-blue-600" />,
             value: 300,
             suffix: '+',
             label: t('commits'),
@@ -77,12 +77,12 @@ export default function Stats() {
                 {stats.map((stat, index) => (
                     <div
                         key={index}
-                        className="flex flex-col items-center text-center gap-3 p-6 rounded-xl ring-1 ring-purple-500/20 hover:ring-purple-500/50 bg-white dark:bg-zinc-800/40 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10"
+                        className="flex flex-col items-center text-center gap-3 p-6 rounded-xl ring-1 ring-blue-600/20 hover:ring-blue-600/50 bg-white dark:bg-zinc-800/40 transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/10"
                     >
-                        <div className="p-3 rounded-full bg-purple-500/10">
+                        <div className="p-3 rounded-full bg-blue-600/10">
                             {stat.icon}
                         </div>
-                        <p className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-400">
+                        <p className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400">
                             <CountUp target={stat.value} />{stat.suffix}
                         </p>
                         <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">

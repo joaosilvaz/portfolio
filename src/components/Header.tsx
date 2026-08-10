@@ -12,6 +12,7 @@ export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [mounted, setMounted] = useState(false)
     const t = useTranslations('header')
+    const tc = useTranslations('common')
     const router = useRouter()
     const pathname = usePathname()
     const { theme, setTheme } = useTheme()
@@ -30,9 +31,9 @@ export default function Header() {
     return (
         <header className="fixed bg-back-dark !bg-opacity-80 backdrop-blur-sm transition z-10 shadow-[0px_3px_15px_0px] dark:shadow-[#151725] shadow-[#e0e0e0] w-full px-4 md:px-8 xl:px-28 py-10 flex items-center justify-between text-black dark:text-white">
             <div className="text-2xl font-bold flex items-center gap-2 z-20">
-                <span className="text-purple-500">&lt;/&gt;</span>
+                <span className="text-blue-600">&lt;/&gt;</span>
                 <Link href="#home">
-                    <span className="bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent">João Vitor</span>
+                    <span className="bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent">João Vitor</span>
                 </Link>
             </div>
 
@@ -42,15 +43,16 @@ export default function Header() {
                     { label: t('tech'), href: '#technologies' },
                     { label: t('projects'), href: '#projects' },
                     { label: t('chat'), href: '#chatbot' },
+                    { label: t('contact'), href: '#contact' },
                 ].map(({ label, href }) => (
                     <Link key={href} href={href} className="relative group">
                         <span>{label}</span>
-                        <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-gradient-to-r from-purple-500 to-cyan-400 transition-all duration-300 group-hover:w-full" />
+                        <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-gradient-to-r from-blue-600 to-cyan-400 transition-all duration-300 group-hover:w-full" />
                     </Link>
                 ))}
             </nav>
 
-            <button className="lg:hidden z-20" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={isMenuOpen}>
+            <button className="lg:hidden z-20" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? tc('closeMenu') : tc('openMenu')} aria-expanded={isMenuOpen}>
                 {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
 
@@ -62,6 +64,7 @@ export default function Header() {
                         { label: t('tech'), href: '#technologies' },
                         { label: t('projects'), href: '#projects' },
                         { label: t('chat'), href: '#chatbot' },
+                        { label: t('contact'), href: '#contact' },
                     ].map(({ label, href }) => (
                         <Link key={href} href={href} onClick={() => setIsMenuOpen(false)}>
                             {label}
@@ -69,26 +72,26 @@ export default function Header() {
                     ))}
 
                     <div className="flex items-center gap-6 pt-3 border-t border-gray-300">
-                        <Link href="https://github.com/joaosilvaz" target="_blank">
+                        <Link href="https://github.com/joaosilvaz" target="_blank" aria-label={tc('github')}>
                             <FaGithub size={18} />
                         </Link>
-                        <Link href="https://www.linkedin.com/in/joaovitorsilva-dev" target="_blank">
+                        <Link href="https://www.linkedin.com/in/joaovitorsilva-dev" target="_blank" aria-label={tc('linkedin')}>
                             <FaLinkedinIn size={18} />
                         </Link>
-                        <div className="cursor-pointer transition-all" onClick={toggleLanguage}>
+                        <button type="button" className="cursor-pointer transition-all" onClick={toggleLanguage} aria-label={tc('switchLanguage')}>
                             <Image
                                 src={pathname.startsWith('/pt') ? '/images/bandeira-brasil.png' : '/images/bandeira-eua.png'}
-                                alt="Flag"
+                                alt=""
                                 width={24}
                                 height={24}
                                 className="h-8 w-8"
                             />
-                        </div>
+                        </button>
                         {/* theme toggle no menu mobile */}
                         {mounted && (
                             <button
                                 onClick={() => setTheme(isDark ? 'light' : 'dark')}
-                                aria-label={isDark ? 'Ativar tema claro' : 'Ativar tema escuro'}
+                                aria-label={isDark ? tc('lightTheme') : tc('darkTheme')}
                                 className="cursor-pointer transition-all hover:scale-110 duration-300"
                             >
                                 {isDark ? <SunIcon size={18} /> : <MoonIcon size={18} />}
@@ -99,21 +102,21 @@ export default function Header() {
             )}
 
             <div className="hidden lg:flex items-center gap-2 z-20">
-                <div className="flex gap-2 cursor-pointer transition-all hover:scale-110 duration-300" onClick={toggleLanguage}>
+                <button type="button" className="flex gap-2 cursor-pointer transition-all hover:scale-110 duration-300" onClick={toggleLanguage} aria-label={tc('switchLanguage')}>
                     <Image
                         src={pathname.startsWith('/pt') ? '/images/bandeira-brasil.png' : '/images/bandeira-eua.png'}
-                        alt="Flag"
+                        alt=""
                         width={24}
                         height={24}
                         className="h-8 w-8"
                     />
-                </div>
+                </button>
 
                 {/* theme toggle no desktop */}
                 {mounted && (
                     <button
                         onClick={() => setTheme(isDark ? 'light' : 'dark')}
-                        aria-label={isDark ? 'Ativar tema claro' : 'Ativar tema escuro'}
+                        aria-label={isDark ? tc('lightTheme') : tc('darkTheme')}
                         className="ml-2 cursor-pointer transition-all hover:scale-110 duration-300 text-black dark:text-white"
                     >
                         {isDark ? <SunIcon size={20} /> : <MoonIcon size={20} />}
@@ -121,10 +124,10 @@ export default function Header() {
                 )}
 
                 <div className="w-px h-6 bg-gray-400 mx-4" />
-                <Link href="https://www.linkedin.com/in/joaovitorsilva-dev" target="_blank" className="bg-gradient-to-r from-purple-500 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
+                <Link href="https://www.linkedin.com/in/joaovitorsilva-dev" target="_blank" aria-label={tc('linkedin')} className="bg-gradient-to-r from-blue-600 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
                     <FaLinkedin size={20} />
                 </Link>
-                <Link href="https://github.com/joaosilvaz" target="_blank" className="bg-gradient-to-r from-purple-500 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
+                <Link href="https://github.com/joaosilvaz" target="_blank" aria-label={tc('github')} className="bg-gradient-to-r from-blue-600 to-blue-500 dark:bg-none dark:bg-white dark:text-black text-white p-2 rounded-full hover:bg-gray-900 dark:hover:bg-gray-400 transition-all duration-300">
                     <FaGithub size={20} />
                 </Link>
             </div>

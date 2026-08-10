@@ -3,21 +3,29 @@ import emailjs from "@emailjs/browser";
 import { motion } from 'framer-motion';
 import { useTranslations } from "next-intl";
 
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_b8ki7z8";
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_z4i5biq";
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "37BPOmmry-S_0f_GY";
+
 export default function ContactForm() {
   const form = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState("");
+  const [sending, setSending] = useState(false);
   const t = useTranslations('contact');
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.current) return;
+    if (!form.current || sending) return;
+
+    setSending(true);
+    setStatus("");
 
     emailjs
       .sendForm(
-        "service_b8ki7z8",         
-        "template_z4i5biq",         
-        form.current,               
-        "37BPOmmry-S_0f_GY"   
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        form.current,
+        EMAILJS_PUBLIC_KEY
       )
       .then(() => {
         setStatus(t('success'));
@@ -25,6 +33,9 @@ export default function ContactForm() {
       })
       .catch(() => {
         setStatus(t('error'));
+      })
+      .finally(() => {
+        setSending(false);
       });
   };
 
@@ -75,12 +86,13 @@ export default function ContactForm() {
             />
             <button
               type="submit"
-              className="w-fit px-6 py-2 font-medium text-white rounded-md bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg hover:opacity-90 transition cursor-pointer"
+              disabled={sending}
+              className="w-fit px-6 py-2 font-medium text-white rounded-md bg-gradient-to-r from-blue-600 to-blue-500 shadow-lg hover:opacity-90 transition cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
             >
               {t('button')}
             </button>
 
-            {status && <p className="text-sm text-gray-300 mt-2">{status}</p>}
+            {status && <p role="status" aria-live="polite" className="text-sm text-gray-600 dark:text-gray-300 mt-2">{status}</p>}
           </form>
         </div>
       </motion.div>

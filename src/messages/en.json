@@ -1,10 +1,28 @@
 {
+  "seo": {
+    "title": "João Vitor da Silva — Full Stack Software Engineer",
+    "description": "Full stack Software Engineer with 2+ years building enterprise digital products for brands like GM, Mastercard, LATAM and L'Oréal. Specialized in React, Next.js, Java and AI applied to real products.",
+    "keywords": ["João Vitor da Silva", "Software Engineer", "Full Stack Developer", "React", "Next.js", "Java", "TypeScript", "Spring Boot", "Software Developer Brazil"]
+  },
+  "common": {
+    "scrollToTop": "Back to top",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "lightTheme": "Switch to light theme",
+    "darkTheme": "Switch to dark theme",
+    "github": "Open GitHub",
+    "linkedin": "Open LinkedIn",
+    "switchLanguage": "Switch language",
+    "openChat": "Open AI assistant",
+    "closeChat": "Close assistant"
+  },
   "header": {
     "home": "Home",
     "about": "About me",
     "tech": "Technologies",
     "projects": "Projects",
-    "chat": "AI ChatBot"
+    "chat": "AI ChatBot",
+    "contact": "Contact"
   },
   "home": {
     "badge": "Software Engineer • São Paulo",
@@ -187,6 +205,7 @@
     "techs": "Technologies",
     "projects": "Projects",
     "chat": "AI ChatBot",
+    "contact": "Contact",
     "textFooter": "2026 João Vitor da Silva. All rights reserved."
   }
 }

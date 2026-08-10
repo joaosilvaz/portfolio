@@ -56,20 +56,20 @@ export default function Home() {
           transition={{ duration: 0.7 }}
           className="text-center lg:text-left"
         >
-          <span className="inline-flex items-center rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-2 text-sm font-semibold text-purple-700 dark:text-purple-300">
+          <span className="inline-flex items-center rounded-full border border-blue-600/30 bg-blue-600/10 px-4 py-2 text-sm font-semibold text-blue-800 dark:text-blue-300">
             {t('badge')}
           </span>
 
           <p className="mt-7 text-lg text-gray-600 dark:text-gray-400">{t('welcome')}</p>
           <h1 className="mt-1 text-5xl font-extrabold leading-[1.05] tracking-tight md:text-7xl">
             João Vitor
-            <span className="block bg-gradient-to-r from-purple-500 to-cyan-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent">
               da Silva
             </span>
           </h1>
 
           <h2 className="mt-6 min-h-10 text-xl font-semibold text-gray-800 dark:text-gray-200 md:text-2xl">
-            {displayedText}<span className="animate-blink text-purple-500">|</span>
+            {displayedText}<span className="animate-blink text-blue-600">|</span>
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-gray-600 dark:text-gray-400 lg:mx-0 md:text-lg">
@@ -79,7 +79,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
             <Link
               href="#projects"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 px-6 py-3 font-semibold text-white transition hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3 font-semibold text-white transition hover:-translate-y-0.5"
             >
               {t('portfolio')} <ArrowUpRight size={18} />
             </Link>
@@ -87,14 +87,14 @@ export default function Home() {
               href="https://www.linkedin.com/in/joaovitorsilva-dev"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-gray-300 px-6 py-3 font-semibold transition hover:border-purple-500 hover:text-purple-600 dark:border-white/20 dark:hover:border-purple-400 dark:hover:text-purple-300"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-gray-300 px-6 py-3 font-semibold transition hover:border-blue-600 hover:text-blue-700 dark:border-white/20 dark:hover:border-blue-400 dark:hover:text-blue-300"
             >
               {t('linkedin')} <ArrowUpRight size={18} />
             </Link>
             <a
               href={cvFile}
               download
-              className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 font-semibold text-gray-600 transition hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-300"
+              className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 font-semibold text-gray-600 transition hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-300"
             >
               <ArrowDownToLine size={18} /> {t('downloadCV')}
             </a>
@@ -103,7 +103,7 @@ export default function Home() {
           <div className="mt-9 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-gray-600 dark:text-gray-400 lg:justify-start">
             {proofPoints.map(({ icon: Icon, label }) => (
               <span key={label} className="inline-flex items-center gap-2">
-                <Icon size={17} className="text-purple-500" /> {label}
+                <Icon size={17} className="text-blue-600" /> {label}
               </span>
             ))}
           </div>
@@ -115,7 +115,7 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.15 }}
           className="relative mx-auto hidden w-full max-w-md lg:block"
         >
-          <div className="relative overflow-hidden rounded-[2rem] border border-purple-500/20 bg-gradient-to-br from-purple-100 to-cyan-50 p-5 shadow-xl dark:from-zinc-900 dark:to-slate-900">
+          <div className="relative overflow-hidden rounded-[2rem] border border-blue-600/20 bg-gradient-to-br from-blue-100 to-cyan-50 p-5 shadow-xl dark:from-zinc-900 dark:to-slate-900">
             <Image
               src="/images/joao software engineer api java docker AI.png"
               alt="João Vitor da Silva"
