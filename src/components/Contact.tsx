@@ -3,9 +3,9 @@ import emailjs from "@emailjs/browser";
 import { motion } from 'framer-motion';
 import { useTranslations } from "next-intl";
 
-const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_b8ki7z8";
-const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_z4i5biq";
-const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "37BPOmmry-S_0f_GY";
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_uonw5gs";
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_f3vo2wr";
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "YGpnzkHesMHXx-AYn";
 
 export default function ContactForm() {
   const form = useRef<HTMLFormElement>(null);
