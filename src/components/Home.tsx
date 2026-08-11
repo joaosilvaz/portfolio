@@ -15,7 +15,7 @@ export default function Home() {
   const t = useTranslations('home')
   const locale = useLocale()
   const texts = t.raw('texts') as string[]
-  const cvFile = locale === 'en' ? '/CURRICULO-JV-2026-EN.pdf' : '/CURRICULO-JV-2026-PT.pdf'
+  const cvFile = locale === 'en' ? '/cv-jv-em.pdf' : '/cv-jv-pt.pdf'
 
   useEffect(() => {
     const fullText = texts[textIndex]
