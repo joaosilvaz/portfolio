@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
-import { AOSInitializer } from "@/components/AOSInitializer";
 import { getMessages, getTranslations } from 'next-intl/server';
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { routing } from "@/i18n/routing";
@@ -91,7 +90,6 @@ const Layout: React.FC<LayoutProps> = async ({ children, params }) => {
           enableSystem
           disableTransitionOnChange
         >
-          <AOSInitializer />
           <NextIntlClientProvider messages={messages}>
             {children}
           </NextIntlClientProvider>

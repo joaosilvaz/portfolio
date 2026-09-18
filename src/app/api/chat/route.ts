@@ -278,11 +278,13 @@ export async function POST(req: NextRequest) {
             cacheCreationInputTokens: response.usage.cache_creation_input_tokens ?? 0,
             cacheReadInputTokens: response.usage.cache_read_input_tokens ?? 0,
         }
-        console.log(
-            `[tokens] input=${usage.inputTokens} output=${usage.outputTokens} ` +
-            `cache_read=${usage.cacheReadInputTokens} cache_creation=${usage.cacheCreationInputTokens} ` +
-            `total=${usage.inputTokens + usage.outputTokens}`
-        )
+        if (process.env.NODE_ENV === 'development') {
+            console.log(
+                `[tokens] input=${usage.inputTokens} output=${usage.outputTokens} ` +
+                `cache_read=${usage.cacheReadInputTokens} cache_creation=${usage.cacheCreationInputTokens} ` +
+                `total=${usage.inputTokens + usage.outputTokens}`
+            )
+        }
 
         // 7. Log da conversa (assíncrono, não bloqueia resposta)
         logConversation({ ip, messages, reply, flagged, usage })

@@ -8,21 +8,28 @@ Este é o meu portfólio como desenvolvedor de software, onde apresento minha tr
 - **Projetos**: Lista de projetos com descrições, tecnologias utilizadas e links para visualização ou repositórios.
 - **Tecnologias que utilizo**: Stack atual com as principais tecnologias que domino no desenvolvimento web.
 - **Experiência profissional**: Detalhes sobre minhas experiências, cargos e responsabilidades nas empresas pelas quais passei.
+- **Chatbot com IA**: assistente virtual (Claude API, Anthropic) treinado com meu perfil profissional, com guardrails contra prompt injection, rate limiting e log de conversas.
+- **Bilíngue (PT/EN)**: conteúdo e SEO totalmente localizados via `next-intl`.
 
 ## 🛠️ Tecnologias utilizadas
 
-O portfólio foi desenvolvido com foco em performance, responsividade e animações suaves, utilizando as seguintes ferramentas:
+**Frontend**
+- **[Next.js](https://nextjs.org/)** (App Router) e **[React](https://reactjs.org/)** – renderização híbrida e rotas otimizadas.
+- **[TypeScript](https://www.typescriptlang.org/)** – tipagem estática.
+- **[Tailwind CSS](https://tailwindcss.com/)** – estilização utilitária e responsiva.
+- **[Framer Motion](https://www.framer.com/motion/)** – animações e transições.
+- **[next-intl](https://next-intl.dev/)** – internacionalização (PT/EN).
+- **[next-themes](https://github.com/pacocoursey/next-themes)** – tema claro/escuro.
 
-- **[React](https://reactjs.org/)** – Biblioteca JavaScript para construção de interfaces de usuário.
-- **[Next.js](https://nextjs.org/)** – Framework React para renderização híbrida (SSR/SSG) e rotas otimizadas.
-- **[Tailwind CSS](https://tailwindcss.com/)** – Framework utilitário para estilização moderna e responsiva.
-- **[Framer Motion](https://www.framer.com/motion/)** – Biblioteca de animações para React com transições suaves.
-- **[AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)** – Biblioteca para animações ao rolar a página.
-- **[i18next](https://www.i18next.com/)** – Biblioteca para internacionalização (i18n), permitindo múltiplos idiomas.
+**Backend / Integrações**
+- **[Anthropic Claude API](https://www.anthropic.com/)** – chatbot de IA do portfólio.
+- **[Supabase](https://supabase.com/)** – persistência e log de conversas do chatbot.
+- **[EmailJS](https://www.emailjs.com/)** – envio do formulário de contato.
+- **[Vercel Analytics](https://vercel.com/analytics)** – métricas de uso.
 
 ## 🌍 Deploy
 
-Você pode acessar o portfólio online em: (https://joaovitor.tech/pt)
+Você pode acessar o portfólio online em: https://joaovitor.tech
 
 ---
 
@@ -32,7 +39,6 @@ Sinta-se à vontade para explorar, me conhecer melhor e entrar em contato caso q
 
 ### 📫 Contato
 
-- **Email:** joaovitoraz31@gmail.com  
-- **LinkedIn:** (https://www.linkedin.com/in/jo%C3%A3o-vitor-da-silva-5677202b1/)
-- **GitHub:** (https://github.com/joaosilvaz)
-
+- **Email:** joaovitoraz31@gmail.com
+- **LinkedIn:** https://www.linkedin.com/in/joaovitorsilva-dev
+- **GitHub:** https://github.com/joaosilvaz

@@ -8,8 +8,6 @@ import { motion } from 'framer-motion'
 import {
     ArrowUpRight,
     Bot,
-    BriefcaseBusiness,
-    Code2,
     ExternalLink,
     Github,
     LockKeyhole,
@@ -17,7 +15,7 @@ import {
 } from 'lucide-react'
 
 type FeaturedProject = {
-    id: 'dealer' | 'lens' | 'assistant'
+    id: 'lens' | 'assistant'
     category: string
     status: string
     title: string
@@ -73,47 +71,23 @@ function ProjectVisual({ variant }: { variant: FeaturedProject['id'] }) {
         )
     }
 
-    if (variant === 'assistant') {
-        return (
-            <div className="flex min-h-72 flex-col justify-between rounded-3xl bg-gradient-to-br from-blue-50 to-blue-100 p-7 text-slate-950 dark:from-slate-900 dark:to-blue-950 dark:text-white lg:min-h-full">
-                <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-blue-600/10 px-3 py-1.5 text-xs font-bold text-blue-800 dark:text-blue-200">
-                        <Bot size={14} /> CLAUDE API
-                    </span>
-                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                </div>
-                <div className="my-8 space-y-3">
-                    <div className="mr-10 rounded-2xl rounded-bl-sm bg-white p-4 text-sm text-gray-700 shadow-sm dark:bg-white/10 dark:text-gray-200">
-                        Como João aplica IA em produtos reais?
-                    </div>
-                    <div className="ml-10 rounded-2xl rounded-br-sm bg-gradient-to-r from-blue-600 to-blue-500 p-4 text-sm text-white">
-                        Posso explicar sua experiência com AWS Bedrock, Claude API e Lens Analytics.
-                    </div>
-                </div>
-                <p className="font-mono text-xs text-gray-500 dark:text-gray-400">SECURE • BILINGUAL • CONTEXT-AWARE</p>
-            </div>
-        )
-    }
-
     return (
-        <div className="relative flex min-h-72 flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-zinc-950 via-slate-950 to-blue-950 p-7 text-white lg:min-h-full">
-            <div className="absolute -bottom-24 -right-20 h-64 w-64 rounded-full border-[32px] border-blue-500/10" />
-            <div className="relative flex items-center justify-between">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-bold text-white/80">
-                    <BriefcaseBusiness size={13} /> ENTERPRISE
+        <div className="flex min-h-72 flex-col justify-between rounded-3xl bg-gradient-to-br from-blue-50 to-blue-100 p-7 text-slate-950 dark:from-slate-900 dark:to-blue-950 dark:text-white lg:min-h-full">
+            <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 rounded-full bg-blue-600/10 px-3 py-1.5 text-xs font-bold text-blue-800 dark:text-blue-200">
+                    <Bot size={14} /> CLAUDE API
                 </span>
-                <span className="text-sm font-black tracking-[0.28em] text-white/70">GM</span>
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
             </div>
-            <div className="relative my-10">
-                <p className="text-xs font-bold uppercase tracking-[0.25em] text-blue-300">Dealer 4.0</p>
-                <p className="mt-3 text-4xl font-bold tracking-tight">Blazer EV <span className="text-cyan-300">RS</span></p>
-                <p className="mt-2 text-sm text-white/55">Interactive touchscreen configurator</p>
+            <div className="my-8 space-y-3">
+                <div className="mr-10 rounded-2xl rounded-bl-sm bg-white p-4 text-sm text-gray-700 shadow-sm dark:bg-white/10 dark:text-gray-200">
+                    Como João aplica IA em produtos reais?
+                </div>
+                <div className="ml-10 rounded-2xl rounded-br-sm bg-gradient-to-r from-blue-600 to-blue-500 p-4 text-sm text-white">
+                    Posso explicar sua experiência com AWS Bedrock, Claude API e Lens Analytics.
+                </div>
             </div>
-            <div className="relative flex gap-2">
-                {['TOUCH', '3D', 'REAL-TIME'].map((item) => (
-                    <span key={item} className="rounded-full border border-white/10 px-2.5 py-1 text-[10px] font-bold tracking-wider text-white/60">{item}</span>
-                ))}
-            </div>
+            <p className="font-mono text-xs text-gray-500 dark:text-gray-400">SECURE • BILINGUAL • CONTEXT-AWARE</p>
         </div>
     )
 }
@@ -127,7 +101,6 @@ export default function Projects() {
         { label: t('filterEnterprise'), value: 'enterprise' },
         { label: t('filterAI'), value: 'ai' },
         { label: t('filterBackend'), value: 'backend' },
-        { label: t('filterFrontend'), value: 'frontend' },
     ]
 
     const featuredProjects: FeaturedProject[] = [
@@ -144,19 +117,6 @@ export default function Projects() {
             confidential: true,
         },
         {
-            id: 'dealer',
-            category: t('dealerCategory'),
-            status: t('dealerStatus'),
-            title: t('dealerTitle'),
-            summary: t('dealerSummary'),
-            role: t('dealerRole'),
-            impact: t('dealerImpact'),
-            stack: ['React', 'JavaScript', 'SCSS', 'HTML5'],
-            tags: ['enterprise', 'frontend'],
-            primaryLink: 'https://dealer-28afe.web.app/menu-intro.html',
-            primaryLabel: t('viewProduct'),
-        },
-        {
             id: 'assistant',
             category: t('assistantCategory'),
             status: t('assistantStatus'),
@@ -165,7 +125,7 @@ export default function Projects() {
             role: t('assistantRole'),
             impact: t('assistantImpact'),
             stack: ['Next.js', 'Claude API', 'Supabase', 'TypeScript'],
-            tags: ['ai', 'backend', 'frontend'],
+            tags: ['ai', 'backend'],
             primaryLink: '#chatbot',
             primaryLabel: t('openAssistant'),
             githubLink: 'https://github.com/joaosilvaz/portfolio',
@@ -173,17 +133,6 @@ export default function Projects() {
     ]
 
     const selectedProjects: SelectedProject[] = [
-        {
-            title: t('ecoTitle'),
-            category: t('ecoCategory'),
-            description: t('ecoDescription'),
-            impact: t('ecoImpact'),
-            image: '/images/ecosmart.png',
-            stack: ['Next.js', 'TypeScript', 'Tailwind'],
-            tags: ['frontend', 'backend'],
-            liveLink: 'https://global-solution-s2.vercel.app/',
-            githubLink: 'https://github.com/joaosilvaz/Global-Solution-S2',
-        },
         {
             title: t('bankTitle'),
             category: t('bankCategory'),
@@ -194,39 +143,12 @@ export default function Projects() {
             tags: ['backend'],
             githubLink: 'https://github.com/joaosilvaz/bank-project',
         },
-        {
-            title: t('oceanTitle'),
-            category: t('oceanCategory'),
-            description: t('oceanDescription'),
-            impact: t('oceanImpact'),
-            image: '/images/ocean-guard.png',
-            stack: ['JavaScript', 'HTML', 'CSS'],
-            tags: ['frontend'],
-            liveLink: 'https://ocean-guard-flax.vercel.app/',
-            githubLink: 'https://github.com/joaosilvaz/OceanGuard',
-        },
-    ]
-
-    const archivedProjects = [
-        {
-            title: t('godTitle'),
-            tags: ['frontend'],
-            liveLink: 'https://lp-check-point1.vercel.app/',
-            githubLink: 'https://github.com/joaosilvaz/LP-CheckPoint1',
-        },
-        {
-            title: t('commerceTitle'),
-            tags: ['frontend'],
-            liveLink: 'https://e-commerce-two-puce.vercel.app/',
-            githubLink: 'https://github.com/joaosilvaz/e-commerce',
-        },
     ]
 
     const matchesFilter = (tags: string[]) => activeFilter === 'all' || tags.includes(activeFilter)
     const visibleFeatured = featuredProjects.filter((project) => matchesFilter(project.tags))
     const visibleSelected = selectedProjects.filter((project) => matchesFilter(project.tags))
-    const visibleArchived = archivedProjects.filter((project) => matchesFilter(project.tags))
-    const hasResults = visibleFeatured.length + visibleSelected.length + visibleArchived.length > 0
+    const hasResults = visibleFeatured.length + visibleSelected.length > 0
 
     return (
         <section id="projects" className="bg-white px-6 pb-24 pt-28 text-black dark:bg-[var(--bg-gradient)] dark:text-white md:px-16 md:pt-36">
@@ -385,28 +307,6 @@ export default function Projects() {
                     </div>
                 )}
 
-                {visibleArchived.length > 0 && (
-                    <div className="mt-16 rounded-3xl border border-dashed border-gray-300 p-6 dark:border-white/15 md:p-8">
-                        <div className="flex items-center gap-3">
-                            <Code2 size={20} className="text-gray-500" />
-                            <div>
-                                <h3 className="font-bold">{t('archiveTitle')}</h3>
-                                <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{t('archiveDescription')}</p>
-                            </div>
-                        </div>
-                        <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                            {visibleArchived.map((project) => (
-                                <div key={project.title} className="flex items-center justify-between gap-4 rounded-2xl bg-gray-50 p-4 dark:bg-white/5">
-                                    <span className="text-sm font-semibold">{project.title}</span>
-                                    <div className="flex gap-3">
-                                        <Link href={project.liveLink} target="_blank" rel="noreferrer" aria-label={`${t('viewProject')}: ${project.title}`} className="text-gray-500 transition hover:text-blue-600"><ExternalLink size={17} /></Link>
-                                        <Link href={project.githubLink} target="_blank" rel="noreferrer" aria-label={`${t('viewCode')}: ${project.title}`} className="text-gray-500 transition hover:text-blue-600"><Github size={17} /></Link>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
             </div>
         </section>
     )
