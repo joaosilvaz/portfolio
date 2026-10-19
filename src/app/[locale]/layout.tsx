@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { getMessages, getTranslations } from 'next-intl/server';
@@ -8,12 +8,22 @@ import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { ThemeProvider } from 'next-themes';
 import { Analytics } from "@vercel/analytics/react";
+import { SiteShell } from "@/components/site/SiteShell";
 
-const poppins = Poppins({
+const geist = Geist({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
+  variable: '--font-geist',
+  display: 'swap',
 });
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
+  display: 'swap',
+});
+
+/** Roda antes da pintura: marca JS ativo e pula o loader em visitas seguintes. */
+const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');try{if(localStorage.getItem('jv-loader-seen')||matchMedia('(prefers-reduced-motion: reduce)').matches){d.dataset.loader='skip'}}catch(e){d.dataset.loader='skip'}})();`;
 
 const siteUrl = 'https://joaovitor.tech';
 
@@ -76,14 +86,14 @@ const Layout: React.FC<LayoutProps> = async ({ children, params }) => {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className='scroll-smooth' suppressHydrationWarning>
-      <body className={`${poppins.variable} font-poppins bg-white text-black dark:bg-black dark:text-white antialiased
-            [&::-webkit-scrollbar]:w-4 
-            [&::-webkit-scrollbar-track]:bg-accent
-            [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:hover:bg-border/80
-            dark:[&::-webkit-scrollbar-track]:bg-secondary dark:[&::-webkit-scrollbar-thumb]:bg-border
-            dark:[&::-webkit-scrollbar-thumb]:hover:bg-border/80
-      `}>
+    <html lang={locale} className={`${geist.variable} ${geistMono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+        <noscript>
+          <style>{'[data-loader-root]{display:none}'}</style>
+        </noscript>
+      </head>
+      <body>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
@@ -91,7 +101,7 @@ const Layout: React.FC<LayoutProps> = async ({ children, params }) => {
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            {children}
+            <SiteShell>{children}</SiteShell>
           </NextIntlClientProvider>
         </ThemeProvider>
         <Analytics /> 
