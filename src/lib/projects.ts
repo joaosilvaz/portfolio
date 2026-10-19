@@ -3,12 +3,11 @@
  * aqui só o que não muda com o idioma.
  */
 export type Project = {
-  slug: 'lens' | 'assistant' | 'bank'
+  slug: 'lens' | 'requalify' | 'mottu' | 'bank'
   stack: string[]
   image?: string
-  code?: string
-  /** Âncora ou URL para experimentar o produto. */
-  live?: string
+  /** Repositórios; `label` é a chave da mensagem em work.* */
+  code?: { label: 'code' | 'codeApi' | 'codeMobile'; href: string }[]
   confidential?: boolean
   hasResult: boolean
 }
@@ -21,17 +20,25 @@ export const projects: Project[] = [
     hasResult: true,
   },
   {
-    slug: 'assistant',
-    stack: ['Next.js', 'Claude API', 'Supabase', 'TypeScript'],
-    code: 'https://github.com/joaosilvaz/portfolio',
-    live: '/#chat',
+    slug: 'requalify',
+    stack: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'React Native', 'GPT-4'],
+    code: [
+      { label: 'codeApi', href: 'https://github.com/Requalify-GS/api-java-requalify' },
+      { label: 'codeMobile', href: 'https://github.com/Requalify-GS/mobile-requalify' },
+    ],
     hasResult: true,
+  },
+  {
+    slug: 'mottu',
+    stack: ['C#', 'ASP.NET Core', 'EF Core', 'Oracle', 'Swagger'],
+    code: [{ label: 'code', href: 'https://github.com/joaosilvaz/Challenge-MOTTU' }],
+    hasResult: false,
   },
   {
     slug: 'bank',
     stack: ['Java', 'Spring Boot', 'REST API'],
     image: '/images/bank-project.jpg',
-    code: 'https://github.com/joaosilvaz/bank-project',
+    code: [{ label: 'code', href: 'https://github.com/joaosilvaz/bank-project' }],
     hasResult: false,
   },
 ]

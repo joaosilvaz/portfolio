@@ -5,12 +5,11 @@ import { useTranslations } from 'next-intl'
 import type { Project } from '@/lib/projects'
 
 /**
- * Prévia de cada projeto. Lens é confidencial e o assistente vive neste site,
- * então os dois ganham prévias tipográficas em vez de screenshots.
+ * Prévia de cada projeto. Sem screenshot (Lens é confidencial; Requalify e Mottu
+ * ainda sem imagem), o projeto ganha uma prévia tipográfica feita do próprio conteúdo.
  */
 export function ProjectVisual({ project, sizes }: { project: Project; sizes: string }) {
   const t = useTranslations('work')
-  const chat = useTranslations('chatbot')
 
   if (project.image) {
     return (
@@ -35,11 +34,42 @@ export function ProjectVisual({ project, sizes }: { project: Project; sizes: str
     )
   }
 
-  return (
-    <div data-project-img aria-hidden="true" className="absolute inset-0 flex flex-col justify-center gap-3 bg-bg p-6 transition-transform duration-700 ease-[cubic-bezier(0.215,0.61,0.355,1)] group-hover:scale-[1.04] md:p-10">
-      <p className="max-w-[80%] self-start rounded-2xl rounded-bl-sm border border-line px-4 py-3 text-sm md:text-base">{chat('previewMessage1')}</p>
-      <p className="max-w-[80%] self-end rounded-2xl rounded-br-sm bg-fg px-4 py-3 text-sm text-bg md:text-base">{chat('previewMessage2')}</p>
-      <p className="max-w-[80%] self-start rounded-2xl rounded-bl-sm border border-line px-4 py-3 text-sm md:text-base">{chat('previewMessage3')}</p>
-    </div>
-  )
+  if (project.slug === 'requalify') {
+    const steps = t.raw('items.requalify.steps') as string[]
+    return (
+      <div data-project-img aria-hidden="true" className={`${panel} justify-center bg-bg`}>
+        <ol className="flex flex-col">
+          {steps.map((step, i) => (
+            <li key={step} className="relative flex items-center gap-4 pb-5 last:pb-0 md:pb-8">
+              {i < steps.length - 1 && <span className="absolute left-[0.4375rem] top-4 h-full w-px bg-line-strong" />}
+              <span className={`relative size-3.5 shrink-0 rounded-full border border-fg ${i === steps.length - 1 ? 'bg-fg' : 'bg-bg'}`} />
+              <span className={i === steps.length - 1 ? 'display text-[clamp(1.375rem,3.5vw,3rem)]' : 'text-sm text-muted md:text-lg'}>{step}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    )
+  }
+
+  if (project.slug === 'mottu') {
+    const statuses = t.raw('items.mottu.statuses') as string[]
+    return (
+      <div data-project-img aria-hidden="true" className={`${panel} justify-between bg-fg text-bg`}>
+        <p className="font-mono text-xs opacity-70">ASP.NET Core • Oracle</p>
+        <p className="display text-[clamp(2.5rem,6vw,5.5rem)]">REST + HATEOAS</p>
+        <ul className="flex flex-wrap gap-2">
+          {statuses.map((status, i) => (
+            <li key={status} className={`rounded-full border border-bg/40 px-3 py-1.5 text-xs ${i === 1 ? 'bg-bg text-fg' : ''}`}>
+              {status}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  return null
 }
+
+const panel =
+  'absolute inset-0 flex flex-col p-6 transition-transform duration-700 ease-[cubic-bezier(0.215,0.61,0.355,1)] group-hover:scale-[1.04] md:p-10'

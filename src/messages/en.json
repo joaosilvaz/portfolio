@@ -297,7 +297,6 @@
     "role": "Role",
     "intro": "Professional case studies and technical projects presented through what matters most: context, contribution, architecture and impact.",
     "code": "View code",
-    "tryIt": "Try the assistant",
     "confidential": "Corporate case • limited public details",
     "items": {
       "lens": {
@@ -308,12 +307,29 @@
         "result": "Reporting processes that took hours now generate insights in seconds.",
         "metric": "Hours → seconds"
       },
-      "assistant": {
-        "category": "Independent product • AI",
-        "title": "AI assistant for recruiters",
-        "summary": "A bilingual conversational experience that answers questions about my career, availability, projects and technology stack.",
-        "decision": "Claude API integration architecture, specialized prompt design, prompt-injection protection, rate limiting and structured Supabase logs.",
-        "result": "Turns the portfolio into an interactive channel for professional discovery and screening."
+      "requalify": {
+        "category": "AI + Mobile • FIAP Global Solution",
+        "title": "Requalify",
+        "summary": "Full-stack career reskilling platform: it analyzes the résumé with GPT-4 and generates, in real time, a career roadmap with courses, checkpoints and learning resources.",
+        "decision": "Built as a team. Layered Java REST API with Spring Boot, authentication with Spring Security and JWT, PDF résumé upload and processing on the backend, and GPT-4 integration to generate the roadmaps, consumed in real time by a React Native app.",
+        "result": "Presented to and approved by an academic panel at FIAP.",
+        "steps": [
+          "PDF résumé",
+          "GPT-4 analysis",
+          "Personalized roadmap"
+        ]
+      },
+      "mottu": {
+        "category": "Backend • FIAP x Mottu Challenge",
+        "title": "Motorcycle Rental API",
+        "summary": "RESTful API to manage Mottu's fleet: users, motorcycles and rentals, tracking each contract's status and the fleet's availability.",
+        "decision": "ASP.NET Core Web API with Entity Framework Core and Oracle Database, DTOs separating the domain from the API contracts, HATEOAS to navigate resources through response links, pagination for large volumes and interactive Swagger/OpenAPI docs.",
+        "statuses": [
+          "Pending",
+          "Approved",
+          "Completed",
+          "Cancelled"
+        ]
       },
       "bank": {
         "category": "Backend • Java",
@@ -321,7 +337,9 @@
         "summary": "A banking API supporting account management, deposits, withdrawals, queries and PIX transfers protected by business rules.",
         "decision": "Domain modeling, validation and transactional operations."
       }
-    }
+    },
+    "codeApi": "API code",
+    "codeMobile": "App code"
   },
   "profile": {
     "title": "About",
@@ -377,6 +395,7 @@
           "Java",
           "Spring Boot",
           "REST APIs",
+          "Microservices",
           "SQL",
           "Docker",
           "Design Patterns"

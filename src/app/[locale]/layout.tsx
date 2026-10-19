@@ -51,7 +51,11 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
     authors: [{ name: 'João Vitor da Silva', url: siteUrl }],
     creator: 'João Vitor da Silva',
     icons: {
-      icon: '/favicon.ico',
+      icon: [
+        { url: '/favicon.ico', sizes: '48x48' },
+        { url: '/icon.svg', type: 'image/svg+xml' },
+      ],
+      apple: '/apple-icon.png',
     },
     alternates: {
       canonical: `/${locale}`,

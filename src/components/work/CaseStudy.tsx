@@ -83,24 +83,20 @@ export function CaseStudy({ slug }: { slug: string }) {
             ))}
           </div>
 
-          {(project.code || project.live || project.confidential) && (
+          {(project.code || project.confidential) && (
             <div className="grid-12 border-t border-line py-10">
               <div className="col-span-4 flex flex-wrap gap-4 md:col-span-8 md:col-start-5">
-                {project.live && (
-                  <TransitionLink href={project.live} className="rounded-full bg-fg px-6 py-3 text-sm font-medium text-bg transition-opacity hover:opacity-85">
-                    {t('tryIt')}
-                  </TransitionLink>
-                )}
-                {project.code && (
+                {project.code?.map((repo) => (
                   <a
-                    href={project.code}
+                    key={repo.href}
+                    href={repo.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-full border border-line-strong px-6 py-3 text-sm font-medium transition-colors hover:bg-fg hover:text-bg"
                   >
-                    {t('code')}
+                    {t(repo.label)}
                   </a>
-                )}
+                ))}
                 {project.confidential && <p className="py-3 text-sm text-muted">{t('confidential')}</p>}
               </div>
             </div>

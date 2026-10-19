@@ -297,7 +297,6 @@
     "role": "Função",
     "intro": "Cases profissionais e projetos técnicos apresentados pelo que realmente importa: contexto, contribuição, arquitetura e impacto.",
     "code": "Ver código",
-    "tryIt": "Testar assistente",
     "confidential": "Case corporativo • detalhes públicos limitados",
     "items": {
       "lens": {
@@ -308,12 +307,29 @@
         "result": "Processos de reporting que levavam horas passaram a gerar insights em segundos.",
         "metric": "Horas → segundos"
       },
-      "assistant": {
-        "category": "Produto próprio • IA",
-        "title": "Assistente de IA para recrutadores",
-        "summary": "Experiência conversacional bilíngue que responde perguntas sobre carreira, disponibilidade, projetos e stack diretamente no portfólio.",
-        "decision": "Arquitetura da integração com Claude API, prompt especializado, proteção contra prompt injection, rate limiting e logs estruturados no Supabase.",
-        "result": "Transforma o portfólio em um canal interativo para triagem e descoberta profissional."
+      "requalify": {
+        "category": "IA + Mobile • FIAP Global Solution",
+        "title": "Requalify",
+        "summary": "Plataforma full-stack de requalificação profissional: analisa o currículo com GPT-4 e gera em tempo real um roadmap de carreira com cursos, checkpoints e recursos de estudo.",
+        "decision": "Desenvolvido em equipe. API REST em Java com Spring Boot e arquitetura em camadas, autenticação com Spring Security e JWT, upload e processamento de currículos em PDF no backend e integração com GPT-4 para gerar os roadmaps, consumidos em tempo real por um app em React Native.",
+        "result": "Projeto apresentado e aprovado em banca acadêmica na FIAP.",
+        "steps": [
+          "Currículo em PDF",
+          "Análise com GPT-4",
+          "Roadmap personalizado"
+        ]
+      },
+      "mottu": {
+        "category": "Backend • Challenge FIAP x Mottu",
+        "title": "Aluguel de Motos API",
+        "summary": "API RESTful para gestão da frota da Mottu: usuários, motos e aluguéis, com controle do status de cada contrato e da disponibilidade das motos.",
+        "decision": "ASP.NET Core Web API com Entity Framework Core e Oracle Database, DTOs separando o domínio dos contratos da API, HATEOAS para navegar entre recursos pelos links da resposta, paginação para grandes volumes e documentação interativa com Swagger/OpenAPI.",
+        "statuses": [
+          "Pendente",
+          "Aprovado",
+          "Concluído",
+          "Cancelado"
+        ]
       },
       "bank": {
         "category": "Backend • Java",
@@ -321,7 +337,9 @@
         "summary": "API bancária com criação e encerramento de contas, depósitos, saques, consultas e transferências PIX protegidas por regras de negócio.",
         "decision": "Modelagem de domínio, validações e operações transacionais."
       }
-    }
+    },
+    "codeApi": "Código da API",
+    "codeMobile": "Código do app"
   },
   "profile": {
     "title": "Sobre",
@@ -377,6 +395,7 @@
           "Java",
           "Spring Boot",
           "APIs REST",
+          "Microsserviços",
           "SQL",
           "Docker",
           "Design Patterns"
