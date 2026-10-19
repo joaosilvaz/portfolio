@@ -1,30 +1,28 @@
-'use client';
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-import Home from "@/components/Home";
-import Projetos from "@/components/Projects";
-import About from "@/components/About";
-import Technologies from "@/components/Tecnologies";
-import ScrollToTop from "./ScrollTop";
-import ScrollProgressBar from "./ScrollProgressBar";
-import Stats from "./Stats";
-import ChatBot from "./ChatBot";
-import Contact from "./Contact";
+'use client'
+
+import { IntroProvider } from '@/components/providers/Intro'
+import { Loader } from '@/components/site/Loader'
+import { Hero } from '@/components/site/Hero'
+import { Work } from '@/components/work/Work'
+import { About } from '@/components/site/About'
+import { Assistant } from '@/components/site/Assistant'
+import { Stack } from '@/components/site/Stack'
+import { Contact } from '@/components/site/Contact'
+import { Footer } from '@/components/site/Footer'
 
 export default function Main() {
   return (
-    <>
-      <ScrollProgressBar />
-      <Header />
-      <Home />
-      <About />
-      <Stats />
-      <Technologies />
-      <Projetos />
-      <ChatBot />
-      <Contact />
+    <IntroProvider>
+      <Loader />
+      <main id="main">
+        <Hero />
+        <Work />
+        <About />
+        <Assistant />
+        <Stack />
+        <Contact />
+      </main>
       <Footer />
-      <ScrollToTop />
-    </>
-  );
+    </IntroProvider>
+  )
 }

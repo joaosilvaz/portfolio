@@ -1,8 +1,19 @@
 {
   "seo": {
-    "title": "João Vitor da Silva — Software Engineer Full Stack",
-    "description": "Software Engineer full stack com mais de 2 anos de experiência criando produtos digitais para marcas como GM, Mastercard, LATAM e L'Oréal. Especialista em React, Next.js, Java e IA aplicada a produtos reais.",
-    "keywords": ["João Vitor da Silva", "Software Engineer", "Desenvolvedor Full Stack", "React", "Next.js", "Java", "TypeScript", "Spring Boot", "Desenvolvedor de Software São Paulo"]
+    "title": "João Vitor da Silva — Software Engineer | Backend & IA Generativa",
+    "description": "Software Engineer com mais de 2 anos de experiência em produtos digitais enterprise para marcas como GM, Mastercard, LATAM e L'Oréal. Foco em backend com Java e Spring Boot e em IA generativa com AWS Bedrock e Claude API.",
+    "keywords": [
+      "João Vitor da Silva",
+      "Software Engineer",
+      "Desenvolvedor Backend",
+      "Java",
+      "Spring Boot",
+      "IA Generativa",
+      "AWS Bedrock",
+      "Claude API",
+      "APIs REST",
+      "Desenvolvedor de Software São Paulo"
+    ]
   },
   "common": {
     "scrollToTop": "Voltar ao topo",
@@ -25,14 +36,14 @@
     "contact": "Contato"
   },
   "home": {
-    "badge": "Software Engineer • São Paulo",
+    "badge": "Software Engineer • Backend & IA Generativa",
     "welcome": "Olá, eu sou",
     "iAm": "",
     "texts": [
-      "React & Next.js em produção",
-      "Java & arquitetura em evolução"
+      "IA generativa com AWS Bedrock & Claude API",
+      "Backend com Java & Spring Boot"
     ],
-    "description": "Há mais de 2 anos, transformo desafios de negócio em produtos digitais para marcas globais — do frontend responsivo a integrações e APIs.",
+    "description": "Há mais de 2 anos, transformo desafios de negócio em produtos digitais para marcas globais. Hoje meu foco é backend, APIs e IA generativa aplicada a produtos reais.",
     "downloadCV": "Baixar CV",
     "portfolio": "Ver projetos",
     "linkedin": "Conversar no LinkedIn",
@@ -50,7 +61,7 @@
     "title": "Sobre mim",
     "eyebrow": "Perfil profissional",
     "headline": "Engenharia de software com impacto real no negócio.",
-    "description": "Sou Engenheiro de Software com atuação full stack e mais de 2 anos de experiência criando produtos digitais enterprise para marcas como GM, Mastercard, Leroy Merlin, LATAM Airlines, Stellantis, L’Oréal e Diageo. Na MRM McCann Worldgroup, desenvolvo plataformas de alta performance em squads ágeis e atualmente trabalho no Lens Analytics, produto interno com IA generativa via AWS Bedrock que transforma horas de relatórios manuais em insights entregues em segundos.\n\nMinha experiência inclui campanhas para The Town, Lollapalooza Brasil e Rock in Rio, além de plataformas governamentais em AEM para a PRODESP. Agora, especializo-me em produtos com IA e arquitetura backend com Java, Spring Boot e Docker por meio da Pós-Tech FIAP e de projetos com AWS Bedrock e Claude API.",
+    "description": "Sou Engenheiro de Software com mais de 2 anos de experiência criando produtos digitais enterprise para marcas como GM, Mastercard, Leroy Merlin, LATAM Airlines, Stellantis, L’Oréal e Diageo. Na MRM McCann Worldgroup, atuo em squads ágeis e hoje trabalho no Lens Analytics, produto interno com IA generativa via AWS Bedrock que transforma horas de relatórios manuais em insights entregues em segundos.\n\nMeu foco de carreira é backend e IA generativa: estudo arquitetura e desenvolvimento Java, Spring Boot e Docker na Pós-Tech FIAP e construo soluções com AWS Bedrock e Claude API. Trago como base uma sólida experiência em frontend, com campanhas para The Town, Lollapalooza Brasil e Rock in Rio e plataformas governamentais em AEM para a PRODESP.",
     "seeTechnologies": "Explorar tecnologias",
     "linkedinCTA": "Conversar no LinkedIn",
     "highlightsTitle": "O que eu entrego",
@@ -61,12 +72,17 @@
     "deliveryTitle": "Entrega sob pressão",
     "deliveryText": "Soluções complexas entregues em squads ágeis, mantendo qualidade técnica mesmo com prazos curtos.",
     "focusTitle": "Foco atual",
-    "focusTags": ["Produtos com IA", "Arquitetura Java", "Full Stack", "Cloud AWS"],
+    "focusTags": [
+      "IA Generativa",
+      "Backend Java",
+      "APIs REST",
+      "Cloud AWS"
+    ],
     "journeyTitle": "Experiência e formação",
     "experienceTitle": "Experiência Profissional",
     "experienceRole": "Software Engineer — MRM Brasil",
     "experienceClient": "Produtos digitais enterprise para marcas globais",
-    "experienceSummary": "Lens Analytics com IA generativa, campanhas de grande escala e plataformas corporativas de alta performance.",
+    "experienceSummary": "Lens Analytics com IA generativa, integrações e plataformas corporativas de grande escala.",
     "experienceDate": "Junho 2024 - Atual",
     "academicTitle": "Formação Acadêmica",
     "academicCourse": "Análise e Desenvolvimento de Sistemas — FIAP",
@@ -78,8 +94,22 @@
     "academicCourse3": "Inglês como segundo idioma — Wizard",
     "academicInstitution3": "Formação concluída • nível avançado",
     "academicDate3": "2017 - 2022",
-    "academicSubjects1": ["Desenvolvimento Web", "Banco de Dados", "Engenharia de Software", "DevOps", "Métodos Ágeis", "Cloud Computing"],
-    "academicSubjects2": ["Arquitetura Java", "Spring Boot", "Microsserviços", "Docker e Kubernetes", "Design Patterns", "APIs REST"],
+    "academicSubjects1": [
+      "Desenvolvimento Web",
+      "Banco de Dados",
+      "Engenharia de Software",
+      "DevOps",
+      "Métodos Ágeis",
+      "Cloud Computing"
+    ],
+    "academicSubjects2": [
+      "Arquitetura Java",
+      "Spring Boot",
+      "Microsserviços",
+      "Docker e Kubernetes",
+      "Design Patterns",
+      "APIs REST"
+    ],
     "showMore": "Ver detalhes",
     "showLess": "Ocultar",
     "subjectsTitle": "Principais competências"
@@ -87,35 +117,72 @@
   "technologies": {
     "eyebrow": "Stack em contexto",
     "title": "Como construo produtos",
-    "description": "Tecnologia só gera valor quando resolve um problema real. Estas são as competências que aplico para transformar desafios de negócio em produtos digitais.",
+    "description": "Tecnologia só gera valor quando resolve um problema real. Estas são as competências que aplico, com foco em IA generativa, backend e cloud, sobre uma base sólida de frontend.",
     "proofLabel": "Na prática",
-    "frontendTitle": "Frontend em produção",
+    "frontendTitle": "Base em frontend",
     "frontendBadge": "Uso profissional",
     "frontendMetric": "7 marcas globais",
-    "frontendText": "Interfaces responsivas, jornadas complexas e experiências digitais de alta performance para grandes campanhas e plataformas enterprise.",
+    "frontendText": "A base que me permite entregar produtos de ponta a ponta: interfaces responsivas e jornadas complexas para grandes campanhas e plataformas enterprise, consumindo APIs e serviços de IA.",
     "frontendProof": "Aplicado em projetos para GM, Mastercard, LATAM, L’Oréal, Stellantis, Leroy Merlin e Diageo.",
-    "frontendStack": ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind", "SCSS", "AEM"],
+    "frontendStack": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind",
+      "SCSS",
+      "AEM"
+    ],
     "aiTitle": "IA aplicada ao negócio",
     "aiBadge": "Produto corporativo",
     "aiMetric": "Horas → segundos",
     "aiText": "Integro modelos generativos a produtos reais, criando fluxos confiáveis que automatizam trabalho e aceleram decisões.",
     "aiProof": "Lens Analytics com AWS Bedrock e assistente do portfólio integrado à Claude API.",
-    "aiStack": ["AWS Bedrock", "Claude API", "IA generativa", "Prompt Engineering", "APIs"],
+    "aiStack": [
+      "AWS Bedrock",
+      "Claude API",
+      "IA generativa",
+      "Prompt Engineering",
+      "APIs"
+    ],
     "backendTitle": "Backend e arquitetura",
     "backendBadge": "Em especialização",
     "backendMetric": "Pós-Tech FIAP",
-    "backendText": "Construção de APIs, regras de negócio e serviços com foco em organização, escalabilidade e manutenção.",
+    "backendText": "Construção de APIs REST, regras de negócio e serviços com foco em organização, escalabilidade e manutenção.",
     "backendProof": "Especialização prática em Arquitetura e Desenvolvimento Java, complementada por projetos backend.",
-    "backendStack": ["Java", "Spring Boot", "APIs REST", "SQL", "Docker", "Design Patterns"],
+    "backendStack": [
+      "Java",
+      "Spring Boot",
+      "APIs REST",
+      "SQL",
+      "Docker",
+      "Design Patterns"
+    ],
     "cloudTitle": "Cloud e entrega",
     "cloudBadge": "Experiência enterprise",
     "cloudMetric": "Produção real",
     "cloudText": "Colaboração em squads multidisciplinares, da implementação à entrega, com qualidade técnica mesmo em ciclos curtos.",
     "cloudProof": "AWS, GitFlow, CI/CD, Scrum e entregas para campanhas de grande escala.",
-    "cloudStack": ["AWS", "Azure", "Git", "GitFlow", "CI/CD", "Scrum"],
+    "cloudStack": [
+      "AWS",
+      "Azure",
+      "Git",
+      "GitFlow",
+      "CI/CD",
+      "Scrum"
+    ],
     "otherTitle": "Experiência complementar",
     "otherDescription": "Tecnologias utilizadas em projetos acadêmicos, pessoais ou demandas específicas.",
-    "otherStack": ["Node.js", "Python", "C#", ".NET", "Strapi", "PostgreSQL", "MySQL", "MongoDB"],
+    "otherStack": [
+      "Node.js",
+      "Python",
+      "C#",
+      ".NET",
+      "Strapi",
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB"
+    ],
     "cta": "Ver essa stack em projetos"
   },
   "projects": {
@@ -167,7 +234,10 @@
     "lang": "pt",
     "previewMessage1": "Olá! Sou o assistente do João. Como posso te ajudar?",
     "previewMessage2": "Quais tecnologias você domina?",
-    "previewMessage3": "João trabalha com React, Next.js e TypeScript em produtos enterprise e aprofunda sua atuação em Java."
+    "previewMessage3": "João integra IA generativa (AWS Bedrock e Claude API) a produtos reais e aprofunda sua atuação em backend com Java e Spring Boot.",
+    "send": "Enviar",
+    "fab": "Assistente IA",
+    "thinking": "Digitando…"
   },
   "contact": {
     "title": "Contato",
@@ -188,5 +258,165 @@
     "chat": "ChatBot IA",
     "contact": "Contato",
     "textFooter": "2026 João Vitor da Silva. Todos os direitos reservados."
+  },
+  "nav": {
+    "skip": "Pular para o conteúdo",
+    "primary": "Navegação principal",
+    "work": "Projetos",
+    "about": "Sobre",
+    "stack": "Stack",
+    "contact": "Contato",
+    "menu": "Menu",
+    "close": "Fechar",
+    "home": "Ir para o início",
+    "cta": "Fale comigo"
+  },
+  "loader": {
+    "skip": "Pular introdução",
+    "label": "Carregando"
+  },
+  "hero": {
+    "role": "Full-Stack / AI Engineer",
+    "statement": "Transformo desafios de negócio em produtos digitais. Hoje, com foco em backend, APIs e IA generativa aplicada a produtos reais.",
+    "currently": "Software Engineer na MRM Brasil, desde 2024",
+    "location": "São Paulo, Brasil",
+    "photoAlt": "Retrato em preto e branco de João Vitor da Silva",
+    "cta": "Ver projetos",
+    "cv": "Baixar CV",
+    "cvFile": "/cv-jv-pt.pdf"
+  },
+  "work": {
+    "title": "Trabalho selecionado",
+    "viewCase": "Ver case",
+    "context": "Contexto",
+    "decision": "Decisão técnica",
+    "result": "Resultado",
+    "stack": "Stack",
+    "back": "Voltar para os projetos",
+    "next": "Próximo projeto",
+    "role": "Função",
+    "intro": "Cases profissionais e projetos técnicos apresentados pelo que realmente importa: contexto, contribuição, arquitetura e impacto.",
+    "code": "Ver código",
+    "tryIt": "Testar assistente",
+    "confidential": "Case corporativo • detalhes públicos limitados",
+    "items": {
+      "lens": {
+        "category": "IA aplicada • MRM McCann",
+        "title": "Lens Analytics",
+        "summary": "Plataforma interna que utiliza IA generativa para transformar dados e relatórios de clientes em insights acionáveis.",
+        "decision": "Atuação full stack na construção do produto e na integração da camada de IA por meio do AWS Bedrock, colaborando com produto e stakeholders não técnicos.",
+        "result": "Processos de reporting que levavam horas passaram a gerar insights em segundos.",
+        "metric": "Horas → segundos"
+      },
+      "assistant": {
+        "category": "Produto próprio • IA",
+        "title": "Assistente de IA para recrutadores",
+        "summary": "Experiência conversacional bilíngue que responde perguntas sobre carreira, disponibilidade, projetos e stack diretamente no portfólio.",
+        "decision": "Arquitetura da integração com Claude API, prompt especializado, proteção contra prompt injection, rate limiting e logs estruturados no Supabase.",
+        "result": "Transforma o portfólio em um canal interativo para triagem e descoberta profissional."
+      },
+      "bank": {
+        "category": "Backend • Java",
+        "title": "Bank System API",
+        "summary": "API bancária com criação e encerramento de contas, depósitos, saques, consultas e transferências PIX protegidas por regras de negócio.",
+        "decision": "Modelagem de domínio, validações e operações transacionais."
+      }
+    }
+  },
+  "profile": {
+    "title": "Sobre",
+    "stats": [
+      [
+        "2+",
+        "anos de experiência em produtos enterprise"
+      ],
+      [
+        "7",
+        "marcas globais atendidas"
+      ],
+      [
+        "Horas → segundos",
+        "em relatórios com IA generativa no Lens Analytics"
+      ]
+    ],
+    "journey": "Trajetória",
+    "lead": "Sou Engenheiro de Software com mais de 2 anos de experiência criando produtos digitais enterprise para marcas como GM, Mastercard, Leroy Merlin, LATAM Airlines, Stellantis, L’Oréal e Diageo.",
+    "body": "Na MRM McCann Worldgroup, atuo em squads ágeis e hoje trabalho no Lens Analytics, produto interno com IA generativa via AWS Bedrock que transforma horas de relatórios manuais em insights entregues em segundos.",
+    "journeyItems": [
+      [
+        "Software Engineer — MRM Brasil",
+        "Junho 2024 - Atual"
+      ],
+      [
+        "Arquitetura e Desenvolvimento Java — FIAP (Pós-Tech em andamento)",
+        "Março 2026 - Janeiro 2027"
+      ],
+      [
+        "Análise e Desenvolvimento de Sistemas — FIAP",
+        "Fevereiro 2024 - Dezembro 2025"
+      ]
+    ]
+  },
+  "build": {
+    "title": "Como construo produtos",
+    "intro": "Tecnologia só gera valor quando resolve um problema real. Estas são as competências que aplico, com foco em IA generativa, backend e cloud, sobre uma base sólida de frontend.",
+    "groups": [
+      [
+        "IA aplicada ao negócio",
+        [
+          "AWS Bedrock",
+          "Claude API",
+          "IA generativa",
+          "Prompt Engineering",
+          "APIs"
+        ]
+      ],
+      [
+        "Backend e arquitetura",
+        [
+          "Java",
+          "Spring Boot",
+          "APIs REST",
+          "SQL",
+          "Docker",
+          "Design Patterns"
+        ]
+      ],
+      [
+        "Base em frontend",
+        [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "JavaScript",
+          "Tailwind",
+          "SCSS",
+          "AEM"
+        ]
+      ],
+      [
+        "Cloud e entrega",
+        [
+          "AWS",
+          "Azure",
+          "Git",
+          "GitFlow",
+          "CI/CD",
+          "Scrum"
+        ]
+      ]
+    ]
+  },
+  "reach": {
+    "title": "Vamos conversar",
+    "copy": "Copiar e-mail",
+    "copied": "E-mail copiado",
+    "copyFail": "Não foi possível copiar. Selecione o e-mail acima.",
+    "top": "Voltar ao topo",
+    "text": "Estou aberto a parcerias e novos projetos.",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "cv": "Baixar CV",
+    "copyright": "2026 João Vitor da Silva. Todos os direitos reservados."
   }
 }

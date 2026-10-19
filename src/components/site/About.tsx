@@ -1,0 +1,84 @@
+'use client'
+
+import { useRef } from 'react'
+import { useTranslations } from 'next-intl'
+import { gsap, SplitText, useGSAP } from '@/lib/motion/gsap'
+import { duration, ease, mq, stagger } from '@/lib/motion/tokens'
+
+type Pair = [string, string]
+
+/** Frase de apresentação que "acende" palavra por palavra no scroll, seguida de números e trajetória. */
+export function About() {
+  const t = useTranslations('profile')
+  const root = useRef<HTMLElement>(null)
+  const stats = t.raw('stats') as Pair[]
+  const journey = t.raw('journeyItems') as Pair[]
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia()
+
+      mm.add(mq.motion, () => {
+        const split = SplitText.create('[data-about-lead]', { type: 'words' })
+        gsap.fromTo(
+          split.words,
+          { opacity: 0.15 },
+          {
+            opacity: 1,
+            stagger: stagger.items,
+            ease: ease.none,
+            scrollTrigger: { trigger: '[data-about-lead]', start: 'top 80%', end: 'bottom 45%', scrub: true },
+          },
+        )
+        gsap.from('[data-about-stat]', {
+          autoAlpha: 0,
+          y: 32,
+          stagger: stagger.items,
+          scrollTrigger: { trigger: '[data-about-stats]', start: 'top 85%' },
+        })
+      })
+
+      mm.add(mq.reduced, () => {
+        gsap.from('[data-about-stats]', { autoAlpha: 0, duration: duration.element, scrollTrigger: { trigger: '[data-about-stats]', start: 'top 85%' } })
+      })
+    },
+    { scope: root },
+  )
+
+  return (
+    <section id="about" ref={root} aria-labelledby="about-title" className="py-24 md:py-40">
+      <div className="shell">
+        <div className="grid-12 gap-y-6">
+          <h2 id="about-title" className="col-span-4 text-sm text-muted md:col-span-3">
+            {t('title')}
+          </h2>
+          <p data-about-lead className="col-span-4 text-[clamp(1.75rem,3.6vw,3.25rem)] font-medium leading-[1.12] tracking-[-0.03em] md:col-span-9">
+            {t('lead')}
+          </p>
+          <p className="col-span-4 max-w-[52ch] leading-relaxed text-muted md:col-span-6 md:col-start-4 md:text-lg">{t('body')}</p>
+        </div>
+
+        <dl data-about-stats className="grid-12 mt-20 gap-y-4 md:mt-28">
+          {stats.map(([value, label]) => (
+            <div key={value} data-about-stat className="col-span-4 flex flex-col-reverse justify-end gap-3 rounded-[1.5rem] border border-line bg-surface p-6 md:col-span-4 md:p-8">
+              <dt className="max-w-[24ch] text-muted">{label}</dt>
+              <dd className="display text-[clamp(2.5rem,4.5vw,4.5rem)]">{value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <div className="grid-12 mt-20 gap-y-6 md:mt-28">
+          <h3 className="col-span-4 text-sm text-muted md:col-span-3">{t('journey')}</h3>
+          <ol className="col-span-4 md:col-span-9">
+            {journey.map(([what, when]) => (
+              <li key={what} className="flex flex-col gap-1 border-t border-line py-5 last:border-b md:flex-row md:items-baseline md:justify-between md:gap-8">
+                <span className="text-lg font-medium tracking-tight md:text-xl">{what}</span>
+                <span className="shrink-0 text-sm text-muted">{when}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+  )
+}
