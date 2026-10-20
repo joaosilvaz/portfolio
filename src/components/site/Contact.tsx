@@ -18,8 +18,18 @@ export function Contact() {
     () => {
       const mm = gsap.matchMedia()
       mm.add(mq.motion, () => {
-        const split = SplitText.create('[data-contact-title]', { type: 'lines', mask: 'lines' })
-        gsap.from(split.lines, { yPercent: 100, stagger: stagger.lines, scrollTrigger: { trigger: '[data-contact-title]', start: 'top 85%' } })
+        // O gradiente vai para cada linha: background-clip:text no pai quebra com filhos transformados.
+        const title = root.current?.querySelector('[data-contact-title]')
+        title?.classList.remove('text-gradient')
+        SplitText.create('[data-contact-title]', {
+          type: 'lines',
+          mask: 'lines',
+          linesClass: 'text-gradient',
+          autoSplit: true,
+          onSplit: (self) =>
+            gsap.from(self.lines, { yPercent: 100, stagger: stagger.lines, scrollTrigger: { trigger: '[data-contact-title]', start: 'top 85%' } }),
+        })
+        return () => title?.classList.add('text-gradient')
       })
     },
     { scope: root },

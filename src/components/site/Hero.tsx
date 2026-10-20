@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { gsap, ScrollTrigger, SplitText, useGSAP } from '@/lib/motion/gsap'
-import { duration, ease, mq, pointer, scroll, stagger } from '@/lib/motion/tokens'
+import { duration, ease, intro, mq, pointer, reveal, scroll, stagger } from '@/lib/motion/tokens'
 import { useIntro } from '@/components/providers/Intro'
 import { Magnetic } from '@/components/ui/Magnetic'
 
@@ -32,10 +32,11 @@ export function Hero() {
             { clipPath: 'inset(100% 0% 0% 0%)' },
             { clipPath: 'inset(0% 0% 0% 0%)', duration: duration.section, ease: ease.inOut },
           )
-          .from('[data-hero-img]', { scale: 1.2, duration: duration.section * 1.4 }, '<')
-          .from('[data-hero-name]', { yPercent: 110, stagger: stagger.lines, duration: duration.element }, 0.25)
-          .from(lines.lines, { yPercent: 100, stagger: stagger.lines, duration: duration.element }, 0.45)
-          .from('[data-hero-fade]', { autoAlpha: 0, y: 16, stagger: stagger.items, duration: duration.element }, 0.6)
+          .from('[data-hero-img]', { scale: reveal.imgScale, duration: intro.heroImg }, '<')
+          .from('[data-hero-name]', { yPercent: 110, stagger: stagger.lines, duration: duration.element }, intro.heroNames)
+          // Desfaz o split no fim: a quebra de linha volta a ser do navegador (fonte, resize).
+          .from(lines.lines, { yPercent: 100, stagger: stagger.lines, duration: duration.element, onComplete: () => lines.revert() }, intro.heroLines)
+          .from('[data-hero-fade]', { autoAlpha: 0, y: reveal.fadeY, stagger: stagger.items, duration: duration.element }, intro.heroFades)
       })
 
       mm.add(mq.reduced, () => {

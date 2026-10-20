@@ -1,13 +1,26 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { gsap, useGSAP } from '@/lib/motion/gsap'
-import { ease, loader, stagger } from '@/lib/motion/tokens'
+import { ease, loader, mq, stagger } from '@/lib/motion/tokens'
 import { useIntro } from '@/components/providers/Intro'
 import { useLenis } from '@/components/providers/SmoothScroll'
 
 const SEEN_KEY = 'jv-loader-seen'
+
+/**
+ * O boot script marca `data-loader="skip"` no carregamento, mas a troca de idioma
+ * re-renderiza o <html> sem rodá-lo de novo: por isso conferimos o localStorage aqui também.
+ */
+function shouldSkip() {
+  if (document.documentElement.dataset.loader === 'skip') return true
+  try {
+    return localStorage.getItem(SEEN_KEY) === '1' || window.matchMedia(mq.reduced).matches
+  } catch {
+    return true
+  }
+}
 
 /**
  * Intro com o monograma: "J" e "V" sobem da máscara no centro da tela, depois o
@@ -22,10 +35,12 @@ export function Loader() {
   const curtain = useRef<HTMLDivElement>(null)
   const mark = useRef<HTMLParagraphElement>(null)
   const tl = useRef<gsap.core.Timeline | null>(null)
+  const skipRef = useRef<HTMLButtonElement>(null)
   const [done, setDone] = useState(false)
 
-  useEffect(() => {
-    if (document.documentElement.dataset.loader === 'skip') {
+  // Layout effect: decide antes do primeiro paint, sem piscar a cortina numa visita repetida.
+  useLayoutEffect(() => {
+    if (shouldSkip()) {
       reveal()
       setDone(true)
     }
@@ -41,7 +56,7 @@ export function Loader() {
     () => {
       if (done || !mark.current || !curtain.current) return
       // Visita repetida ou reduced-motion: o efeito abaixo encerra o loader sem animar nada.
-      if (document.documentElement.dataset.loader === 'skip') return
+      if (shouldSkip()) return
 
       const logo = document.querySelector<HTMLElement>('[data-logo]')
       const finish = () => {
@@ -79,6 +94,11 @@ export function Loader() {
     if (done) return
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') tl.current?.progress(1)
+      // O intro cobre a página: Tab fica no botão Pular em vez de andar por links escondidos.
+      if (e.key === 'Tab') {
+        e.preventDefault()
+        skipRef.current?.focus()
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -110,6 +130,7 @@ export function Loader() {
         ))}
       </p>
       <button
+        ref={skipRef}
         type="button"
         onClick={() => tl.current?.progress(1)}
         className="absolute bottom-4 right-4 py-2 text-sm text-muted hover:text-fg md:bottom-6 md:right-8"

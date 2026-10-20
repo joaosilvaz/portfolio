@@ -4,13 +4,17 @@ import { useEffect, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { useTranslations } from 'next-intl'
 import { gsap, useGSAP } from '@/lib/motion/gsap'
-import { duration, ease, mq } from '@/lib/motion/tokens'
+import { duration, ease, mq, reveal } from '@/lib/motion/tokens'
 import { Magnetic } from '@/components/ui/Magnetic'
 
 type Message = {
   role: 'user' | 'assistant'
   content: string
 }
+
+/** Mesmos limites de /api/chat (ímpar: a janela sempre começa numa mensagem do usuário). */
+const MAX_HISTORY = 19
+const MAX_CHARS = 1000
 
 const SUGGESTED = {
   pt: ['Quais são suas principais tecnologias?', 'Me fala sobre seus projetos', 'Qual sua experiência profissional?', 'Como entrar em contato?'],
@@ -42,11 +46,11 @@ export function Assistant() {
       if (open) {
         gsap.fromTo(
           panel.current,
-          { autoAlpha: 0, y: reduced ? 0 : 24 },
+          { autoAlpha: 0, y: reduced ? 0 : reveal.panelY },
           { autoAlpha: 1, y: 0, duration: duration.micro * 2, ease: ease.in, onComplete: () => inputRef.current?.focus() },
         )
       } else {
-        gsap.to(panel.current, { autoAlpha: 0, y: reduced ? 0 : 24, duration: duration.micro, ease: ease.out })
+        gsap.to(panel.current, { autoAlpha: 0, y: reduced ? 0 : reveal.panelY, duration: duration.micro, ease: ease.out })
       }
     },
     { scope: root, dependencies: [open] },
@@ -84,7 +88,8 @@ export function Assistant() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: updated }),
+        // A API aceita no máximo MAX_HISTORY mensagens; o histórico mais antigo fica só na tela.
+        body: JSON.stringify({ messages: updated.slice(-MAX_HISTORY) }),
       })
       const data: { message?: string } = await res.json()
       setMessages((prev) => [...prev, { role: 'assistant', content: data.message ?? t('error') }])
@@ -129,7 +134,6 @@ export function Assistant() {
         onClick={() => toggle(!open)}
         aria-expanded={open}
         aria-controls="assistant-panel"
-        aria-label={open ? tc('closeChat') : tc('openChat')}
         className="glass fixed bottom-4 right-4 z-30 rounded-full border border-line px-5 py-3 text-sm font-medium md:bottom-6 md:right-6"
       >
         {open ? tc('closeChat') : t('fab')}
@@ -218,6 +222,7 @@ export function Assistant() {
             onChange={(e) => setInput(e.target.value)}
             placeholder={t('placeholder')}
             autoComplete="off"
+            maxLength={MAX_CHARS}
             className="min-w-0 flex-1 rounded-full bg-surface px-4 py-2.5 text-sm placeholder:text-muted"
           />
           <button

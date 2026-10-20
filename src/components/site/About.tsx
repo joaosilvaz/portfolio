@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { gsap, SplitText, useGSAP } from '@/lib/motion/gsap'
-import { duration, ease, mq, stagger } from '@/lib/motion/tokens'
+import { duration, ease, mq, reveal, stagger } from '@/lib/motion/tokens'
 
 type Pair = [string, string]
 
@@ -19,10 +19,10 @@ export function About() {
       const mm = gsap.matchMedia()
 
       mm.add(mq.motion, () => {
-        const split = SplitText.create('[data-about-lead]', { type: 'words' })
+        const split = SplitText.create('[data-about-lead]', { type: 'words', tag: 'span', aria: 'none' })
         gsap.fromTo(
           split.words,
-          { opacity: 0.15 },
+          { opacity: reveal.dimOpacity },
           {
             opacity: 1,
             stagger: stagger.items,
@@ -32,7 +32,7 @@ export function About() {
         )
         gsap.from('[data-about-stat]', {
           autoAlpha: 0,
-          y: 32,
+          y: reveal.y,
           stagger: stagger.items,
           scrollTrigger: { trigger: '[data-about-stats]', start: 'top 85%' },
         })

@@ -39,12 +39,16 @@ export function ThemeToggle() {
     const y = r.top + r.height / 2
     const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
 
-    document.startViewTransition(apply).ready.then(() => {
-      document.documentElement.animate(
-        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
-        { duration: duration.section * 1000, easing: cssEase.inOut, pseudoElement: '::view-transition-new(root)' },
-      )
-    })
+    document
+      .startViewTransition(apply)
+      .ready.then(() => {
+        document.documentElement.animate(
+          { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+          { duration: duration.section * 1000, easing: cssEase.inOut, pseudoElement: '::view-transition-new(root)' },
+        )
+      })
+      // Clique duplo rápido aborta a transição anterior; o tema já foi aplicado, nada a fazer.
+      .catch(() => {})
   }
 
   return (

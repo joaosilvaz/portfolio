@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { gsap, SplitText, useGSAP } from '@/lib/motion/gsap'
-import { duration, ease, mq, stagger } from '@/lib/motion/tokens'
+import { duration, ease, intro, mq, reveal, stagger } from '@/lib/motion/tokens'
 import { getProject, projects } from '@/lib/projects'
 import { TransitionLink } from '@/components/providers/PageTransition'
 import { ProjectVisual } from '@/components/work/ProjectVisual'
@@ -31,16 +31,17 @@ export function CaseStudy({ slug }: { slug: string }) {
         const title = SplitText.create('[data-case-title]', { type: 'lines', mask: 'lines' })
         gsap
           .timeline({ delay: duration.micro })
-          .from(title.lines, { yPercent: 100, stagger: stagger.lines })
+          // Desfaz o split no fim: a quebra de linha volta a ser do navegador (fonte, resize).
+          .from(title.lines, { yPercent: 100, stagger: stagger.lines, onComplete: () => title.revert() })
           .fromTo(
             '[data-case-visual]',
             { clipPath: 'inset(12% 6% 12% 6% round 1.75rem)' },
             { clipPath: 'inset(0% 0% 0% 0% round 1.75rem)', duration: duration.section, ease: ease.inOut },
-            0.1,
+            intro.caseVisual,
           )
 
         gsap.utils.toArray<HTMLElement>('[data-case-row]').forEach((row) => {
-          gsap.from(row, { autoAlpha: 0, y: 32, scrollTrigger: { trigger: row, start: 'top 85%' } })
+          gsap.from(row, { autoAlpha: 0, y: reveal.y, scrollTrigger: { trigger: row, start: 'top 85%' } })
         })
       })
     },

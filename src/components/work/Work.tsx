@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { gsap, SplitText, useGSAP } from '@/lib/motion/gsap'
-import { duration, ease, mq, scroll, stagger } from '@/lib/motion/tokens'
+import { duration, ease, mq, reveal, scroll, stagger } from '@/lib/motion/tokens'
 import { projects } from '@/lib/projects'
 import { TransitionLink } from '@/components/providers/PageTransition'
 import { ProjectVisual } from '@/components/work/ProjectVisual'
@@ -21,11 +21,17 @@ export function Work() {
       const mm = gsap.matchMedia()
 
       mm.add(mq.motion, () => {
-        const split = SplitText.create('[data-work-title]', { type: 'lines', mask: 'lines' })
-        gsap.from(split.lines, {
-          yPercent: 100,
-          stagger: stagger.lines,
-          scrollTrigger: { trigger: '[data-work-title]', start: 'top 85%' },
+        // autoSplit refaz as linhas quando a fonte carrega ou a largura muda.
+        SplitText.create('[data-work-title]', {
+          type: 'lines',
+          mask: 'lines',
+          autoSplit: true,
+          onSplit: (self) =>
+            gsap.from(self.lines, {
+              yPercent: 100,
+              stagger: stagger.lines,
+              scrollTrigger: { trigger: '[data-work-title]', start: 'top 85%' },
+            }),
         })
       })
 
@@ -35,7 +41,7 @@ export function Work() {
           const scrollTrigger = { trigger: cards[i + 1], start: 'top bottom', end: 'top 6rem', scrub: true }
           gsap.to(card.firstElementChild, { scale: scroll.stackScale, ease: ease.none, scrollTrigger })
           // Escurece com uma camada opaca por cima: o card continua sólido e não vaza por trás do próximo.
-          gsap.to(card.querySelector('[data-card-shade]'), { opacity: 0.6, ease: ease.none, scrollTrigger })
+          gsap.to(card.querySelector('[data-card-shade]'), { opacity: reveal.shadeOpacity, ease: ease.none, scrollTrigger })
         })
       })
 

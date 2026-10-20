@@ -52,12 +52,13 @@ export function Cursor() {
 
       window.addEventListener('pointermove', onMove)
       window.addEventListener('pointerover', onOver)
-      document.addEventListener('pointerleave', onLeaveWindow)
+      // pointerleave não borbulha: precisa estar no <html>, não no document.
+      document.documentElement.addEventListener('pointerleave', onLeaveWindow)
       return () => {
         document.documentElement.classList.remove('has-cursor')
         window.removeEventListener('pointermove', onMove)
         window.removeEventListener('pointerover', onOver)
-        document.removeEventListener('pointerleave', onLeaveWindow)
+        document.documentElement.removeEventListener('pointerleave', onLeaveWindow)
       }
     })
   })

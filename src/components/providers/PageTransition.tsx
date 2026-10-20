@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useRef } from 'react'
 import { Link, usePathname, useRouter } from '@/i18n/navigation'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/motion/gsap'
-import { duration, ease, mq } from '@/lib/motion/tokens'
+import { duration, ease, mq, transition } from '@/lib/motion/tokens'
 import { useLenis } from '@/components/providers/SmoothScroll'
 
 type Navigate = (href: string) => void
@@ -24,6 +24,18 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
   const { contextSafe } = useGSAP(() => {
     reduced.current = window.matchMedia(mq.reduced).matches
+  })
+
+  const openCurtain = contextSafe(() => {
+    lenis?.start()
+    gsap.to(curtain.current, {
+      ...(reduced.current ? { autoAlpha: 0 } : { clipPath: 'inset(0% 0% 100% 0%)' }),
+      duration: reduced.current ? duration.micro : duration.element,
+      ease: ease.inOut,
+      // Mata a cortina que ainda estiver fechando (ex.: Voltar do navegador no meio da transição).
+      overwrite: true,
+      onComplete: () => gsap.set(curtain.current, { autoAlpha: 0 }),
+    })
   })
 
   const navigate = contextSafe((href: string) => {
@@ -47,7 +59,17 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         clipPath: 'inset(0% 0% 0% 0%)',
         duration: reduced.current ? duration.micro : duration.element,
         ease: ease.inOut,
-        onComplete: () => router.push(href),
+        onComplete: () => {
+          // A rota já mudou por outro caminho (Voltar/Avançar): não empurra o destino antigo.
+          if (pending.current !== href) return
+          router.push(href)
+          // Se o push não trocar o pathname, o efeito abaixo nunca roda: libera por tempo.
+          gsap.delayedCall(transition.fallback, () => {
+            if (pending.current !== href) return
+            pending.current = null
+            openCurtain()
+          })
+        },
       },
     )
   })
@@ -60,19 +82,13 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
 
     const hash = href.split('#')[1]
     const target = hash ? document.getElementById(hash) : null
-    lenis?.start()
     if (lenis) lenis.scrollTo(target ?? 0, { immediate: true, force: true })
     else if (target) target.scrollIntoView()
     else window.scrollTo(0, 0)
     ScrollTrigger.refresh()
-
-    gsap.to(curtain.current, {
-      ...(reduced.current ? { autoAlpha: 0 } : { clipPath: 'inset(0% 0% 100% 0%)' }),
-      duration: reduced.current ? duration.micro : duration.element,
-      ease: ease.inOut,
-      onComplete: () => gsap.set(curtain.current, { autoAlpha: 0 }),
-    })
-  }, [pathname, lenis])
+    openCurtain()
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- só a troca de rota abre a cortina
+  }, [pathname])
 
   return (
     <TransitionContext.Provider value={navigate}>

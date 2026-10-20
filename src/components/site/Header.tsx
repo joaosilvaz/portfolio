@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 import { gsap, useGSAP } from '@/lib/motion/gsap'
-import { duration, ease, mq, stagger } from '@/lib/motion/tokens'
+import { duration, ease, menu, mq, stagger } from '@/lib/motion/tokens'
 import { useLenis } from '@/components/providers/SmoothScroll'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { Magnetic } from '@/components/ui/Magnetic'
@@ -78,7 +78,7 @@ export function Header() {
             opacity: motion ? 1 : 0,
             stagger: stagger.lines,
             duration: duration.element,
-          }, motion ? '-=0.35' : 0)
+          }, motion ? `-=${menu.linksOverlap}` : 0)
       })
     },
     { scope: menuRef },
@@ -91,7 +91,7 @@ export function Header() {
       tl.current?.timeScale(1).play()
     } else {
       lenis?.start()
-      tl.current?.timeScale(1.6).reverse()
+      tl.current?.timeScale(menu.closeSpeed).reverse()
     }
   })
 
@@ -102,9 +102,30 @@ export function Header() {
         setMenu(false)
         toggleRef.current?.focus()
       }
+      // Foco preso entre o botão Fechar e os itens do menu enquanto ele cobre a página.
+      if (e.key === 'Tab' && menuRef.current && toggleRef.current) {
+        const items = [toggleRef.current, ...menuRef.current.querySelectorAll<HTMLElement>('a[href], button')]
+        const first = items[0]
+        const last = items[items.length - 1]
+        const inside = items.includes(document.activeElement as HTMLElement)
+        if (!inside || (e.shiftKey && document.activeElement === first)) {
+          e.preventDefault()
+          ;(e.shiftKey ? last : first).focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
     }
+    // Ao passar para o layout desktop o menu some (md:hidden): fecha para liberar o scroll.
+    const desktop = window.matchMedia('(min-width: 768px)')
+    const onResize = () => desktop.matches && setMenu(false)
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    desktop.addEventListener('change', onResize)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      desktop.removeEventListener('change', onResize)
+    }
   }, [open, setMenu])
 
   return (
@@ -119,7 +140,7 @@ export function Header() {
       <header className="fixed inset-x-0 top-3 z-50 md:top-4">
         <div className="shell">
           <div className="glass flex h-14 items-center justify-between rounded-full border border-line pl-5 pr-2 md:pl-6">
-            <TransitionLink href="/" aria-label={t('home')} className="py-2 text-xl font-semibold leading-none tracking-[-0.07em]">
+            <TransitionLink href="/" aria-label={`JV, ${t('home')}`} className="py-2 text-xl font-semibold leading-none tracking-[-0.07em]">
               <span data-logo className="inline-block">JV</span>
             </TransitionLink>
 

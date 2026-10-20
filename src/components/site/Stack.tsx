@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { gsap, useGSAP } from '@/lib/motion/gsap'
-import { duration, ease, marquee, mq, stagger } from '@/lib/motion/tokens'
+import { duration, ease, marquee, mq, reveal, stagger } from '@/lib/motion/tokens'
 
 type Group = [string, string[]]
 
@@ -29,7 +29,7 @@ export function Stack() {
 
         gsap.from('[data-stack-group]', {
           autoAlpha: 0,
-          y: 32,
+          y: reveal.y,
           stagger: stagger.items,
           duration: duration.element,
           scrollTrigger: { trigger: '[data-stack-groups]', start: 'top 85%' },

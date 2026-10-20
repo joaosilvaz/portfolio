@@ -64,3 +64,35 @@ export const marquee = {
   duration: 40,
   hoverSpeed: 0.25,
 } as const
+
+/** Deslocamentos e opacidades das entradas (px ou fração). */
+export const reveal = {
+  y: 32,
+  fadeY: 16,
+  panelY: 24,
+  imgScale: 1.2,
+  /** Palavras do "Sobre" antes do scroll as acender (0.45 ainda passa 3:1 em texto grande). */
+  dimOpacity: 0.45,
+  /** Camada que escurece o card de projeto que fica por trás. */
+  shadeOpacity: 0.6,
+} as const
+
+/** Posições (s) na timeline de entrada do hero e da página de case. */
+export const intro = {
+  heroNames: 0.25,
+  heroLines: 0.45,
+  heroFades: 0.6,
+  heroImg: 1.55,
+  caseVisual: 0.1,
+} as const
+
+/** Menu mobile: quanto os links sobrepõem a cortina e quão mais rápido ele fecha. */
+export const menu = {
+  linksOverlap: 0.35,
+  closeSpeed: 1.6,
+} as const
+
+/** Rede de segurança: se a rota não trocar após a cortina fechar, ela reabre (s). */
+export const transition = {
+  fallback: 3,
+} as const
