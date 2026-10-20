@@ -6,12 +6,12 @@ export const alt = 'João Vitor da Silva — Software Engineer'
 
 const COPY: Record<string, { role: string; tags: string[] }> = {
   pt: {
-    role: 'Software Engineer Full Stack',
-    tags: ['React', 'Next.js', 'Java', 'IA aplicada'],
+    role: 'Software Engineer • Backend & IA',
+    tags: ['Java', 'Spring Boot', 'IA Generativa', 'AWS'],
   },
   en: {
-    role: 'Full Stack Software Engineer',
-    tags: ['React', 'Next.js', 'Java', 'Applied AI'],
+    role: 'Software Engineer • Backend & AI',
+    tags: ['Java', 'Spring Boot', 'Generative AI', 'AWS'],
   },
 }
 
