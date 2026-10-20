@@ -10,7 +10,7 @@ import { Stack } from '@/components/site/Stack'
 import { Contact } from '@/components/site/Contact'
 import { Footer } from '@/components/site/Footer'
 
-export default function Main() {
+export default function Main () {
   return (
     <IntroProvider>
       <Loader />
