@@ -4,15 +4,15 @@ import { useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { gsap, SplitText, useGSAP } from '@/lib/motion/gsap'
 import { duration, ease, mq, reveal, stagger } from '@/lib/motion/tokens'
+import { Journey } from '@/components/site/Journey'
 
 type Pair = [string, string]
 
-/** Frase de apresentação que "acende" palavra por palavra no scroll, seguida de números e trajetória. */
+/** Frase de apresentação que "acende" palavra por palavra no scroll, seguida de números e da trajetória em acordeão. */
 export function About() {
   const t = useTranslations('profile')
   const root = useRef<HTMLElement>(null)
   const stats = t.raw('stats') as Pair[]
-  const journey = t.raw('journeyItems') as Pair[]
 
   useGSAP(
     () => {
@@ -69,14 +69,7 @@ export function About() {
 
         <div className="grid-12 mt-20 gap-y-6 md:mt-28">
           <h3 className="col-span-4 text-sm text-muted md:col-span-3">{t('journey')}</h3>
-          <ol className="col-span-4 md:col-span-9">
-            {journey.map(([what, when]) => (
-              <li key={what} className="flex flex-col gap-1 border-t border-line py-5 last:border-b md:flex-row md:items-baseline md:justify-between md:gap-8">
-                <span className="text-lg font-medium tracking-tight md:text-xl">{what}</span>
-                <span className="shrink-0 text-sm text-muted">{when}</span>
-              </li>
-            ))}
-          </ol>
+          <Journey />
         </div>
       </div>
     </section>

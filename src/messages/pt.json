@@ -145,18 +145,39 @@
     "lead": "Sou Engenheiro de Software com mais de 2 anos de experiência criando produtos digitais enterprise para marcas como GM, Mastercard, Leroy Merlin, LATAM Airlines, Stellantis, L’Oréal e Diageo.",
     "body": "Na MRM McCann Worldgroup, atuo em squads ágeis e hoje trabalho no Lens Analytics, produto interno com IA generativa via AWS Bedrock que transforma horas de relatórios manuais em insights entregues em segundos.",
     "journeyItems": [
-      [
-        "Software Engineer — MRM Brasil",
-        "Junho 2024 - Atual"
-      ],
-      [
-        "Arquitetura e Desenvolvimento Java — FIAP (Pós-Tech em andamento)",
-        "Março 2026 - Janeiro 2027"
-      ],
-      [
-        "Análise e Desenvolvimento de Sistemas — FIAP",
-        "Fevereiro 2024 - Dezembro 2025"
-      ]
+      {
+        "title": "Software Engineer — MRM Brasil",
+        "when": "Junho 2024 - Atual",
+        "points": [
+          "Desenvolvo interfaces responsivas e de alta performance com React, Next.js e TypeScript para campanhas e plataformas digitais de marcas globais (GM, Mastercard, Leroy Merlin, LATAM Airlines, Diageo).",
+          "Hoje desenvolvo o Lens Analytics, plataforma interna de analytics em Next.js 15, TypeScript e MySQL que integra AWS Bedrock (Claude) para consultar dados de campanhas em linguagem natural, substituindo relatórios manuais para clientes como Leroy Merlin, GM e Abbott.",
+          "Liderei o front-end do Dealer 4.0, configurador interativo do Blazer EV RS usado em eventos de concessionárias GM: feito para touchscreens do tamanho de TVs, com personalização completa do carro, simulação de financiamento e visualização 3D em tempo real.",
+          "Contribuí com uma plataforma digital governamental de grande escala (PRODESP) em Adobe Experience Manager, entregando gestão de conteúdo corporativa baseada em CMS.",
+          "Implementei arquitetura front-end escalável em mais de 7 campanhas de marcas, em experiências digitais usadas por milhões de pessoas.",
+          "Atuo em squads ágeis multidisciplinares com Scrum, Jira e Bitbucket, entregando dentro de prazos apertados de campanha."
+        ]
+      },
+      {
+        "title": "Arquitetura e Desenvolvimento Java — FIAP (Pós-Tech em andamento)",
+        "when": "Março 2026 - Janeiro 2027",
+        "points": [
+          "Arquitetura de software em Java e Spring Boot: Clean Architecture, SOLID e design patterns.",
+          "Microsserviços, mensageria e comunicação entre serviços.",
+          "Testes automatizados, qualidade de código e segurança de APIs.",
+          "Containers, pipelines de CI/CD com Azure DevOps e deploy em cloud."
+        ]
+      },
+      {
+        "title": "Análise e Desenvolvimento de Sistemas — FIAP",
+        "when": "Fevereiro 2024 - Dezembro 2025",
+        "points": [
+          "Programação e orientação a objetos com Java, C# e Python.",
+          "Modelagem de dados e bancos relacionais com SQL e Oracle.",
+          "Desenvolvimento web e mobile, de APIs REST a interfaces em React e React Native.",
+          "Engenharia de software: requisitos, UML, métodos ágeis e microsserviços.",
+          "Projetos práticos com empresas parceiras, como o Challenge FIAP x Mottu e o Requalify."
+        ]
+      }
     ]
   },
   "build": {
