@@ -10,6 +10,7 @@ import { useLenis } from '@/components/providers/SmoothScroll'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { Magnetic } from '@/components/ui/Magnetic'
 import { TransitionLink } from '@/components/providers/PageTransition'
+import { requestIntroReplay } from '@/components/site/Loader'
 
 const sections = ['work', 'about', 'stack', 'contact'] as const
 
@@ -28,6 +29,7 @@ function LocaleSwitch() {
             locale={l}
             aria-current={l === locale ? 'true' : undefined}
             lang={l}
+            onClick={() => pathname === '/' && l !== locale && requestIntroReplay()}
             className={`px-1 py-2 uppercase ${l === locale ? 'text-fg' : 'text-muted hover:text-fg'}`}
           >
             {l}

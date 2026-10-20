@@ -8,12 +8,28 @@ import { useIntro } from '@/components/providers/Intro'
 import { useLenis } from '@/components/providers/SmoothScroll'
 
 const SEEN_KEY = 'jv-loader-seen'
+const REPLAY_KEY = 'jv-loader-replay'
+
+/** Troca de idioma na home: o intro completo toca de novo no idioma novo. */
+export function requestIntroReplay() {
+  try {
+    sessionStorage.setItem(REPLAY_KEY, '1')
+  } catch {}
+  delete document.documentElement.dataset.loader
+}
 
 /**
  * O boot script marca `data-loader="skip"` no carregamento, mas a troca de idioma
- * re-renderiza o <html> sem rodá-lo de novo: por isso conferimos o localStorage aqui também.
+ * re-renderiza o <html> sem rodá-lo de novo: por isso conferimos o storage aqui também.
  */
 function shouldSkip() {
+  if (window.matchMedia(mq.reduced).matches) return true
+  try {
+    if (sessionStorage.getItem(REPLAY_KEY)) {
+      sessionStorage.removeItem(REPLAY_KEY)
+      return false
+    }
+  } catch {}
   if (document.documentElement.dataset.loader === 'skip') return true
   try {
     return localStorage.getItem(SEEN_KEY) === '1' || window.matchMedia(mq.reduced).matches
@@ -25,7 +41,7 @@ function shouldSkip() {
 /**
  * Intro com o monograma: "J" e "V" sobem da máscara no centro da tela, depois o
  * monograma voa e encolhe até o logo do header enquanto a cortina sobe e o hero entra.
- * Só na primeira visita, pulável por clique ou Esc.
+ * Na primeira visita e a cada troca de idioma na home; pulável por clique ou Esc.
  */
 export function Loader() {
   const t = useTranslations('loader')
@@ -36,11 +52,14 @@ export function Loader() {
   const mark = useRef<HTMLParagraphElement>(null)
   const tl = useRef<gsap.core.Timeline | null>(null)
   const skipRef = useRef<HTMLButtonElement>(null)
+  // Decidido uma vez por montagem: shouldSkip() consome o pedido de replay.
+  const skip = useRef(true)
   const [done, setDone] = useState(false)
 
   // Layout effect: decide antes do primeiro paint, sem piscar a cortina numa visita repetida.
   useLayoutEffect(() => {
-    if (shouldSkip()) {
+    skip.current = shouldSkip()
+    if (skip.current) {
       reveal()
       setDone(true)
     }
@@ -56,7 +75,7 @@ export function Loader() {
     () => {
       if (done || !mark.current || !curtain.current) return
       // Visita repetida ou reduced-motion: o efeito abaixo encerra o loader sem animar nada.
-      if (shouldSkip()) return
+      if (skip.current) return
 
       const logo = document.querySelector<HTMLElement>('[data-logo]')
       const finish = () => {
