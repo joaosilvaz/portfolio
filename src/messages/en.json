@@ -83,6 +83,7 @@
     "code": "View code",
     "confidential": "Corporate case • limited public details",
     "items": {
+      "pupo-pilates": {"category":"Website • Client project","title":"Pupo Pilates","summary":"Website developed for a Pilates client, bringing her business online.","decision":"Development of a dedicated business website, deployed on Vercel.","result":"Live website available at pupopilates.vercel.app."},
       "lens": {
         "category": "Applied AI • MRM McCann",
         "title": "Lens Analytics",
@@ -122,6 +123,7 @@
         "decision": "Domain modeling, validation and transactional operations."
       }
     },
+    "visitSite": "Visit website",
     "codeApi": "API code",
     "codeMobile": "App code"
   },

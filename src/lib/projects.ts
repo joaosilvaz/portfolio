@@ -3,9 +3,10 @@
  * aqui só o que não muda com o idioma.
  */
 export type Project = {
-  slug: 'lens' | 'requalify' | 'mottu' | 'bank'
+  slug: 'pupo-pilates' | 'lens' | 'requalify' | 'mottu' | 'bank'
   stack: string[]
   image?: string
+  website?: string
   /** Repositórios; `label` é a chave da mensagem em work.* */
   code?: { label: 'code' | 'codeApi' | 'codeMobile'; href: string }[]
   confidential?: boolean
@@ -17,6 +18,13 @@ export const projects: Project[] = [
     slug: 'lens',
     stack: ['AWS Bedrock', 'Generative AI', 'Full Stack', 'AWS'],
     confidential: true,
+    hasResult: true,
+  },
+  {
+    slug: 'pupo-pilates',
+    stack: ['Website', 'Vercel'],
+    image: '/images/pupo-pilates.svg',
+    website: 'https://pupopilates.vercel.app/',
     hasResult: true,
   },
   {

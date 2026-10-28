@@ -19,7 +19,7 @@ export function ProjectVisual({ project, sizes }: { project: Project; sizes: str
         alt=""
         fill
         sizes={sizes}
-        className="object-cover grayscale transition-transform duration-700 ease-[cubic-bezier(0.215,0.61,0.355,1)] group-hover:scale-[1.04]"
+        className={project.slug === 'pupo-pilates' ? 'object-contain bg-[#ece9e2] grayscale' : 'object-cover grayscale transition-transform duration-700 ease-[cubic-bezier(0.215,0.61,0.355,1)] group-hover:scale-[1.04]'}
       />
     )
   }
