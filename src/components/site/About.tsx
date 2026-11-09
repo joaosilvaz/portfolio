@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { gsap, SplitText, useGSAP } from '@/lib/motion/gsap'
 import { duration, ease, mq, reveal, stagger } from '@/lib/motion/tokens'
@@ -9,7 +10,7 @@ import { Journey } from '@/components/site/Journey'
 type Pair = [string, string]
 
 /** Frase de apresentação que "acende" palavra por palavra no scroll, seguida de números e da trajetória em acordeão. */
-export function About() {
+export function About({ photo = '/images/perfil.jpeg' }: { photo?: string }) {
   const t = useTranslations('profile')
   const root = useRef<HTMLElement>(null)
   const stats = t.raw('stats') as Pair[]
@@ -49,13 +50,17 @@ export function About() {
     <section id="about" ref={root} aria-labelledby="about-title" className="py-24 md:py-40">
       <div className="shell">
         <div className="grid-12 gap-y-6">
-          <h2 id="about-title" className="col-span-4 text-sm text-muted md:col-span-3">
+          <h1 id="about-title" className="col-span-4 text-sm text-muted md:col-span-3">
             {t('title')}
-          </h2>
+          </h1>
           <p data-about-lead className="col-span-4 text-[clamp(1.75rem,3.6vw,3.25rem)] font-medium leading-[1.12] tracking-[-0.03em] md:col-span-9">
             {t('lead')}
           </p>
           <p className="col-span-4 max-w-[52ch] leading-relaxed text-muted md:col-span-6 md:col-start-4 md:text-lg">{t('body')}</p>
+        </div>
+
+        <div className="relative mt-12 aspect-[4/3] max-w-xl overflow-hidden rounded-[1.75rem] border border-line bg-surface md:ml-auto">
+          <Image src={photo} alt="João Vitor da Silva" fill sizes="(min-width: 768px) 560px, 92vw" className="object-cover object-[50%_35%]" />
         </div>
 
         <dl data-about-stats className="grid-12 mt-20 gap-y-4 md:mt-28">

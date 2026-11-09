@@ -21,6 +21,7 @@ export function Footer() {
           <a href={contact.github} target="_blank" rel="noopener noreferrer" className="hover:text-fg">
             {t('github')}
           </a>
+          <a href="https://www.instagram.com/joaosilva.tech/" target="_blank" rel="noopener noreferrer" className="hover:text-fg">Instagram</a>
           <a
             href="#main"
             onClick={(e) => {

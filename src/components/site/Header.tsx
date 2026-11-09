@@ -44,6 +44,8 @@ type SectionLinkProps = { id: string; onHome: boolean } & Omit<React.ComponentPr
 
 /** Na home a âncora é local (o Lenis intercepta); nas páginas de case volta para a home com transição. */
 function SectionLink({ id, onHome, ...props }: SectionLinkProps) {
+  const pages: Record<string, string> = { work: '/projetos', about: '/sobre', stack: '/stack' }
+  if (pages[id]) return <TransitionLink href={pages[id]} {...props} />
   if (onHome) return <a href={`#${id}`} {...props} />
   return <TransitionLink href={`/#${id}`} {...props} />
 }
