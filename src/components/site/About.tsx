@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef } from 'react'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { gsap, SplitText, useGSAP } from '@/lib/motion/gsap'
 import { duration, ease, mq, reveal, stagger } from '@/lib/motion/tokens'
@@ -10,7 +9,7 @@ import { Journey } from '@/components/site/Journey'
 type Pair = [string, string]
 
 /** Frase de apresentação que "acende" palavra por palavra no scroll, seguida de números e da trajetória em acordeão. */
-export function About({ photo = '/images/perfil.jpeg' }: { photo?: string }) {
+export function About() {
   const t = useTranslations('profile')
   const root = useRef<HTMLElement>(null)
   const stats = t.raw('stats') as Pair[]
@@ -59,11 +58,7 @@ export function About({ photo = '/images/perfil.jpeg' }: { photo?: string }) {
           <p className="col-span-4 max-w-[52ch] leading-relaxed text-muted md:col-span-6 md:col-start-4 md:text-lg">{t('body')}</p>
         </div>
 
-        <div className="relative mt-12 aspect-[4/3] max-w-xl overflow-hidden rounded-[1.75rem] border border-line bg-surface md:ml-auto">
-          <Image src={photo} alt="João Vitor da Silva" fill sizes="(min-width: 768px) 560px, 92vw" className="object-cover object-[50%_35%]" />
-        </div>
-
-        <dl data-about-stats className="grid-12 mt-20 gap-y-4 md:mt-28">
+        <dl data-about-stats className="grid-12 mt-12 gap-y-4 md:mt-20">
           {stats.map(([value, label]) => (
             <div key={value} data-about-stat className="col-span-4 flex flex-col-reverse justify-end gap-3 rounded-[1.5rem] border border-line bg-surface p-6 md:col-span-4 md:p-8">
               <dt className="max-w-[24ch] text-muted">{label}</dt>

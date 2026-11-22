@@ -5,7 +5,7 @@ import { useLocale } from 'next-intl'
 const sites = [
   { name: 'Rodrigo MKT', url: 'https://rodrigo-mkt-two.vercel.app/', category: 'Marketing' },
   { name: 'Dra. Isabela Santana', url: 'https://draisabelasantana.vercel.app/', category: 'Website' },
-  { name: 'Graziela Fagotti', url: 'https://grazielafagotti.vercel.app/', category: 'Website' },
+  { name: 'Graziela Fagotti', url: 'https://grazielafagotti.com.br/', category: 'Website' },
   { name: 'Pupo Pilates', url: 'https://pupopilates.vercel.app/', category: 'Website' },
   { name: 'Cibele Pardelli', url: 'https://cibele-pardelli.vercel.app/', category: 'Website' },
   { name: 'Minify HTML', url: 'https://minify-html.vercel.app/', category: 'Developer tool' },
