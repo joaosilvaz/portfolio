@@ -83,11 +83,12 @@
     "code": "View code",
     "confidential": "Corporate case • limited public details",
     "items": {
-      "pupo-pilates": {"category":"Website • Client project","title":"Pupo Pilates","summary":"Website developed for a Pilates client, bringing her business online.","decision":"Development of a dedicated business website, deployed on Vercel.","result":"Live website available at pupopilates.vercel.app."},
+      "pupo-pilates": {"category":"Website • Client project","title":"Pupo Pilates","summary":"Website developed for a Pilates client, bringing her business online.","challenge":"Create a dedicated place to introduce the Pilates business to people looking for it online.","decision":"Development of a dedicated business website, deployed on Vercel.","result":"Live website available at pupopilates.vercel.app."},
       "lens": {
         "category": "Applied AI • MRM McCann",
         "title": "Lens Analytics",
         "summary": "An internal platform using generative AI to turn client data and reports into actionable insights.",
+        "challenge": "Reduce the time spent reading data and reports manually to find useful information.",
         "decision": "Full-stack product development and AI-layer integration through AWS Bedrock, collaborating with product teams and non-technical stakeholders.",
         "result": "Reporting processes that took hours now generate insights in seconds.",
         "metric": "Hours → seconds"
@@ -96,6 +97,7 @@
         "category": "AI + Mobile • FIAP Global Solution",
         "title": "Requalify",
         "summary": "Full-stack career reskilling platform: it analyzes the résumé with GPT-4 and generates, in real time, a career roadmap with courses, checkpoints and learning resources.",
+        "challenge": "Turn résumé information into personalized, practical career guidance.",
         "decision": "Built as a team. Layered Java REST API with Spring Boot, authentication with Spring Security and JWT, PDF résumé upload and processing on the backend, and GPT-4 integration to generate the roadmaps, consumed in real time by a React Native app.",
         "result": "Presented to and approved by an academic panel at FIAP.",
         "steps": [
@@ -108,6 +110,7 @@
         "category": "Backend • FIAP x Mottu Challenge",
         "title": "Motorcycle Rental API",
         "summary": "RESTful API to manage Mottu's fleet: users, motorcycles and rentals, tracking each contract's status and the fleet's availability.",
+        "challenge": "Organize users, motorcycles, and rental contracts while keeping track of fleet availability.",
         "decision": "ASP.NET Core Web API with Entity Framework Core and Oracle Database, DTOs separating the domain from the API contracts, HATEOAS to navigate resources through response links, pagination for large volumes and interactive Swagger/OpenAPI docs.",
         "statuses": [
           "Pending",
@@ -120,6 +123,7 @@
         "category": "Backend • Java",
         "title": "Bank System API",
         "summary": "A banking API supporting account management, deposits, withdrawals, queries and PIX transfers protected by business rules.",
+        "challenge": "Model banking operations and protect transactions with validation and business rules.",
         "decision": "Domain modeling, validation and transactional operations."
       }
     },

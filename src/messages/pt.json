@@ -83,11 +83,12 @@
     "code": "Ver código",
     "confidential": "Case corporativo • detalhes públicos limitados",
     "items": {
-      "pupo-pilates": {"category":"Website • Projeto para cliente","title":"Pupo Pilates","summary":"Site desenvolvido para uma cliente que atua com pilates, levando a presença do seu negócio para a web.","decision":"Desenvolvimento de um site dedicado ao negócio da cliente, publicado na Vercel.","result":"Site publicado e disponível para visita em pupopilates.vercel.app."},
+      "pupo-pilates": {"category":"Website • Projeto para cliente","title":"Pupo Pilates","summary":"Site desenvolvido para uma cliente que atua com pilates, levando a presença do seu negócio para a web.","challenge":"Criar um espaço próprio para apresentar o negócio de pilates a quem o procura online.","decision":"Desenvolvimento de um site dedicado ao negócio da cliente, publicado na Vercel.","result":"Site publicado e disponível para visita em pupopilates.vercel.app."},
       "lens": {
         "category": "IA aplicada • MRM McCann",
         "title": "Lens Analytics",
         "summary": "Plataforma interna que utiliza IA generativa para transformar dados e relatórios de clientes em insights acionáveis.",
+        "challenge": "Reduzir o tempo gasto na leitura manual de dados e relatórios para encontrar informações úteis.",
         "decision": "Atuação full stack na construção do produto e na integração da camada de IA por meio do AWS Bedrock, colaborando com produto e stakeholders não técnicos.",
         "result": "Processos de reporting que levavam horas passaram a gerar insights em segundos.",
         "metric": "Horas → segundos"
@@ -96,6 +97,7 @@
         "category": "IA + Mobile • FIAP Global Solution",
         "title": "Requalify",
         "summary": "Plataforma full-stack de requalificação profissional: analisa o currículo com GPT-4 e gera em tempo real um roadmap de carreira com cursos, checkpoints e recursos de estudo.",
+        "challenge": "Transformar as informações de um currículo em uma orientação de carreira personalizada e prática.",
         "decision": "Desenvolvido em equipe. API REST em Java com Spring Boot e arquitetura em camadas, autenticação com Spring Security e JWT, upload e processamento de currículos em PDF no backend e integração com GPT-4 para gerar os roadmaps, consumidos em tempo real por um app em React Native.",
         "result": "Projeto apresentado e aprovado em banca acadêmica na FIAP.",
         "steps": [
@@ -108,6 +110,7 @@
         "category": "Backend • Challenge FIAP x Mottu",
         "title": "Aluguel de Motos API",
         "summary": "API RESTful para gestão da frota da Mottu: usuários, motos e aluguéis, com controle do status de cada contrato e da disponibilidade das motos.",
+        "challenge": "Organizar usuários, motos e contratos de aluguel sem perder o controle da disponibilidade da frota.",
         "decision": "ASP.NET Core Web API com Entity Framework Core e Oracle Database, DTOs separando o domínio dos contratos da API, HATEOAS para navegar entre recursos pelos links da resposta, paginação para grandes volumes e documentação interativa com Swagger/OpenAPI.",
         "statuses": [
           "Pendente",
@@ -120,6 +123,7 @@
         "category": "Backend • Java",
         "title": "Bank System API",
         "summary": "API bancária com criação e encerramento de contas, depósitos, saques, consultas e transferências PIX protegidas por regras de negócio.",
+        "challenge": "Modelar operações bancárias e proteger as transações com validações e regras de negócio.",
         "decision": "Modelagem de domínio, validações e operações transacionais."
       }
     },
